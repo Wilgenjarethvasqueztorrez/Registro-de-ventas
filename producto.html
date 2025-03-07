@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 5</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link id="theme-stylesheet" rel="stylesheet" type="text/css" href="">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3c1083;
+            /* Fondo púrpura por defecto */
+            color: #000;
+            /* Texto oscuro */
+            opacity: 0;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+        }
+        .hidden {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu-container"></div> <!-- Contenedor donde se inyectará el menú -->
+
+    <script src="menu.js"></script> <!-- Incluye el archivo JavaScript -->
+
+    <header>
+        <h1>Listado de Productos</h1>
+    </header>
+    <button id="agregarRegistro">Agregar producto</button>
+    <table id="registrosTabla">
+        <thead>
+            <tr>
+                <th>Nombre del producto</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <div id="registroForm" class="overlay">
+        <div class="form-container">
+            <h2>Agregar Producto</h2>
+            <label for="nuevoNombre">Nombre del producto</label>
+            <input type="text" id="nuevoNombre" placeholder="Nombre del producto" required>
+            <label for="nuevoDescripcion">Descripción del producto</label>
+            <input type="text" id="nuevoDescripcion" placeholder="Descripción del producto" required>
+            <label for="nuevoPrecio">Precio del producto</label>
+            <input type="number" id="nuevoPrecio" placeholder="Precio del producto" required>
+            <label for="nuevoStock">Cantidad del producto</label>
+            <input type="number" id="nuevoStock" placeholder="Stock del producto" required>
+            <button onclick="guardarNuevoRegistro()">Guardar</button>
+            <button onclick="cerrarFormulario('registroForm')">Cancelar</button>
+        </div>
+    </div>
+    
+    <div id="editarForm" class="overlay">
+        <div class="form-container">
+            <h2>Editar Producto</h2>
+            <label for="editarNombre">Nombre del producto</label>
+            <input type="hidden" id="editarId">
+            <input type="text" id="editarNombre" placeholder="Nombre del producto" required>
+            <label for="editarDescripcion">Descripción del producto</label>
+            <input type="text" id="editarDescripcion" placeholder="Descripción del producto" required>
+            <label for="editarPrecio">Precio del producto</label>
+            <input type="number" id="editarPrecio" placeholder="Precio del producto" required>
+            <label for="editarStock">Cantidad del producto</label>
+            <input type="number" id="editarStock" placeholder="Stock del producto" required>
+            <button onclick="guardarEdicionRegistro()">Guardar</button>
+            <button onclick="cerrarFormulario('editarForm')">Cancelar</button>
+        </div>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB68iY9_j2nNSajScy8TU3mzQEMMa7R3Jo",
+            authDomain: "bd-registro-de-ventas.firebaseapp.com",
+            databaseURL: "https://bd-registro-de-ventas-default-rtdb.firebaseio.com",
+            projectId: "bd-registro-de-ventas",
+            storageBucket: "bd-registro-de-ventas.firebasestorage.app",
+            messagingSenderId: "52957839366",
+            appId: "1:52957839366:web:b03bc3b5493a520534c387"
+        };
+    
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+    
+        async function obtenerRegistros() {
+            const registros = await db.collection('producto-registro').get();
+            const registrosTabla = document.getElementById('registrosTabla').getElementsByTagName('tbody')[0];
+            registrosTabla.innerHTML = '';
+            registros.forEach(doc => {
+                const registro = doc.data();
+                const row = registrosTabla.insertRow();
+                row.insertCell(0).innerText = registro.NombreProducto;
+                row.insertCell(1).innerText = registro.Descripción;
+                row.insertCell(2).innerText = registro.Precio;
+                row.insertCell(3).innerText = registro.Stock;
+                const accionesCell = row.insertCell(4);
+                accionesCell.innerHTML = `
+            <button onclick="mostrarEditarFormulario('${doc.id}', '${registro.NombreProducto}', '${registro.Descripción}', '${registro.Precio}', '${registro.Stock}')">Editar</button>
+            <button onclick="eliminarRegistro('${doc.id}')">Eliminar</button>
+        `;
+            });
+        }
+    
+        function mostrarFormulario(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+    
+        function cerrarFormulario(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    
+        function mostrarEditarFormulario(id, nombre, descripcion, precio, stock) {
+            mostrarFormulario('editarForm');
+            document.getElementById('editarId').value = id;
+            document.getElementById('editarNombre').value = nombre;
+            document.getElementById('editarDescripcion').value = descripcion;
+            document.getElementById('editarPrecio').value = precio;
+            document.getElementById('editarStock').value = stock;
+        }
+    
+        async function guardarNuevoRegistro() {
+            const nombre = document.getElementById('nuevoNombre').value;
+            const descripcion = document.getElementById('nuevoDescripcion').value;
+            const precio = document.getElementById('nuevoPrecio').value;
+            const stock = document.getElementById('nuevoStock').value;
+            await db.collection('producto-registro').add({
+                IDProducto: Math.random().toString(36).substr(2, 9),
+                NombreProducto: nombre,
+                Descripción: descripcion,
+                Precio: precio,
+                Stock: stock
+            });
+            cerrarFormulario('registroForm');
+            obtenerRegistros();
+        }
+    
+        async function guardarEdicionRegistro() {
+            const id = document.getElementById('editarId').value;
+            const nombre = document.getElementById('editarNombre').value;
+            const descripcion = document.getElementById('editarDescripcion').value;
+            const precio = document.getElementById('editarPrecio').value;
+            const stock = document.getElementById('editarStock').value;
+            await db.collection('producto-registro').doc(id).update({
+                NombreProducto: nombre,
+                Descripción: descripcion,
+                Precio: precio,
+                Stock: stock
+            });
+            cerrarFormulario('editarForm');
+            obtenerRegistros();
+        }
+    
+        async function eliminarRegistro(id) {
+            await db.collection('producto-registro').doc(id).delete();
+            obtenerRegistros();
+        }
+    
+        document.getElementById('agregarRegistro').addEventListener('click', function () {
+            mostrarFormulario('registroForm');
+        });
+    
+        obtenerRegistros();
+    </script>
+    
+
+
+
+
+</body>
+
+</html>

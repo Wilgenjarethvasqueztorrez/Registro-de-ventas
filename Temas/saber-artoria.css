@@ -1,0 +1,38 @@
+/* ---- Tema Saber Artoria (Fate) ---- */
+body.saber-artoria {
+    background-color: #0f1e3d; /* Azul oscuro */
+    color: #e5e5e5; /* Gris claro */
+}
+
+body.saber-artoria header {
+    background-color: #001f3f; /* Azul marino */
+    color: #ffc107; /* Dorado */
+}
+
+body.saber-artoria button {
+    background: linear-gradient(90deg, #ffc107, #0f1e3d); /* Degradado dorado a azul */
+    color: white;
+}
+
+body.saber-artoria button:hover {
+    background: linear-gradient(90deg, #0f1e3d, #ffc107);
+    box-shadow: 0px 0px 10px #ffc107;
+}
+
+body.saber-artoria table {
+    background-color: #001f3f; /* Fondo azul oscuro */
+    color: #e5e5e5;
+}
+
+body.saber-artoria table th {
+    background-color: #0f1e3d; /* Azul oscuro */
+    color: #ffc107; /* Dorado */
+}
+
+body.saber-artoria .form-container {
+    background: linear-gradient(135deg, rgba(15, 30, 61, 0.8), rgba(0, 31, 63, 0.8), rgba(15, 30, 61, 0.8));
+}
+
+body.saber-artoria .form-container label {
+    color: #ffc107; /* Color del texto de los labels en el tema Saber Artoria */
+}

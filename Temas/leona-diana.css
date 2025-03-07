@@ -1,0 +1,38 @@
+/* ---- Tema Leona y Diana (Sol y Luna) ---- */
+body.leona-diana {
+    background-color: #282a36; /* Fondo oscuro */
+    color: #f8f8f2; /* Texto claro */
+}
+
+body.leona-diana header {
+    background-color: #44475a; /* Gris oscuro */
+    color: #ffb86c; /* Naranja sol */
+}
+
+body.leona-diana button {
+    background: linear-gradient(90deg, #ffb86c, #50fa7b); /* Naranja sol y verde luna */
+    color: white;
+}
+
+body.leona-diana button:hover {
+    background: linear-gradient(90deg, #f1fa8c, #bd93f9); /* Amarillo sol y púrpura luna */
+    box-shadow: 0px 0px 10px #ffb86c;
+}
+
+body.leona-diana table {
+    background-color: #44475a; /* Fondo gris oscuro */
+    color: #f8f8f2;
+}
+
+body.leona-diana table th {
+    background-color: #6272a4; /* Gris azulado */
+    color: #ffb86c; /* Naranja sol */
+}
+
+body.leona-diana .form-container {
+    background: linear-gradient(135deg, rgba(40, 42, 54, 0.8), rgba(68, 71, 90, 0.8), rgba(40, 42, 54, 0.8));
+}
+
+body.leona-diana .form-container label {
+    color: #ffb86c; /* Color del texto de los labels en el tema Leona y Diana (Sol y Luna) */
+}

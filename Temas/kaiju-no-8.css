@@ -1,0 +1,38 @@
+/* ---- Tema Kaiju No. 8 ---- */
+body.kaiju-no-8 {
+    background-color: #2c2c2c; /* Fondo gris oscuro */
+    color: #ff4444; /* Rojo brillante */
+}
+
+body.kaiju-no-8 header {
+    background-color: #4d4d4d; /* Gris medio */
+    color: #ff4444;
+}
+
+body.kaiju-no-8 button {
+    background: linear-gradient(90deg, #ff4444, #2c2c2c); /* Degradado rojo a gris oscuro */
+    color: white;
+}
+
+body.kaiju-no-8 button:hover {
+    background: linear-gradient(90deg, #2c2c2c, #ff4444);
+    box-shadow: 0px 0px 10px #ff4444;
+}
+
+body.kaiju-no-8 table {
+    background-color: #4d4d4d; /* Fondo gris oscuro */
+    color: #ff4444;
+}
+
+body.kaiju-no-8 table th {
+    background-color: #666666; /* Gris más claro */
+    color: #ff4444; /* Rojo brillante */
+}
+
+body.kaiju-no-8 .form-container {
+    background: linear-gradient(135deg, rgba(44, 44, 44, 0.8), rgba(77, 77, 77, 0.8), rgba(44, 44, 44, 0.8));
+}
+
+body.kaiju-no-8 .form-container label {
+    color: #ff4444; /* Color del texto de los labels en el tema Kaiju No. 8 */
+}

@@ -1,0 +1,38 @@
+/* ---- Tema Boku no Hero ---- */
+body.boku-no-hero {
+    background-color: #282c36; /* Fondo azul oscuro */
+    color: #ffffff; /* Texto blanco */
+}
+
+body.boku-no-hero header {
+    background-color: #3e4451; /* Azul grisáceo */
+    color: #f44336; /* Rojo héroe */
+}
+
+body.boku-no-hero button {
+    background: linear-gradient(90deg, #f44336, #00acc1); /* Degradado rojo a cian */
+    color: white;
+}
+
+body.boku-no-hero button:hover {
+    background: linear-gradient(90deg, #00acc1, #f44336);
+    box-shadow: 0px 0px 10px #f44336;
+}
+
+body.boku-no-hero table {
+    background-color: #3e4451; /* Fondo gris oscuro */
+    color: #ffffff;
+}
+
+body.boku-no-hero table th {
+    background-color: #282c36; /* Azul oscuro */
+    color: #f44336; /* Rojo héroe */
+}
+
+body.boku-no-hero .form-container {
+    background: linear-gradient(135deg, rgba(40, 44, 54, 0.8), rgba(62, 68, 81, 0.8), rgba(40, 44, 54, 0.8));
+}
+
+body.boku-no-hero .form-container label {
+    color: #f44336; /* Color del texto de los labels en el tema Boku no Hero */
+}

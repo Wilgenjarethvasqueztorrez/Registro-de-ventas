@@ -1,0 +1,49 @@
+/* ---- Tema Pantheon ---- */
+body.pantheon {
+    background-color: #121212;
+    /* Fondo negro intenso */
+    color: #f4d03f;
+    /* Amarillo dorado */
+}
+
+body.pantheon header {
+    background-color: #d35400;
+    /* Naranja intenso */
+    color: #fdf3e7;
+    /* Blanco cálido */
+}
+
+body.pantheon button {
+    background: linear-gradient(90deg, #d35400, #f39c12);
+    /* Naranja a dorado */
+    color: white;
+}
+
+body.pantheon button:hover {
+    background: linear-gradient(90deg, #f39c12, #d35400);
+    /* Dorado a naranja */
+    box-shadow: 0px 0px 10px #f4d03f;
+    /* Resplandor amarillo */
+}
+
+body.pantheon table {
+    background-color: #1f1f1f;
+    /* Fondo negro suave */
+    color: #f4d03f;
+    /* Texto dorado */
+}
+
+body.pantheon table th {
+    background-color: #d35400;
+    /* Encabezado naranja */
+    color: white;
+    /* Texto claro */
+}
+
+body.pantheon .form-container {
+    background: linear-gradient(135deg, rgba(18, 18, 18, 0.8), rgba(211, 84, 0, 0.8), rgba(18, 18, 18, 0.8));
+}
+
+body.pantheon .form-container label {
+    color: #f4d03f; /* Color del texto de los labels en el tema Pantheon */
+}

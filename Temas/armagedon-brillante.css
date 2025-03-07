@@ -1,0 +1,39 @@
+/* ---- Tema Armagedón Brillante ---- */
+body.armagedon-brillante {
+    background-color: #f2e2ff; /* Fondo claro */
+    color: #551a8b; /* Texto oscuro */
+
+}
+
+body.armagedon-brillante header {
+    background-color: #8a2be2; /* Púrpura */
+    color: #ffffff;
+}
+
+body.armagedon-brillante button {
+    background: linear-gradient(90deg, #ff79c6, #ffb6c1);
+    color: white;
+}
+
+body.armagedon-brillante button:hover {
+    background: linear-gradient(90deg, #ffb6c1, #ff79c6);
+    box-shadow: 0px 0px 10px #ffb6c1;
+}
+
+body.armagedon-brillante table {
+    background-color: #ffefd5; /* Fondo claro */
+    color: #551a8b;
+}
+
+body.armagedon-brillante table th {
+    background-color: #dda0dd; /* Púrpura pálido */
+    color: #ffffff;
+}
+
+body.armagedon-brillante .form-container {
+    background: linear-gradient(135deg, rgba(242, 226, 255, 0.8), rgba(138, 43, 226, 0.8), rgba(242, 226, 255, 0.8));
+}
+
+body.armagedon-brillante .form-container label {
+    color: #551a8b; /* Color del texto de los labels en el tema Armagedón Brillante */
+}

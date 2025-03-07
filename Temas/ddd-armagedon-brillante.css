@@ -1,0 +1,38 @@
+/* ---- Tema D/D/D Armagedón Brillante (Yu-Gi-Oh) ---- */
+body.ddd-armagedon-brillante {
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #ff6f61; /* Rojo anaranjado */
+}
+
+body.ddd-armagedon-brillante header {
+    background-color: #3e3e3e; /* Gris oscuro */
+    color: #ff6f61;
+}
+
+body.ddd-armagedon-brillante button {
+    background: linear-gradient(90deg, #ff6f61, #ffe0b2); /* Degradado rojo anaranjado a beige */
+    color: white;
+}
+
+body.ddd-armagedon-brillante button:hover {
+    background: linear-gradient(90deg, #ffe0b2, #ff6f61);
+    box-shadow: 0px 0px 10px #ff6f61;
+}
+
+body.ddd-armagedon-brillante table {
+    background-color: #3e3e3e; /* Fondo gris oscuro */
+    color: #ff6f61;
+}
+
+body.ddd-armagedon-brillante table th {
+    background-color: #5e5e5e; /* Gris más claro */
+    color: #ff6f61;
+}
+
+body.ddd-armagedon-brillante .form-container {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(62, 62, 62, 0.8), rgba(26, 26, 26, 0.8));
+}
+
+body.ddd-armagedon-brillante .form-container label {
+    color: #ff6f61; /* Color del texto de los labels en el tema D/D/D Armagedón Brillante */
+}

@@ -1,0 +1,38 @@
+/* ---- Tema Zinogre de Monster Hunter ---- */
+body.zinogre {
+    background-color: #122320; /* Fondo verde oscuro */
+    color: #ffcc00; /* Amarillo dorado */
+}
+
+body.zinogre header {
+    background-color: #245046; /* Verde medio */
+    color: #ffcc00;
+}
+
+body.zinogre button {
+    background: linear-gradient(90deg, #ffcc00, #122320); /* Degradado amarillo dorado a verde oscuro */
+    color: white;
+}
+
+body.zinogre button:hover {
+    background: linear-gradient(90deg, #122320, #ffcc00);
+    box-shadow: 0px 0px 10px #ffcc00;
+}
+
+body.zinogre table {
+    background-color: #245046; /* Fondo verde medio */
+    color: #ffcc00;
+}
+
+body.zinogre table th {
+    background-color: #366c63; /* Verde más claro */
+    color: #ffcc00; /* Amarillo dorado */
+}
+
+body.zinogre .form-container {
+    background: linear-gradient(135deg, rgba(18, 35, 32, 0.8), rgba(36, 80, 70, 0.8), rgba(18, 35, 32, 0.8));
+}
+
+body.zinogre .form-container label {
+    color: #ffcc00; /* Color del texto de los labels en el tema Zinogre */
+}

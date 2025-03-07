@@ -1,0 +1,38 @@
+/* ---- Tema Alexander, Alto Rey de los Vendavales ---- */
+body.alexander-rey-vendavales {
+    background-color: #002b36; /* Fondo oscuro */
+    color: #839496; /* Texto gris claro */
+}
+
+body.alexander-rey-vendavales header {
+    background-color: #073642; /* Azul muy oscuro */
+    color: #268bd2; /* Azul cielo */
+}
+
+body.alexander-rey-vendavales button {
+    background: linear-gradient(90deg, #268bd2, #073642);
+    color: white;
+}
+
+body.alexander-rey-vendavales button:hover {
+    background: linear-gradient(90deg, #268bd2, #586e75);
+    box-shadow: 0px 0px 10px #268bd2;
+}
+
+body.alexander-rey-vendavales table {
+    background-color: #073642; /* Fondo azul oscuro */
+    color: #839496;
+}
+
+body.alexander-rey-vendavales table th {
+    background-color: #586e75; /* Azul más claro */
+    color: #268bd2; /* Azul cielo */
+}
+
+body.alexander-rey-vendavales .form-container {
+    background: linear-gradient(135deg, rgba(0, 43, 54, 0.8), rgba(7, 54, 66, 0.8), rgba(0, 43, 54, 0.8));
+}
+
+body.alexander-rey-vendavales .form-container label {
+    color: #268bd2; /* Color del texto de los labels en el tema Alexander, Alto Rey de los Vendavales */
+}

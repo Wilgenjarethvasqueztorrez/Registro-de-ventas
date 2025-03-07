@@ -1,0 +1,61 @@
+/* ---- Tema Sousei no Onmyouji ---- */
+body.sousei-no-onmyouji {
+    background-color: #121212;
+    /* Fondo oscuro */
+    color: #03a9f4;
+    /* Azul místico */
+}
+
+body.sousei-no-onmyouji header {
+    background-color: #424242;
+    /* Gris oscuro */
+    color: #ffd700;
+    /* Dorado brillante */
+    text-shadow: 0px 0px 8px #03a9f4;
+    /* Resplandor azul */
+}
+
+body.sousei-no-onmyouji label {
+    color: #ffd700;
+    /* Etiquetas doradas */
+}
+
+body.sousei-no-onmyouji table {
+    background-color: #2a2a2a;
+    /* Gris oscuro */
+    color: #03a9f4;
+    /* Texto azul */
+}
+
+body.sousei-no-onmyouji table th {
+    background-color: #424242;
+    /* Encabezado gris */
+    color: #ffd700;
+    /* Dorado */
+}
+
+body.sousei-no-onmyouji table td {
+    color: #03a9f4;
+    /* Azul místico */
+}
+
+body.sousei-no-onmyouji button {
+    background: linear-gradient(90deg, #03a9f4, #424242);
+    /* Azul a gris */
+    color: white;
+}
+
+body.sousei-no-onmyouji button:hover {
+    background: linear-gradient(90deg, #ffd700, #03a9f4);
+    /* Dorado a azul */
+    transform: scale(1.1);
+    /* Efecto de agrandamiento */
+}
+
+body.sousei-no-onmyouji .form-container {
+    background: linear-gradient(135deg, rgba(18, 18, 18, 0.8), rgba(66, 66, 66, 0.8), rgba(18, 18, 18, 0.8));
+}
+
+body.sousei-no-onmyouji .form-container label {
+    color: #ffd700; /* Color del texto de los labels en el tema Sousei no Onmyouji */
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 5</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link id="theme-stylesheet" rel="stylesheet" type="text/css" href="">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3c1083;
+            /* Fondo púrpura por defecto */
+            color: #000;
+            /* Texto oscuro */
+            opacity: 0;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+        }
+
+        .hidden {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu-container"></div> <!-- Contenedor donde se inyectará el menú -->
+
+    <script src="menu.js"></script> <!-- Incluye el archivo JavaScript -->
+
+    <header>
+        <h1>Listado de Ventas</h1>
+    </header>
+    <button id="agregarRegistro">Agregar venta</button>
+    <table id="registrosTabla">
+        <thead>
+            <tr>
+                <th>Fecha de Venta</th>
+                <th>Monto Total</th>
+                <th>Tipo de Venta</th>
+                <th>Cliente</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <div id="registroForm" class="overlay">
+        <div class="form-container">
+            <h2>Agregar Venta</h2>
+            <label for="nuevaFecha">Fecha de Venta</label>
+            <input type="date" id="nuevaFecha">
+            <label for="nuevoMonto">Monto Total</label>
+            <input type="number" id="nuevoMonto" placeholder="Monto Total">
+            <label for="nuevoTipoVenta">Tipo de Venta</label>
+            <select id="nuevoTipoVenta">
+                <option value="Contado">Contado</option>
+                <option value="Crédito">Crédito</option>
+            </select>
+            <label for="nuevoIDCliente">Cliente</label>
+            <div style="position: relative;">
+                <select id="nuevoIDCliente" onclick="mostrarDesplegable('nuevoIDCliente')" style="width: 100%;" onchange="selectCliente('nuevoIDCliente')">
+                    <option value="" disabled>Buscar cliente...</option>
+                </select>
+            </div>
+            <div id="resultadosBusqueda" style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"></div>
+            <button id="guardarNuevo" onclick="guardarNuevoRegistro()">Guardar</button>
+            <button onclick="cerrarFormulario('registroForm')">Cancelar</button>
+        </div>
+    </div>
+    
+    <div id="editarForm" class="overlay">
+        <div class="form-container">
+            <h2>Editar Venta</h2>
+            <label for="editarFecha">Fecha de Venta</label>
+            <input type="hidden" id="editarId">
+            <input type="date" id="editarFecha">
+            <label for="editarMonto">Monto Total</label>
+            <input type="number" id="editarMonto" placeholder="Monto Total">
+            <label for="editarTipoVenta">Tipo de Venta</label>
+            <select id="editarTipoVenta">
+                <option value="Contado">Contado</option>
+                <option value="Crédito">Crédito</option>
+            </select>
+            <label for="editarIDCliente">Cliente</label>
+            <div style="position: relative;">
+                <select id="editarIDCliente" onclick="mostrarDesplegable('editarIDCliente')" style="width: 100%;" onchange="selectCliente('editarIDCliente')">
+                    <option value="" disabled>Buscar cliente...</option>
+                </select>
+            </div>
+            <div id="resultadosBusquedaEditar" style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"></div>
+            <button id="guardarEdicion" onclick="guardarEdicionRegistro()">Guardar</button>
+            <button onclick="cerrarFormulario('editarForm')">Cancelar</button>
+        </div>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB68iY9_j2nNSajScy8TU3mzQEMMa7R3Jo",
+            authDomain: "bd-registro-de-ventas.firebaseapp.com",
+            databaseURL: "https://bd-registro-de-ventas-default-rtdb.firebaseio.com",
+            projectId: "bd-registro-de-ventas",
+            storageBucket: "bd-registro-de-ventas.firebasestorage.app",
+            messagingSenderId: "52957839366",
+            appId: "1:52957839366:web:b03bc3b5493a520534c387"
+        };
+    
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+    
+        async function obtenerRegistros() {
+            const registros = await db.collection('ventas-registro').get();
+            const registrosTabla = document.getElementById('registrosTabla').getElementsByTagName('tbody')[0];
+            registrosTabla.innerHTML = '';
+            registros.forEach(doc => {
+                const registro = doc.data();
+                const row = registrosTabla.insertRow();
+                row.insertCell(0).innerText = registro.FechaVenta;
+                row.insertCell(1).innerText = registro.MontoTotal;
+                row.insertCell(2).innerText = registro.TipoVenta;
+                row.insertCell(3).innerText = registro.IDCliente;
+                const accionesCell = row.insertCell(4);
+                accionesCell.innerHTML = `
+            <button onclick="mostrarEditarFormulario('${doc.id}', '${registro.FechaVenta}', '${registro.MontoTotal}', '${registro.TipoVenta}', '${registro.IDCliente}')">Editar</button>
+            <button onclick="eliminarRegistro('${doc.id}')">Eliminar</button>
+        `;
+            });
+        }
+    
+        async function buscarClientes(selectId) {
+            const query = '';
+            const resultados = await db.collection('cliente-registro').where('Nombre', '>=', query).get();
+            const resultadosBusqueda = document.getElementById(selectId === 'nuevoIDCliente' ? 'resultadosBusqueda' : 'resultadosBusquedaEditar');
+            resultadosBusqueda.innerHTML = '';
+            resultados.forEach(doc => {
+                const cliente = doc.data();
+                const div = document.createElement('div');
+                div.innerText = cliente.Nombre + ' ' + cliente.Apellido;
+                div.style.backgroundColor = 'white';
+                div.style.color = 'black';
+                div.onclick = () => {
+                    document.getElementById(selectId).innerHTML = `<option value="${cliente.Nombre} ${cliente.Apellido}">${cliente.Nombre} ${cliente.Apellido}</option>`;
+                    resultadosBusqueda.style.display = 'none';
+                };
+                resultadosBusqueda.appendChild(div);
+            });
+            resultadosBusqueda.style.display = 'block';
+        }
+    
+        function mostrarDesplegable(selectId) {
+            buscarClientes(selectId);
+            document.getElementById(selectId).selectedIndex = -1; // Esto hará que el placeholder no se muestre al hacer clic.
+        }
+    
+        function selectCliente(selectId) {
+            const selectElement = document.getElementById(selectId);
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            selectElement.innerHTML = `<option value="${selectedOption.value}">${selectedOption.textContent}</option>`;
+            document.getElementById(selectId === 'nuevoIDCliente' ? 'resultadosBusqueda' : 'resultadosBusquedaEditar').style.display = 'none';
+        }
+    
+        function mostrarFormulario(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+    
+        function cerrarFormulario(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    
+        function mostrarEditarFormulario(id, fecha, monto, tipoVenta, idCliente) {
+            mostrarFormulario('editarForm');
+            document.getElementById('editarId').value = id;
+            document.getElementById('editarFecha').value = fecha;
+            document.getElementById('editarMonto').value = monto;
+            document.getElementById('editarTipoVenta').value = tipoVenta;
+            document.getElementById('editarIDCliente').innerHTML = `<option value="${idCliente}">${idCliente}</option>`;
+        }
+    
+        async function guardarNuevoRegistro() {
+            const fecha = document.getElementById('nuevaFecha').value;
+            const monto = document.getElementById('nuevoMonto').value;
+            const tipoVenta = document.getElementById('nuevoTipoVenta').value;
+            const idCliente = document.getElementById('nuevoIDCliente').value;
+    
+            await db.collection('ventas-registro').add({
+                IDVenta: Math.random().toString(36).substr(2, 9),
+                FechaVenta: fecha,
+                MontoTotal: monto,
+                TipoVenta: tipoVenta,
+                IDCliente: idCliente
+            });
+            cerrarFormulario('registroForm');
+            obtenerRegistros();
+        }
+    
+        async function guardarEdicionRegistro() {
+            const id = document.getElementById('editarId').value;
+            const fecha = document.getElementById('editarFecha').value;
+            const monto = document.getElementById('editarMonto').value;
+            const tipoVenta = document.getElementById('editarTipoVenta').value;
+            const idCliente = document.getElementById('editarIDCliente').value;
+    
+            await db.collection('ventas-registro').doc(id).update({
+                FechaVenta: fecha,
+                MontoTotal: monto,
+                TipoVenta: tipoVenta,
+                IDCliente: idCliente
+            });
+            cerrarFormulario('editarForm');
+            obtenerRegistros();
+        }
+    
+        async function eliminarRegistro(id) {
+            await db.collection('ventas-registro').doc(id).delete();
+            obtenerRegistros();
+        }
+    
+        document.getElementById('agregarRegistro').addEventListener('click', function () {
+            mostrarFormulario('registroForm');
+        });
+    
+        obtenerRegistros();
+    </script>
+    
+    
+    
+    
+
+</body>
+
+</html>

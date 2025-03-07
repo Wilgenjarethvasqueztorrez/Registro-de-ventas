@@ -1,0 +1,38 @@
+/* ---- Tema Shiro Archer (Fate) ---- */
+body.shiro-archer {
+    background-color: #1b1b1b; /* Fondo gris oscuro */
+    color: #b22222; /* Rojo fuego */
+}
+
+body.shiro-archer header {
+    background-color: #3b3b3b; /* Gris oscuro */
+    color: #b22222;
+}
+
+body.shiro-archer button {
+    background: linear-gradient(90deg, #b22222, #1b1b1b); /* Degradado rojo fuego a gris oscuro */
+    color: white;
+}
+
+body.shiro-archer button:hover {
+    background: linear-gradient(90deg, #1b1b1b, #b22222);
+    box-shadow: 0px 0px 10px #b22222;
+}
+
+body.shiro-archer table {
+    background-color: #3b3b3b; /* Fondo gris oscuro */
+    color: #b22222;
+}
+
+body.shiro-archer table th {
+    background-color: #5b5b5b; /* Gris más claro */
+    color: #b22222;
+}
+
+body.shiro-archer .form-container {
+    background: linear-gradient(135deg, rgba(27, 27, 27, 0.8), rgba(59, 59, 59, 0.8), rgba(27, 27, 27, 0.8));
+}
+
+body.shiro-archer .form-container label {
+    color: #b22222; /* Color del texto de los labels en el tema Shiro Archer */
+}

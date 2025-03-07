@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 5</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link id="theme-stylesheet" rel="stylesheet" type="text/css" href="">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3c1083;
+            /* Fondo púrpura por defecto */
+            color: #000;
+            /* Texto oscuro */
+            opacity: 0;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+        }
+        .hidden {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu-container"></div> <!-- Contenedor donde se inyectará el menú -->
+
+    <script src="menu.js"></script> <!-- Incluye el archivo JavaScript -->
+
+    <header>
+        <h1>Listado de Clientes</h1>
+    </header>
+    <button id="agregarRegistro">Agregar Cliente</button>
+    <table id="registrosTabla">
+        <thead>
+            <tr>
+
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Correo Electrónico</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    
+
+    <div id="registroForm" class="overlay">
+        <div class="form-container">
+            <h2>Agregar Registro</h2>
+            <label for="nuevoNombre">Nombre de cliente</label>
+            <input type="text" id="nuevoNombre" placeholder="Nombre de cliente" required>
+            <label for="nuevoApellido">Apellido de cliente</label>
+            <input type="text" id="nuevoApellido" placeholder="Apellido de cliente" required>
+            <label for="nuevoDireccion">Dirección de cliente</label>
+            <input type="text" id="nuevoDireccion" placeholder="Dirección de cliente" required>
+            <label for="nuevoTelefono">Teléfono de cliente</label>
+            <input type="text" id="nuevoTelefono" placeholder="Teléfono de cliente" required>
+            <label for="nuevoCorreo">Correo de cliente</label>
+            <input type="email" id="nuevoCorreo" placeholder="Correo de cliente" required>
+            <button onclick="guardarNuevoRegistro()">Guardar</button>
+            <button onclick="cerrarFormulario('registroForm')">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="editarForm" class="overlay">
+        <div class="form-container">
+            <h2>Editar Cliente</h2>
+            <label for="editarNombre">Nombre de cliente</label>
+            <input type="hidden" id="editarId">
+            <input type="text" id="editarNombre" placeholder="Nombre de cliente" required>
+            <label for="editarApellido">Apellido de cliente</label>
+            <input type="text" id="editarApellido" placeholder="Apellido de cliente" required>
+            <label for="editarDireccion">Dirección de cliente</label>
+            <input type="text" id="editarDireccion" placeholder="Dirección de cliente" required>
+            <label for="editarTelefono">Teléfono de cliente</label>
+            <input type="text" id="editarTelefono" placeholder="Teléfono de cliente" required>
+            <label for="editarCorreo">Correo de cliente</label>
+            <input type="email" id="editarCorreo" placeholder="Correo de cliente" required>
+            <button onclick="guardarEdicionRegistro()">Guardar</button>
+            <button onclick="cerrarFormulario('editarForm')">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB68iY9_j2nNSajScy8TU3mzQEMMa7R3Jo",
+            authDomain: "bd-registro-de-ventas.firebaseapp.com",
+            databaseURL: "https://bd-registro-de-ventas-default-rtdb.firebaseio.com",
+            projectId: "bd-registro-de-ventas",
+            storageBucket: "bd-registro-de-ventas.firebasestorage.app",
+            messagingSenderId: "52957839366",
+            appId: "1:52957839366:web:b03bc3b5493a520534c387"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        async function obtenerRegistros() {
+            const registros = await db.collection('cliente-registro').get();
+            const registrosTabla = document.getElementById('registrosTabla').getElementsByTagName('tbody')[0];
+            registrosTabla.innerHTML = '';
+            registros.forEach(doc => {
+                const registro = doc.data();
+                const row = registrosTabla.insertRow();
+                row.insertCell(0).innerText = registro.Nombre;
+                row.insertCell(1).innerText = registro.Apellido;
+                row.insertCell(2).innerText = registro.Dirección;
+                row.insertCell(3).innerText = registro.Teléfono;
+                row.insertCell(4).innerText = registro.Correo;
+                const accionesCell = row.insertCell(5);
+                accionesCell.innerHTML = `
+            <button onclick="mostrarEditarFormulario('${doc.id}', '${registro.Nombre}', '${registro.Apellido}', '${registro.Dirección}', '${registro.Teléfono}', '${registro.Correo}')">Editar</button>
+            <button onclick="eliminarRegistro('${doc.id}')">Eliminar</button>
+        `;
+            });
+        }
+
+
+        function mostrarFormulario(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function cerrarFormulario(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function mostrarEditarFormulario(id, nombre, apellido, direccion, telefono, correo) {
+            mostrarFormulario('editarForm');
+            document.getElementById('editarId').value = id;
+            document.getElementById('editarNombre').value = nombre;
+            document.getElementById('editarApellido').value = apellido;
+            document.getElementById('editarDireccion').value = direccion;
+            document.getElementById('editarTelefono').value = telefono;
+            document.getElementById('editarCorreo').value = correo;
+        }
+
+        async function guardarNuevoRegistro() {
+            const nombre = document.getElementById('nuevoNombre').value;
+            const apellido = document.getElementById('nuevoApellido').value;
+            const direccion = document.getElementById('nuevoDireccion').value;
+            const telefono = document.getElementById('nuevoTelefono').value;
+            const correo = document.getElementById('nuevoCorreo').value;
+            await db.collection('cliente-registro').add({
+                idCliente: Math.random().toString(36).substr(2, 9),
+                Nombre: nombre,
+                Apellido: apellido,
+                Dirección: direccion,
+                Teléfono: telefono,
+                Correo: correo
+            });
+            cerrarFormulario('registroForm');
+            obtenerRegistros();
+        }
+
+        async function guardarEdicionRegistro() {
+            const id = document.getElementById('editarId').value;
+            const nombre = document.getElementById('editarNombre').value;
+            const apellido = document.getElementById('editarApellido').value;
+            const direccion = document.getElementById('editarDireccion').value;
+            const telefono = document.getElementById('editarTelefono').value;
+            const correo = document.getElementById('editarCorreo').value;
+            await db.collection('cliente-registro').doc(id).update({
+                Nombre: nombre,
+                Apellido: apellido,
+                Dirección: direccion,
+                Teléfono: telefono,
+                Correo: correo
+            });
+            cerrarFormulario('editarForm');
+            obtenerRegistros();
+        }
+
+        async function eliminarRegistro(id) {
+            await db.collection('cliente-registro').doc(id).delete();
+            obtenerRegistros();
+        }
+
+        document.getElementById('agregarRegistro').addEventListener('click', function () {
+            mostrarFormulario('registroForm');
+        });
+
+        obtenerRegistros();
+    </script>
+
+
+
+
+
+</body>
+
+</html>

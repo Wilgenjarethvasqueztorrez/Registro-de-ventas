@@ -1,0 +1,41 @@
+/* ---- Tema Tokyo Ghoul ---- */
+body.tokyo-ghoul {
+    background-color: #1a1a1a;
+    /* Fondo oscuro */
+    color: #f5f5f5;
+}
+
+body.tokyo-ghoul header {
+    background-color: #2b2b2b;
+    color: #e63946;
+}
+
+body.tokyo-ghoul button {
+    background-color: #e63946;
+    color: white;
+}
+
+body.tokyo-ghoul button:hover {
+    background-color: #a62836;
+}
+
+body.tokyo-ghoul table {
+    background-color: #333;
+    /* Fondo oscuro para la tabla */
+    color: white;
+    /* Texto claro */
+}
+
+body.tokyo-ghoul table th {
+    background-color: #444;
+    color: #e63946;
+    /* Rojo */
+}
+
+body.tokyo-ghoul .form-container {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(43, 43, 43, 0.8), rgba(26, 26, 26, 0.8));
+}
+
+body.tokyo-ghoul .form-container label {
+    color: #e63946; /* Color del texto de los labels en el tema Tokyo Ghoul */
+}

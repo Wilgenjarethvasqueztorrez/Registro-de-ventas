@@ -1,0 +1,40 @@
+/* ---- Tema Aurelion Sol ---- */
+body.aurelion-sol {
+    background-color: #1c1f33;
+    /* Fondo cósmico */
+    color: #d4d4f5;
+}
+
+body.aurelion-sol header {
+    background-color: #283658;
+    color: #ffeaa7;
+}
+
+body.aurelion-sol button {
+    background: linear-gradient(90deg, #715aff, #394a96);
+    color: white;
+}
+
+body.aurelion-sol button:hover {
+    background: linear-gradient(90deg, #ffeaa7, #715aff);
+    box-shadow: 0px 0px 10px #ffeaa7;
+}
+
+body.aurelion-sol table {
+    background-color: #2c3b5c;
+    color: white;
+}
+
+body.aurelion-sol table th {
+    background-color: #364775;
+    color: #ffeaa7;
+    /* Dorado */
+}
+
+body.aurelion-sol .form-container {
+    background: linear-gradient(135deg, rgba(28, 31, 51, 0.8), rgba(40, 54, 88, 0.8), rgba(28, 31, 51, 0.8));
+}
+
+body.aurelion-sol .form-container label {
+    color: #ffeaa7; /* Color del texto de los labels en el tema Aurelion Sol */
+}

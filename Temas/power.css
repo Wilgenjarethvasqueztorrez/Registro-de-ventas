@@ -1,0 +1,60 @@
+/* ---- Tema Power ---- */
+body.power {
+    background-color: #2d0000;
+    /* Rojo oscuro intenso */
+    color: #ff4d4d;
+    /* Rojo vibrante */
+}
+
+body.power header {
+    background-color: #5a0000;
+    /* Rojo sangre */
+    color: #ff4d4d;
+    text-shadow: 0px 0px 10px #ff0000;
+    /* Resplandor rojo */
+}
+
+body.power label {
+    color: #ff4d4d;
+    /* Rojo vibrante */
+}
+
+body.power table {
+    background-color: #3a0000;
+    /* Rojo oscuro */
+    color: #ff4d4d;
+    /* Texto rojo vibrante */
+}
+
+body.power table th {
+    background-color: #5a0000;
+    /* Encabezado rojo sangre */
+    color: #fff;
+    /* Texto blanco */
+}
+
+body.power table td {
+    color: #ff4d4d;
+    /* Rojo vibrante */
+}
+
+body.power button {
+    background: linear-gradient(90deg, #8b0000, #ff4d4d);
+    /* Degradado rojo oscuro a rojo vibrante */
+    color: white;
+}
+
+body.power button:hover {
+    background: linear-gradient(90deg, #ff4d4d, #8b0000);
+    /* Inversión del degradado */
+    transform: scale(1.1);
+    /* Animación de crecimiento */
+}
+
+body.power .form-container {
+    background: linear-gradient(135deg, rgba(45, 0, 0, 0.8), rgba(90, 0, 0, 0.8), rgba(45, 0, 0, 0.8));
+}
+
+body.power .form-container label {
+    color: #ff4d4d; /* Color del texto de los labels en el tema Power */
+}

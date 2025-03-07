@@ -1,0 +1,61 @@
+/* ---- Tema Zoe ---- */
+body.zoe {
+    background-color: #1f0036;
+    /* Púrpura oscuro como el cosmos */
+    color: #fdd835;
+    /* Dorado brillante */
+}
+
+body.zoe header {
+    background-color: #6200ea;
+    /* Púrpura vibrante */
+    color: #ffd600;
+    /* Dorado */
+    text-shadow: 0px 0px 8px #ff6ec7;
+    /* Resplandor rosa */
+}
+
+body.zoe label {
+    color: #ff6ec7;
+    /* Rosa brillante */
+}
+
+body.zoe table {
+    background-color: #311b92;
+    /* Azul púrpura */
+    color: #ffd600;
+    /* Texto dorado */
+}
+
+body.zoe table th {
+    background-color: #4527a0;
+    /* Púrpura más oscuro */
+    color: #ff6ec7;
+    /* Rosa brillante */
+}
+
+body.zoe table td {
+    color: #ffd600;
+    /* Texto dorado */
+}
+
+body.zoe button {
+    background: linear-gradient(90deg, #ff6ec7, #6200ea);
+    /* Degradado rosa a púrpura */
+    color: white;
+}
+
+body.zoe button:hover {
+    background: linear-gradient(90deg, #ffd600, #ff6ec7);
+    /* Degradado dorado a rosa */
+    transform: scale(1.1);
+    /* Animación de crecimiento */
+}
+
+body.zoe .form-container {
+    background: linear-gradient(135deg, rgba(31, 0, 54, 0.8), rgba(98, 0, 234, 0.8), rgba(31, 0, 54, 0.8));
+}
+
+body.zoe .form-container label {
+    color: #ff6ec7; /* Color del texto de los labels en el tema Zoe */
+}
