@@ -172,7 +172,7 @@ setTimeout(() => {
 const stylesheet = document.getElementById('theme-stylesheet');
 const newStylesheet = document.createElement('link');
 newStylesheet.rel = 'stylesheet';
-newStylesheet.href = `/Temas/${tema}.css`;
+newStylesheet.href = `/Registro-de-ventas/Temas/${tema}.css`;
 newStylesheet.onload = () => {
 document.body.className = tema;
 document.body.classList.remove('hidden');
@@ -188,7 +188,7 @@ const savedTheme = localStorage.getItem('theme') || 'default';
 const stylesheet = document.getElementById('theme-stylesheet');
 const newStylesheet = document.createElement('link');
 newStylesheet.rel = 'stylesheet';
-newStylesheet.href = `/Temas/${savedTheme}.css`;
+newStylesheet.href = `/Registro-de-ventas/Temas/${savedTheme}.css`;
 newStylesheet.onload = () => {
 document.body.className = savedTheme;
 document.body.style.opacity = 1;
@@ -198,6 +198,6 @@ document.head.appendChild(newStylesheet);
 
 (function () {
 const savedTheme = localStorage.getItem('theme') || 'default';
-document.getElementById('theme-stylesheet').href = `/Temas/${savedTheme}.css`;
+document.getElementById('theme-stylesheet').href = `/Registro-de-ventas/Temas/${savedTheme}.css`;
 document.body.className = savedTheme;
 })();
