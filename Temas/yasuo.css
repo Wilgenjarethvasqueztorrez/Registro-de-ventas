@@ -1,0 +1,37 @@
+body.yasuo {
+    background-color: #2f4f4f; /* Verde grisáceo oscuro */
+    color: #ff4500; /* Rojo anaranjado oscuro */
+}
+
+body.yasuo header {
+    background-color: #4f4f4f; /* Verde grisáceo */
+    color: #ff4500;
+}
+
+body.yasuo button {
+    background: linear-gradient(90deg, #ff4500, #ffa07a); /* Degradado rojo anaranjado oscuro a salmón claro */
+    color: white;
+}
+
+body.yasuo button:hover {
+    background: linear-gradient(90deg, #ffa07a, #ff4500);
+    box-shadow: 0px 0px 10px #ff4500;
+}
+
+body.yasuo table {
+    background-color: #4f4f4f; /* Fondo verde grisáceo */
+    color: #ff4500;
+}
+
+body.yasuo table th {
+    background-color: #6b8e23; /* Verde oliva oscuro */
+    color: #ff4500;
+}
+
+body.yasuo .form-container {
+    background: linear-gradient(135deg, rgba(47, 79, 79, 0.8), rgba(79, 79, 79, 0.8), rgba(47, 79, 79, 0.8));
+}
+
+body.yasuo .form-container label {
+    color: #ff4500; /* Color del texto de los labels en el tema Yasuo */
+}

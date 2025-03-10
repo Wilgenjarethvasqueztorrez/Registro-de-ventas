@@ -1,0 +1,38 @@
+/* ---- Tema D/D/D Armagedón Purpura (Yu-Gi-Oh) ---- */
+body.ddd-armagedon-purpura {
+    background-color: #2e004f; /* Púrpura oscuro */
+    color: #d8bfd8; /* Thistle */
+}
+
+body.ddd-armagedon-purpura header {
+    background-color: #4b0082; /* Índigo */
+    color: #d8bfd8;
+}
+
+body.ddd-armagedon-purpura button {
+    background: linear-gradient(90deg, #d8bfd8, #dda0dd); /* Degradado thistle a ciruela */
+    color: white;
+}
+
+body.ddd-armagedon-purpura button:hover {
+    background: linear-gradient(90deg, #dda0dd, #d8bfd8);
+    box-shadow: 0px 0px 10px #d8bfd8;
+}
+
+body.ddd-armagedon-purpura table {
+    background-color: #4b0082; /* Fondo índigo */
+    color: #d8bfd8;
+}
+
+body.ddd-armagedon-purpura table th {
+    background-color: #6a0dad; /* Púrpura más claro */
+    color: #d8bfd8;
+}
+
+body.ddd-armagedon-purpura .form-container {
+    background: linear-gradient(135deg, rgba(46, 0, 79, 0.8), rgba(75, 0, 130, 0.8), rgba(46, 0, 79, 0.8));
+}
+
+body.ddd-armagedon-purpura .form-container label {
+    color: #d8bfd8; /* Color del texto de los labels en el tema D/D/D Rey Armagedón Púrpura */
+}

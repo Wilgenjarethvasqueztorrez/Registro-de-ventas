@@ -72,24 +72,27 @@ const menuHTML = `
             <button class="tema-toggle" onclick="mostrarTemas()">Temas</button>
             <div class="temas" id="temas">
                 <button onclick="activarTema('ninguno')">Ninguno</button>
-                <button onclick="activarTema('tokyo-ghoul')">Tokyo Ghoul</button>
-                <button onclick="activarTema('aurelion-sol')">Aurelion Sol</button>
-                <button onclick="activarTema('pantheon')">Pantheon</button>
-                <button onclick="activarTema('zoe')">Zoe</button>
-                <button onclick="activarTema('power')">Power</button>
-                <button onclick="activarTema('sousei-no-onmyouji')">Sousei no Onmyouji</button>
-                <button onclick="activarTema('armagedon-brillante')">Armagedón Brillante</button>
-                <button onclick="activarTema('shurai-augurio-siniestro')">Shurai, el Augurio Siniestro</button>
-                <button onclick="activarTema('alexander-rey-vendavales')">Alexander, Alto Rey de los Vendavales</button>
-                <button onclick="activarTema('leona-diana')">Leona y Diana</button>
-                <button onclick="activarTema('ddd-armagedon-brillante')">DDD Armagedon Brillante</button>
-                <button onclick="activarTema('saber-artoria')">Saber Artoria</button>
-                <button onclick="activarTema('shiro-archer')">Shiro Archer</button>
-                <button onclick="activarTema('boku-no-hero')">Boku No Hero</button>
-                <button onclick="activarTema('world-trigger')">World Trigger</button>
-                <button onclick="activarTema('kaiju-no-8')">Kaiju No. 8</button>
-                <button onclick="activarTema('zinogre')">Zinogre</button>
-                <button onclick="activarTema('shingeki-no-kyojin')">
+                 <button onclick="activarTema('tokyo-ghoul')">Tokyo Ghoul 
+                    <svg width="16" height="16" viewBox="0 0 24 24">
+                        <path d="M12 2C7.03 2 3 5.98 3 11c0 3.7 2.56 7.18 6 7.94v3.56C9 22.24 9.76 23 10.68 23c.55 0 1.07-.26 1.39-.73.45-.68.33-1.59-.26-2.14-.16-.15-.2-.39-.1-.57l.01-.01c.1-.2.35-.29.56-.19 2.78 1.44 4.61 1.44 7.38-.01.25-.13.57-.11.79.08.54.51.55 1.39-.03 1.89-.27.23-.62.36-.98.36-.6 0-1.17-.29-1.5-.78-.18-.27-.55-.35-.84-.19-.08.04-.14.1-.19.17-.62.79-1.64 1.34-3.04 1.53v-3.55c3.44-.77 6-4.24 6-7.94C21 5.98 16.97 2 12 2z"></path>
+                    </svg>
+                </button>
+                <button onclick="activarTema('boku-no-hero')">Boku No Hero 
+                    <svg width="16" height="16" viewBox="0 0 24 24">
+                        <path d="M12 2L9.19 8.62 2 9.24l5.45 4.73-1.59 6.94L12 17.77l5.69 3.14-1.59-6.94L22 9.24l-7.19-.62L12 2z"></path>
+                    </svg>
+                </button>
+                <button onclick="activarTema('world-trigger')">World Trigger 
+                    <svg width="16" height="16" viewBox="0 0 24 24">
+                        <path d="M12 2C5.92 2 1 6.92 1 13s4.92 11 11 11 11-4.92 11-11S18.08 2 12 2zm3.54 8.11l-1.77 2.71c-.09.14-.22.22-.37.24-.14.02-.28-.03-.39-.15l-1.47-1.47-3.59 5.55a.996.996 0 01-1.62-.18l-1.56-2.77a.996.996 0 111.38-1.44l.96 1.7 2.87-4.44a.996.996 0 011.62.18l.76 1.02 1.77-2.71a.996.996 0 011.44-.22c.39.26.54.77.33 1.19z"></path>
+                    </svg>
+                </button>
+                <button onclick="activarTema('kaiju-no-8')">Kaiju No. 8 
+                    <svg width="16" height="16" viewBox="0 0 24 24">
+                        <path d="M12 2L1 21h22L12 2zm0 3.15L19.21 19H4.79L12 5.15zM11 10h2v6h-2v-6zm0 8h2v2h-2v-2z"></path>
+                    </svg>
+                </button>
+                  <button onclick="activarTema('shingeki-no-kyojin')">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-wings" viewBox="0 0 16 16">
                         <g transform="translate(8,9) scale(0.4,0.4)">
@@ -105,6 +108,27 @@ const menuHTML = `
                     </svg>
                     Shingeki no Kyojin
                 </button>
+                <button onclick="activarTema('aurelion-sol')">Aurelion Sol</button>
+                <button onclick="activarTema('pantheon')">Pantheon</button>
+                <button onclick="activarTema('zoe')">Zoe</button>
+                <button onclick="activarTema('power')">Power</button>
+                <button onclick="activarTema('ahri')">Ahri</button>
+<button onclick="activarTema('thresh')">Thresh</button>
+<button onclick="activarTema('yasuo')">Yasuo</button>
+<button onclick="activarTema('jinx')">Jinx
+                <button onclick="activarTema('sousei-no-onmyouji')">Sousei no Onmyouji</button>
+                <button onclick="activarTema('armagedon-brillante')">Armagedón Brillante</button>
+                <button onclick="activarTema('shurai-augurio-siniestro')">Shurai, el Augurio Siniestro</button>
+                <button onclick="activarTema('alexander-rey-vendavales')">Alexander, Alto Rey de los Vendavales</button>
+                <button onclick="activarTema('leona-diana')">Leona y Diana</button>
+                <button onclick="activarTema('ddd-armagedon-brillante')">DDD Armagedon Brillante</button>
+                <button onclick="activarTema('ddd-armagedon-oscuro')">DDD Armagedon Oscuro</button>
+                <button onclick="activarTema('ddd-armagedon-purpura')">DDD Armagedon Purpureo</button>
+                <button onclick="activarTema('ddd-rey-abismo-ragnarok')">D/D/D Rey del Abismo Ragnarok</button>
+<button onclick="activarTema('ddd-rey-leonidas')">D/D/D Rey Leonidas</button>
+                <button onclick="activarTema('saber-artoria')">Saber Artoria</button>
+                <button onclick="activarTema('shiro-archer')">Shiro Archer</button>
+                <button onclick="activarTema('zinogre')">Zinogre</button>
             </div>
         </div>
     </div>
@@ -148,7 +172,7 @@ setTimeout(() => {
 const stylesheet = document.getElementById('theme-stylesheet');
 const newStylesheet = document.createElement('link');
 newStylesheet.rel = 'stylesheet';
-newStylesheet.href = `/Registro-de-ventas/Temas/${tema}.css`;
+newStylesheet.href = `/Temas/${tema}.css`;
 newStylesheet.onload = () => {
 document.body.className = tema;
 document.body.classList.remove('hidden');
@@ -164,7 +188,7 @@ const savedTheme = localStorage.getItem('theme') || 'default';
 const stylesheet = document.getElementById('theme-stylesheet');
 const newStylesheet = document.createElement('link');
 newStylesheet.rel = 'stylesheet';
-newStylesheet.href = `/Registro-de-ventas/Temas/${savedTheme}.css`;
+newStylesheet.href = `/Temas/${savedTheme}.css`;
 newStylesheet.onload = () => {
 document.body.className = savedTheme;
 document.body.style.opacity = 1;
@@ -174,6 +198,6 @@ document.head.appendChild(newStylesheet);
 
 (function () {
 const savedTheme = localStorage.getItem('theme') || 'default';
-document.getElementById('theme-stylesheet').href = `/Registro-de-ventas/Temas/${savedTheme}.css`;
+document.getElementById('theme-stylesheet').href = `/Temas/${savedTheme}.css`;
 document.body.className = savedTheme;
 })();

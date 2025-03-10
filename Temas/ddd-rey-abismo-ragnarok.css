@@ -1,0 +1,37 @@
+body.ddd-rey-abismo-ragnarok {
+    background-color: #00004d; /* Azul marino */
+    color: #daa520; /* Oro oscuro */
+}
+
+body.ddd-rey-abismo-ragnarok header {
+    background-color: #000075; /* Azul intermedio */
+    color: #daa520;
+}
+
+body.ddd-rey-abismo-ragnarok button {
+    background: linear-gradient(90deg, #daa520, #ffd700); /* Degradado oro oscuro a dorado */
+    color: white;
+}
+
+body.ddd-rey-abismo-ragnarok button:hover {
+    background: linear-gradient(90deg, #ffd700, #daa520);
+    box-shadow: 0px 0px 10px #daa520;
+}
+
+body.ddd-rey-abismo-ragnarok table {
+    background-color: #000075; /* Fondo azul intermedio */
+    color: #daa520;
+}
+
+body.ddd-rey-abismo-ragnarok table th {
+    background-color: #00008b; /* Azul más claro */
+    color: #daa520;
+}
+
+body.ddd-rey-abismo-ragnarok .form-container {
+    background: linear-gradient(135deg, rgba(0, 0, 77, 0.8), rgba(0, 0, 117, 0.8), rgba(0, 0, 77, 0.8));
+}
+
+body.ddd-rey-abismo-ragnarok .form-container label {
+    color: #daa520; /* Color del texto de los labels en el tema D/D/D Rey del Abismo Ragnarok */
+}

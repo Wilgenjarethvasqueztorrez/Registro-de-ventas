@@ -1,0 +1,38 @@
+/* ---- Tema D/D/D Armagedón Oscuro (Yu-Gi-Oh) ---- */
+body.ddd-armagedon-oscuro {
+    background-color: #1a1a1a; /* Negro */
+    color: #b22222; /* Fuego ladrillo */
+}
+
+body.ddd-armagedon-oscuro header {
+    background-color: #2f2f2f; /* Gris oscuro */
+    color: #b22222;
+}
+
+body.ddd-armagedon-oscuro button {
+    background: linear-gradient(90deg, #b22222, #cd5c5c); /* Degradado fuego ladrillo a IndianRed */
+    color: white;
+}
+
+body.ddd-armagedon-oscuro button:hover {
+    background: linear-gradient(90deg, #cd5c5c, #b22222);
+    box-shadow: 0px 0px 10px #b22222;
+}
+
+body.ddd-armagedon-oscuro table {
+    background-color: #2f2f2f; /* Fondo gris oscuro */
+    color: #b22222;
+}
+
+body.ddd-armagedon-oscuro table th {
+    background-color: #4f4f4f; /* Gris más claro */
+    color: #b22222;
+}
+
+body.ddd-armagedon-oscuro .form-container {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(47, 47, 47, 0.8), rgba(26, 26, 26, 0.8));
+}
+
+body.ddd-armagedon-oscuro .form-container label {
+    color: #b22222; /* Color del texto de los labels en el tema D/D/D Rey Armagedón Oscuro */
+}

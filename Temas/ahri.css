@@ -1,0 +1,37 @@
+body.ahri {
+    background-color: #e6e6fa; /* Lavanda */
+    color: #ff69b4; /* Rosa fuerte */
+}
+
+body.ahri header {
+    background-color: #dda0dd; /* Ciruela */
+    color: #ff69b4;
+}
+
+body.ahri button {
+    background: linear-gradient(90deg, #ff69b4, #ffa07a); /* Degradado rosa fuerte a salmón claro */
+    color: white;
+}
+
+body.ahri button:hover {
+    background: linear-gradient(90deg, #ffa07a, #ff69b4);
+    box-shadow: 0px 0px 10px #ff69b4;
+}
+
+body.ahri table {
+    background-color: #dda0dd; /* Fondo ciruela */
+    color: #ff69b4;
+}
+
+body.ahri table th {
+    background-color: #ba55d3; /* Orquídea media */
+    color: #ff69b4;
+}
+
+body.ahri .form-container {
+    background: linear-gradient(135deg, rgba(230, 230, 250, 0.8), rgba(221, 160, 221, 0.8), rgba(230, 230, 250, 0.8));
+}
+
+body.ahri .form-container label {
+    color: #ff69b4; /* Color del texto de los labels en el tema Ahri */
+}

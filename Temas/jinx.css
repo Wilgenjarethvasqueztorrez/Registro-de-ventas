@@ -1,0 +1,37 @@
+body.jinx {
+    background-color: #1a1a1a; /* Negro */
+    color: #ff69b4; /* Rosa fuerte */
+}
+
+body.jinx header {
+    background-color: #2e2e2e; /* Gris oscuro */
+    color: #ff69b4;
+}
+
+body.jinx button {
+    background: linear-gradient(90deg, #ff69b4, #ffb6c1); /* Degradado rosa fuerte a rosa claro */
+    color: white;
+}
+
+body.jinx button:hover {
+    background: linear-gradient(90deg, #ffb6c1, #ff69b4);
+    box-shadow: 0px 0px 10px #ff69b4;
+}
+
+body.jinx table {
+    background-color: #2e2e2e; /* Fondo gris oscuro */
+    color: #ff69b4;
+}
+
+body.jinx table th {
+    background-color: #696969; /* Gris más claro */
+    color: #ff69b4;
+}
+
+body.jinx .form-container {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(46, 46, 46, 0.8), rgba(26, 26, 26, 0.8));
+}
+
+body.jinx .form-container label {
+    color: #ff69b4; /* Color del texto de los labels en el tema Jinx */
+}

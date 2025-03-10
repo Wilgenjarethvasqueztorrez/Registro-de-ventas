@@ -1,0 +1,37 @@
+body.thresh {
+    background-color: #002f2f; /* Verde oscuro */
+    color: #00ffcc; /* Verde menta */
+}
+
+body.thresh header {
+    background-color: #004f4f; /* Verde intermedio */
+    color: #00ffcc;
+}
+
+body.thresh button {
+    background: linear-gradient(90deg, #00ffcc, #00ff99); /* Degradado verde menta a verde brillante */
+    color: white;
+}
+
+body.thresh button:hover {
+    background: linear-gradient(90deg, #00ff99, #00ffcc);
+    box-shadow: 0px 0px 10px #00ffcc;
+}
+
+body.thresh table {
+    background-color: #004f4f; /* Fondo verde intermedio */
+    color: #00ffcc;
+}
+
+body.thresh table th {
+    background-color: #006f6f; /* Verde más claro */
+    color: #00ffcc;
+}
+
+body.thresh .form-container {
+    background: linear-gradient(135deg, rgba(0, 47, 47, 0.8), rgba(0, 79, 79, 0.8), rgba(0, 47, 47, 0.8));
+}
+
+body.thresh .form-container label {
+    color: #00ffcc; /* Color del texto de los labels en el tema Thresh */
+}

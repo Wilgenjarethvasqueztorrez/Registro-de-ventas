@@ -1,0 +1,37 @@
+body.ddd-rey-leonidas {
+    background-color: #4b0000; /* Rojo oscuro */
+    color: #f4a460; /* Marrón claro */
+}
+
+body.ddd-rey-leonidas header {
+    background-color: #8b0000; /* Rojo más oscuro */
+    color: #f4a460;
+}
+
+body.ddd-rey-leonidas button {
+    background: linear-gradient(90deg, #f4a460, #ffdead); /* Degradado marrón claro a beige */
+    color: white;
+}
+
+body.ddd-rey-leonidas button:hover {
+    background: linear-gradient(90deg, #ffdead, #f4a460);
+    box-shadow: 0px 0px 10px #f4a460;
+}
+
+body.ddd-rey-leonidas table {
+    background-color: #8b0000; /* Fondo rojo más oscuro */
+    color: #f4a460;
+}
+
+body.ddd-rey-leonidas table th {
+    background-color: #a52a2a; /* Marrón más claro */
+    color: #f4a460;
+}
+
+body.ddd-rey-leonidas .form-container {
+    background: linear-gradient(135deg, rgba(75, 0, 0, 0.8), rgba(139, 0, 0, 0.8), rgba(75, 0, 0, 0.8));
+}
+
+body.ddd-rey-leonidas .form-container label {
+    color: #f4a460; /* Color del texto de los labels en el tema D/D/D Rey Leonidas */
+}
