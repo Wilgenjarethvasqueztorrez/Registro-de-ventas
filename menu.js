@@ -136,65 +136,65 @@ const menuHTML = `
 `;
 
 document.addEventListener("DOMContentLoaded", function () {
-document.body.style.opacity = 1;
-document.getElementById('menu-container').innerHTML = menuHTML;
+    document.body.style.opacity = 1;
+    document.getElementById('menu-container').innerHTML = menuHTML;
 
-const menuBtn = document.querySelector('.menu-btn');
-const sidebar = document.getElementById('sidebar');
+    const menuBtn = document.querySelector('.menu-btn');
+    const sidebar = document.getElementById('sidebar');
 
-menuBtn.addEventListener('click', () => {
-if (sidebar.style.width === '0px' || sidebar.style.width === '') {
-sidebar.style.width = '250px';
-} else {
-sidebar.style.width = '0px';
-}
-});
+    menuBtn.addEventListener('click', () => {
+        if (sidebar.style.width === '0px' || sidebar.style.width === '') {
+            sidebar.style.width = '250px';
+        } else {
+            sidebar.style.width = '0px';
+        }
+    });
 
-// Ocultar el menú de temas al cargar la página
-const temas = document.getElementById('temas');
-if (temas) {
-temas.style.display = 'none';
-}
+    // Ocultar el menú de temas al cargar la página
+    const temas = document.getElementById('temas');
+    if (temas) {
+        temas.style.display = 'none';
+    }
 });
 
 // Alternar visibilidad del menú de temas
 function mostrarTemas() {
-if (temas.style.display === 'none' || temas.style.display === '') {
-temas.style.display = 'grid';
-} else {
-temas.style.display = 'none';
-}
+    const temas = document.getElementById('temas');
+    if (temas.style.display === 'none' || temas.style.display === '') {
+        temas.style.display = 'grid';
+    } else {
+        temas.style.display = 'none';
+    }
 }
 
 function activarTema(tema) {
-document.body.classList.add('hidden');
-setTimeout(() => {
-const stylesheet = document.getElementById('theme-stylesheet');
-const newStylesheet = document.createElement('link');
-newStylesheet.rel = 'stylesheet';
-newStylesheet.href = `/Registro-de-ventas/Temas/${tema}.css`;
-newStylesheet.onload = () => {
-document.body.className = tema;
-document.body.classList.remove('hidden');
-};
-document.head.appendChild(newStylesheet);
-localStorage.setItem('theme', tema); // Guarda el tema seleccionado
-}, 300); // Ajusta el tiempo para que coincida con tu transición CSS
+    document.body.classList.add('hidden');
+    setTimeout(() => {
+        const newStylesheet = document.createElement('link');
+        newStylesheet.rel = 'stylesheet';
+        newStylesheet.href = `/Registro-de-ventas/Temas/${tema}.css`;
+        newStylesheet.onload = () => {
+            document.body.className = tema;
+            document.body.classList.remove('hidden');
+        };
+        document.head.appendChild(newStylesheet);
+        localStorage.setItem('theme', tema); // Guarda el tema seleccionado
+    }, 300); // Ajusta el tiempo para que coincida con tu transición CSS
 }
 
-
-(function () {
-const savedTheme = localStorage.getItem('theme') || 'default';
-const stylesheet = document.getElementById('theme-stylesheet');
-const newStylesheet = document.createElement('link');
-newStylesheet.rel = 'stylesheet';
-newStylesheet.href = `/Registro-de-ventas/Temas/${savedTheme}.css`;
-newStylesheet.onload = () => {
-document.body.className = savedTheme;
-document.body.style.opacity = 1;
-};
-document.head.appendChild(newStylesheet);
-})();
+// Cargar el tema guardado al cargar la página
+document.addEventListener("DOMContentLoaded", function () {
+    const savedTheme = localStorage.getItem('theme') || 'default';
+    const newStylesheet = document.createElement('link');
+    newStylesheet.rel = 'stylesheet';
+    newStylesheet.id = 'theme-stylesheet';
+    newStylesheet.href = `/Registro-de-ventas/Temas/${savedTheme}.css`;
+    newStylesheet.onload = () => {
+        document.body.className = savedTheme;
+        document.body.style.opacity = 1;
+    };
+    document.head.appendChild(newStylesheet);
+});
 
 (function () {
 const savedTheme = localStorage.getItem('theme') || 'default';
