@@ -138,7 +138,6 @@ const menuHTML = `
 document.addEventListener("DOMContentLoaded", function () {
     document.body.style.opacity = 1;
     document.getElementById('menu-container').innerHTML = menuHTML;
-    document.body.style.visibility = "visible"; // Mostrar el contenido una vez cargado
 
     const menuBtn = document.querySelector('.menu-btn');
     const sidebar = document.getElementById('sidebar');
@@ -169,49 +168,33 @@ function mostrarTemas() {
 }
 
 function activarTema(tema) {
-    document.body.style.opacity = 0; // Ocultar contenido mientras se cambia el tema
+    document.body.classList.add('hidden');
     setTimeout(() => {
-        const existingStylesheet = document.getElementById('theme-stylesheet');
-        if (existingStylesheet) {
-            existingStylesheet.href = `/Registro-de-ventas/Temas/${tema}.css`;
-        } else {
-            const newStylesheet = document.createElement('link');
-            newStylesheet.rel = 'stylesheet';
-            newStylesheet.id = 'theme-stylesheet';
-            newStylesheet.href = `/Registro-de-ventas/Temas/${tema}.css`;
-            document.head.appendChild(newStylesheet);
-        }
-
+        const newStylesheet = document.createElement('link');
+        newStylesheet.rel = 'stylesheet';
+        newStylesheet.href = `/Registro-de-ventas/Temas/${tema}.css`;
         newStylesheet.onload = () => {
             document.body.className = tema;
-            document.body.style.opacity = 1; // Mostrar contenido suavemente
+            document.body.classList.remove('hidden');
         };
-
-        localStorage.setItem('theme', tema); // Guardar el tema seleccionado
-    }, 300); // Tiempo para coincidir con la transición CSS
+        document.head.appendChild(newStylesheet);
+        localStorage.setItem('theme', tema); // Guarda el tema seleccionado
+    }, 300); // Ajusta el tiempo para que coincida con tu transición CSS
 }
 
-
+// Cargar el tema guardado al cargar la página
 document.addEventListener("DOMContentLoaded", function () {
-    // Cargar el tema guardado desde LocalStorage
     const savedTheme = localStorage.getItem('theme') || 'default';
     const newStylesheet = document.createElement('link');
     newStylesheet.rel = 'stylesheet';
     newStylesheet.id = 'theme-stylesheet';
     newStylesheet.href = `/Registro-de-ventas/Temas/${savedTheme}.css`;
-
-    // Una vez cargado el tema, muestra la página
     newStylesheet.onload = () => {
         document.body.className = savedTheme;
-        document.body.style.visibility = 'visible';
-        document.body.style.opacity = 1; // Mostrar con transición
+        document.body.style.opacity = 1;
     };
-
-    // Ocultar contenido mientras carga el tema
-    document.body.style.visibility = 'hidden'; // Asegurarse de que no haya parpadeos
     document.head.appendChild(newStylesheet);
 });
-
 
 (function () {
 const savedTheme = localStorage.getItem('theme') || 'default';
