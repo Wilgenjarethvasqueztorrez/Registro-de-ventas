@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de ventas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link id="theme-stylesheet" rel="stylesheet" type="text/css" href="">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3c1083;
+            /* Fondo púrpura por defecto */
+            color: #000;
+            /* Texto oscuro */
+            opacity: 0;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+            visibility: hidden;
+            /* Ocultar contenido inicialmente */
+            transition: opacity 0.3s ease-in-out;
+            /* Suavizar la transición */
+        }
+
+        .hidden {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu-container"></div> <!-- Contenedor donde se inyectará el menú -->
+
+    <script src="src/js/menu.js"></script> <!-- Incluye el archivo JavaScript -->
+
+    <header>
+        <h1>Listado de Ventas</h1>
+    </header>
+    <button id="agregarRegistro">Agregar venta</button>
+    <table id="registrosTabla">
+        <thead>
+            <tr>
+                <th>ID Venta</th>
+                <th>Cliente</th>
+                <th>Tipo de venta</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div id="registroForm" class="overlay">
+        <div class="form-container">
+            <h2>Agregar Detalle de Venta</h2>
+    
+            <label for="nuevoIDVenta">ID Venta</label>
+            <div style="position: relative;">
+                <select id="nuevoIDVenta" style="width: 100%;" onclick="toggleResultadosBusqueda('nuevoIDVenta')">
+                    <option value="" disabled style="display:none;"></option>
+                </select>
+                <input type="text" id="placeholderTextVenta"
+                    style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); border: none; background: transparent; pointer-events: none; font-size: 16px; color: grey;">
+                <div id="resultadosBusquedaVenta"
+                    style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"
+                    onmousemove="cambiarCursor(event)"></div>
+            </div>
+    
+            <label for="nuevoIDProducto">ID Producto</label>
+            <div style="position: relative;">
+                <select id="nuevoIDProducto" style="width: 100%;" onclick="toggleResultadosBusqueda('nuevoIDProducto')">
+                    <option value="" disabled style="display:none;"></option>
+                </select>
+                <input type="text" id="placeholderTextProducto"
+                    style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); border: none; background: transparent; pointer-events: none; font-size: 16px; color: grey;">
+                <div id="resultadosBusquedaProducto"
+                    style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"
+                    onmousemove="cambiarCursor(event)"></div>
+            </div>
+    
+            <label for="nuevaCantidad">Cantidad</label>
+            <input type="number" id="nuevaCantidad" placeholder="Cantidad" oninput="calcularSubtotal('nuevoCantidad', 'nuevoPrecioUnitario', 'nuevoSubtotal')">
+    
+            <label for="nuevoPrecioUnitario">Precio Unitario</label>
+            <input type="number" id="nuevoPrecioUnitario" placeholder="Precio Unitario" oninput="calcularSubtotal('nuevoCantidad', 'nuevoPrecioUnitario', 'nuevoSubtotal')">
+    
+            <label for="nuevoSubtotal">Subtotal</label>
+            <input type="number" id="nuevoSubtotal" placeholder="Subtotal" readonly>
+
+            <button id="guardarNuevo" onclick="guardarNuevoRegistro(); limpiarFormulario('registroForm');">Guardar</button>
+            <button onclick="cerrarFormulario('registroForm'); limpiarFormulario('registroForm');">Cancelar</button>
+
+        </div>
+    </div>
+
+    <div id="editarForm" class="overlay">
+        <div class="form-container">
+           <h2>Editar Detalle de Venta</h2>
+        
+        <label for="editarIDVenta">ID Venta</label>
+        <div style="position: relative;">
+            <select id="editarIDVenta" style="width: 100%;" onclick="toggleResultadosBusqueda('editarIDVenta')">
+                <option value="" disabled style="display:none;"></option>
+            </select>
+            <input type="text" id="placeholderTextVentaEditar"
+                style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); border: none; background: transparent; pointer-events: none; font-size: 16px; color: grey;">
+            <div id="resultadosBusquedaVentaEditar"
+                style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"
+                onmousemove="cambiarCursor(event)"></div>
+        </div>
+
+        <label for="editarIDProducto">ID Producto</label>
+        <div style="position: relative;">
+            <select id="editarIDProducto" style="width: 100%;" onclick="toggleResultadosBusqueda('editarIDProducto')">
+                <option value="" disabled style="display:none;"></option>
+            </select>
+            <input type="text" id="placeholderTextProductoEditar"
+                style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); border: none; background: transparent; pointer-events: none; font-size: 16px; color: grey;">
+            <div id="resultadosBusquedaProductoEditar"
+                style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"
+                onmousemove="cambiarCursor(event)"></div>
+        </div>
+
+        <label for="editarCantidad">Cantidad</label>
+        <input type="number" id="editarCantidad" placeholder="Cantidad" oninput="calcularSubtotal('editarCantidad', 'editarPrecioUnitario', 'editarSubtotal')">
+
+        <label for="editarPrecioUnitario">Precio Unitario</label>
+        <input type="number" id="editarPrecioUnitario" placeholder="Precio Unitario" oninput="calcularSubtotal('editarCantidad', 'editarPrecioUnitario', 'editarSubtotal')">
+
+        <label for="editarSubtotal">Subtotal</label>
+        <input type="number" id="editarSubtotal" placeholder="Subtotal" readonly>
+
+        <button onclick="guardarEdicionRegistro();">Guardar</button>
+        <button onclick="cerrarFormulario('editarForm'); limpiarFormulario('editarForm');">Cancelar</button>
+
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB68iY9_j2nNSajScy8TU3mzQEMMa7R3Jo",
+            authDomain: "bd-registro-de-ventas.firebaseapp.com",
+            databaseURL: "https://bd-registro-de-ventas-default-rtdb.firebaseio.com",
+            projectId: "bd-registro-de-ventas",
+            storageBucket: "bd-registro-de-ventas.firebasestorage.app",
+            messagingSenderId: "52957839366",
+            appId: "1:52957839366:web:b03bc3b5493a520534c387"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+       // Función para obtener los registros de la colección "ventas-detalles"
+async function obtenerRegistros() {
+    const registros = await db.collection('ventas-detalles').get();
+    const registrosTabla = document.getElementById('registrosTabla').getElementsByTagName('tbody')[0];
+    registrosTabla.innerHTML = '';
+
+    for (const doc of registros.docs) {
+        const registro = doc.data();
+
+        // Obtener datos adicionales de producto y venta
+        const productoDoc = await db.collection('producto-registro').doc(registro.IDProducto).get();
+        const producto = productoDoc.exists ? productoDoc.data() : { NombreProducto: "Desconocido", Precio: 0 };
+
+        const ventaDoc = await db.collection('ventas-registro').doc(registro.IDVenta).get();
+        const venta = ventaDoc.exists 
+            ? ventaDoc.data() 
+            : { FechaVenta: "Desconocido", IDCliente: "Desconocido", MontoTotal: 0, TipoVenta: "Desconocido" };
+
+        const row = registrosTabla.insertRow();
+        row.insertCell(0).innerText = venta.FechaVenta; // Fecha de la Venta
+        row.insertCell(1).innerText = venta.IDCliente; // Cliente asociado a la venta
+        row.insertCell(2).innerText = venta.TipoVenta; // Tipo de la Venta
+        row.insertCell(3).innerText = producto.NombreProducto; // Nombre del Producto
+        row.insertCell(4).innerText = registro.Cantidad; // Cantidad del Producto
+        row.insertCell(5).innerText = registro.PrecioUnitario; // Precio Unitario
+        row.insertCell(6).innerText = registro.Subtotal; // Subtotal calculado
+
+        const accionesCell = row.insertCell(7);
+        accionesCell.innerHTML = `
+            <button onclick="mostrarEditarFormulario('${doc.id}', '${registro.IDVenta}', '${registro.IDProducto}', '${registro.Cantidad}', '${registro.PrecioUnitario}', '${registro.Subtotal}')">Editar</button>
+            <button onclick="eliminarRegistro('${doc.id}')">Eliminar</button>
+        `;
+    }
+}
+
+// Función para alternar la visibilidad de los resultados de búsqueda en los select dinámicos
+function toggleResultadosBusqueda(selectId) {
+    const resultadosBusqueda = document.getElementById(
+        selectId.includes('IDVenta') ? 'resultadosBusquedaVenta' : 'resultadosBusquedaProducto'
+    );
+
+    if (resultadosBusqueda.style.display === 'none' || resultadosBusqueda.style.display === '') {
+        buscarOpciones(selectId);
+        resultadosBusqueda.style.display = 'block';
+    } else {
+        resultadosBusqueda.style.display = 'none';
+    }
+}
+
+// Cambiar el cursor sobre elementos interactivos
+function cambiarCursor(event) {
+    event.target.style.cursor = 'pointer';
+}
+
+// Seleccionar una opción desde los resultados de búsqueda dinámicos
+function selectOpcion(selectId, nombre) {
+    const selectElement = document.getElementById(selectId);
+    selectElement.innerHTML = `<option value="${nombre}">${nombre}</option>`;
+    const resultadosBusqueda = document.getElementById(
+        selectId.includes('IDVenta') ? 'resultadosBusquedaVenta' : 'resultadosBusquedaProducto'
+    );
+    resultadosBusqueda.style.display = 'none';
+    document.getElementById(
+        selectId.includes('IDVenta') ? 'placeholderTextVenta' : 'placeholderTextProducto'
+    ).style.display = 'none';
+}
+
+// Función para buscar opciones en las colecciones relacionadas
+async function buscarOpciones(selectId) {
+    const coleccion = selectId.includes('IDVenta') ? 'ventas-registro' : 'producto-registro';
+    const resultados = await db.collection(coleccion).get();
+
+    const selectElement = document.getElementById(selectId);
+    selectElement.innerHTML = ''; // Limpiar opciones previas
+
+    const opcionPlaceholder = document.createElement('option');
+    opcionPlaceholder.disabled = true;
+    opcionPlaceholder.textContent = 'Selecciona una opción';
+    opcionPlaceholder.selected = true;
+    selectElement.appendChild(opcionPlaceholder);
+
+    resultados.forEach(doc => {
+        const data = doc.data();
+        const option = document.createElement('option');
+        option.value = doc.id; // Usar el ID del documento como valor
+        option.textContent = selectId.includes('IDVenta') 
+            ? `${data.FechaVenta} - ${data.TipoVenta}` // Mostrar Fecha y TipoVenta para ventas
+            : data.NombreProducto; // Mostrar NombreProducto para productos
+        selectElement.appendChild(option);
+    });
+}
+
+// Mostrar el formulario correspondiente
+function mostrarFormulario(id) {
+    document.getElementById(id).style.display = 'block';
+}
+
+// Cerrar el formulario correspondiente
+function cerrarFormulario(id) {
+    document.getElementById(id).style.display = 'none';
+}
+
+// Función para mostrar el formulario de edición y cargar datos correspondientes
+function mostrarEditarFormulario(id, idVenta, idProducto, cantidad, precioUnitario, subtotal) {
+    mostrarFormulario('editarForm');
+
+    // Asignar los valores al formulario
+    document.getElementById('editarId').value = id;
+    document.getElementById('editarCantidad').value = cantidad;
+    document.getElementById('editarPrecioUnitario').value = precioUnitario;
+    document.getElementById('editarSubtotal').value = subtotal;
+
+    // Manejar los selects dinámicos para IDVenta e IDProducto
+    const selects = [
+        { selectId: 'editarIDVenta', value: idVenta },
+        { selectId: 'editarIDProducto', value: idProducto }
+    ];
+
+    selects.forEach(({ selectId, value }) => {
+        const selectElement = document.getElementById(selectId);
+
+        // Cargar las opciones del select y establecer la opción seleccionada
+        buscarOpciones(selectId).then(() => {
+            const opciones = Array.from(selectElement.options);
+            const encontrado = opciones.find(option => option.value === value);
+
+            if (encontrado) {
+                encontrado.selected = true; // Seleccionar la opción correspondiente
+            } else {
+                // Si no está en las opciones, añadirla manualmente
+                const nuevaOpcion = document.createElement('option');
+                nuevaOpcion.value = value;
+                nuevaOpcion.textContent = value; // Usar el valor directamente como texto
+                nuevaOpcion.selected = true;
+                selectElement.appendChild(nuevaOpcion);
+            }
+        });
+    });
+}
+
+
+// Función para guardar un nuevo registro en "ventas-detalles"
+async function guardarNuevoRegistro() {
+    const idVenta = document.getElementById('nuevoIDVenta').value;
+    const idProducto = document.getElementById('nuevoIDProducto').value;
+    const cantidad = document.getElementById('nuevaCantidad').value;
+    const precioUnitario = document.getElementById('nuevoPrecioUnitario').value;
+    const subtotal = document.getElementById('nuevoSubtotal').value;
+
+    await db.collection('ventas-detalles').add({
+        IDVenta: idVenta,
+        IDProducto: idProducto,
+        Cantidad: cantidad,
+        PrecioUnitario: precioUnitario,
+        Subtotal: subtotal
+    });
+    cerrarFormulario('registroForm');
+    obtenerRegistros();
+}
+
+// Función para guardar los cambios en un registro existente
+async function guardarEdicionRegistro() {
+    const id = document.getElementById('editarId').value;
+    const idVenta = document.getElementById('editarIDVenta').value;
+    const idProducto = document.getElementById('editarIDProducto').value;
+    const cantidad = document.getElementById('editarCantidad').value;
+    const precioUnitario = document.getElementById('editarPrecioUnitario').value;
+    const subtotal = document.getElementById('editarSubtotal').value;
+
+    // Validar los campos antes de guardar
+    if (!idVenta || !idProducto || !cantidad || !precioUnitario || !subtotal) {
+        alert("Por favor, completa todos los campos antes de guardar.");
+        return;
+    }
+
+    // Actualizar el registro en la colección "ventas-detalles"
+    await db.collection('ventas-detalles').doc(id).update({
+        IDVenta: idVenta,
+        IDProducto: idProducto,
+        Cantidad: parseFloat(cantidad),
+        PrecioUnitario: parseFloat(precioUnitario),
+        Subtotal: parseFloat(subtotal)
+    });
+
+    cerrarFormulario('editarForm');
+    obtenerRegistros(); // Refrescar los datos en la tabla
+    alert("Registro actualizado correctamente.");
+}
+
+function calcularSubtotal(cantidadId, precioId, subtotalId) {
+    const cantidad = parseFloat(document.getElementById(cantidadId).value) || 0;
+    const precio = parseFloat(document.getElementById(precioId).value) || 0;
+    const subtotal = cantidad * precio;
+
+    document.getElementById(subtotalId).value = subtotal.toFixed(2); // Mostrar con 2 decimales
+}
+
+
+// Inicialización al cargar la página
+document.getElementById('agregarRegistro').addEventListener('click', function () {
+    mostrarFormulario('registroForm');
+});
+
+// Cargar registros inicialmente
+obtenerRegistros();
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

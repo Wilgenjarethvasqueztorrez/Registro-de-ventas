@@ -19,6 +19,10 @@
             /* Texto oscuro */
             opacity: 0;
             transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+            visibility: hidden;
+            /* Ocultar contenido inicialmente */
+            transition: opacity 0.3s ease-in-out;
+            /* Suavizar la transición */
         }
         .hidden {
             opacity: 0;
@@ -30,7 +34,7 @@
 <body>
     <div id="menu-container"></div> <!-- Contenedor donde se inyectará el menú -->
 
-    <script src="menu.js"></script> <!-- Incluye el archivo JavaScript -->
+    <script src="src/js/menu.js"></script> <!-- Incluye el archivo JavaScript -->
 
     <header>
         <h1>Listado de Productos</h1>

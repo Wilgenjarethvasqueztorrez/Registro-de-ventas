@@ -19,6 +19,10 @@
             /* Texto oscuro */
             opacity: 0;
             transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+            visibility: hidden;
+            /* Ocultar contenido inicialmente */
+            transition: opacity 0.3s ease-in-out;
+            /* Suavizar la transición */
         }
 
         .hidden {
@@ -31,7 +35,7 @@
 <body>
     <div id="menu-container"></div> <!-- Contenedor donde se inyectará el menú -->
 
-    <script src="menu.js"></script> <!-- Incluye el archivo JavaScript -->
+    <script src="src/js/menu.js"></script> <!-- Incluye el archivo JavaScript -->
 
     <header>
         <h1>Listado de Ventas</h1>
@@ -60,15 +64,15 @@
             <input type="number" id="nuevoMonto" placeholder="Monto Total">
             <label for="nuevoTipoVenta">Tipo de Venta</label>
             <select id="nuevoTipoVenta">
-                <option value="Contado">Contado</option>
-                <option value="Crédito">Crédito</option>
+                <option value="Efectivo">Efectivo</option>
+                <option value="Débito">Débito</option>
             </select>
             <label for="nuevoIDCliente">Cliente</label>
             <div style="position: relative;">
                 <select id="nuevoIDCliente" style="width: 100%;" onclick="toggleResultadosBusqueda('nuevoIDCliente')">
                     <option value="" disabled style="display:none;"></option>
                 </select>
-                <input type="text" placeholder="Buscar cliente..." id="placeholderText"
+                <input type="text" id="placeholderText"
                     style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); border: none; background: transparent; pointer-events: none; font-size: 16px; color: grey;">
                 <div id="resultadosBusqueda"
                     style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"
@@ -91,8 +95,8 @@
             <input type="number" id="editarMonto" placeholder="Monto Total">
             <label for="editarTipoVenta">Tipo de Venta</label>
             <select id="editarTipoVenta">
-                <option value="Contado">Contado</option>
-                <option value="Crédito">Crédito</option>
+                <option value="Efectivo">Efectivo</option>
+                <option value="Débito">Débito</option>
             </select>
             <label for="editarIDCliente">Cliente</label>
             <div style="position: relative;">
@@ -107,8 +111,8 @@
             </div>
 
             <button id="guardarNuevo"
-                onclick="guardarNuevoRegistro(); limpiarFormulario('registroForm');">Guardar</button>
-            <button onclick="cerrarFormulario('registroForm'); limpiarFormulario('registroForm');">Cancelar</button>
+                onclick="guardarEdicionRegistro(); limpiarFormulario('registroForm');">Guardar</button>
+            <button onclick="cerrarFormulario('editarForm'); limpiarFormulario('registroForm');">Cancelar</button>
 
         </div>
     </div>
@@ -173,21 +177,27 @@
         async function buscarClientes(selectId) {
             const query = '';
             const resultados = await db.collection('cliente-registro').where('Nombre', '>=', query).get();
-            const resultadosBusqueda = document.getElementById(selectId === 'nuevoIDCliente' ? 'resultadosBusqueda' : 'resultadosBusquedaEditar');
-            resultadosBusqueda.innerHTML = '';
+            const selectElement = document.getElementById(selectId); // Asume que selectId se refiere al ID del select
+            selectElement.innerHTML = ''; // Limpiar las opciones previas
+
+            // Agregar placeholder inicial
+            const opcionPlaceholder = document.createElement('option');
+            opcionPlaceholder.disabled = true;
+            opcionPlaceholder.textContent = 'Selecciona un cliente';
+            opcionPlaceholder.selected = true;
+            selectElement.appendChild(opcionPlaceholder);
+
+            // Agregar cada cliente como una opción
             resultados.forEach(doc => {
                 const cliente = doc.data();
-                const div = document.createElement('div');
-                div.innerText = cliente.Nombre + ' ' + cliente.Apellido;
-                div.style.padding = '5px';
-                div.onmouseover = cambiarCursor;
-                div.onclick = () => {
-                    selectCliente(selectId, `${cliente.Nombre} ${cliente.Apellido}`);
-                };
-                resultadosBusqueda.appendChild(div);
+                const option = document.createElement('option');
+                option.value = `${cliente.Nombre} ${cliente.Apellido}`; // Usar el nombre completo como valor
+                option.textContent = `${cliente.Nombre} ${cliente.Apellido}`; // Mostrar nombre y apellido como texto
+                selectElement.appendChild(option);
             });
-            resultadosBusqueda.style.display = 'block';
         }
+
+
 
         function mostrarDesplegable(selectId) {
             buscarClientes(selectId);
@@ -204,13 +214,34 @@
 
         function mostrarEditarFormulario(id, fecha, monto, tipoVenta, idCliente) {
             mostrarFormulario('editarForm');
+
+            // Asignar los valores existentes al formulario
             document.getElementById('editarId').value = id;
             document.getElementById('editarFecha').value = fecha;
             document.getElementById('editarMonto').value = monto;
             document.getElementById('editarTipoVenta').value = tipoVenta;
-            document.getElementById('editarIDCliente').innerHTML = `<option value="${idCliente}">${idCliente}</option>`;
-        }
 
+            // Obtener el elemento del select
+            const selectCliente = document.getElementById('editarIDCliente');
+
+            // Cargar las opciones del select
+            buscarClientes('editarIDCliente').then(() => {
+                // Buscar y seleccionar al cliente correspondiente
+                const opciones = Array.from(selectCliente.options);
+                const clienteEncontrado = opciones.find(option => option.value === idCliente);
+
+                if (clienteEncontrado) {
+                    clienteEncontrado.selected = true; // Seleccionar cliente existente
+                } else {
+                    // Si no existe en las opciones, añadirlo
+                    const nuevaOpcion = document.createElement('option');
+                    nuevaOpcion.value = idCliente;
+                    nuevaOpcion.textContent = idCliente; // Mostrar el nombre completo si es conocido
+                    nuevaOpcion.selected = true; // Seleccionar el cliente añadido
+                    selectCliente.appendChild(nuevaOpcion);
+                }
+            });
+        }
         async function guardarNuevoRegistro() {
             const fecha = document.getElementById('nuevaFecha').value;
             const monto = document.getElementById('nuevoMonto').value;
@@ -242,9 +273,6 @@
                 document.getElementById('placeholderTextEditar').style.display = 'block';
             }
         }
-
-
-
 
         async function guardarEdicionRegistro() {
             const id = document.getElementById('editarId').value;
