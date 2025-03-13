@@ -32,7 +32,7 @@ const menuHTML = `
                         d="M15.998 5a1 1 0 0 0-.286-.707l-1.2-1.2a1 1 0 0 0-.708-.287H2.188a1 1 0 0 0-.707.287l-1.2 1.2A1 1 0 0 0 0 5v6a1 1 0 0 0 .286.707l1.2 1.2a1 1 0 0 0 .707.287h11.616a1 1 0 0 0 .707-.287l1.2-1.2A1 1 0 0 0 16 11V5zm-1 6H1v-6h14v6zM2 6v2h2V6H2zm0 4v2h2v-2H2zm4-4v2h4V6H6zm0 4v2h4v-2H6zm4-4v2h2V6h-2zm0 4v2h2v-2h-2zM8 8v2h2V8H8zm-1.328.9l.342.342a.5.5 0 0 1-.708.708l-.342-.342a.5.5 0 0 1 .708-.708z" />
                 </svg>
             </i>Ventas</a>
-        <a href="utp_caracteristica.html"><i class="fas fa-car">
+        <a href="venta-detalles.html"><i class="fas fa-car">
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wings"
                     viewBox="0 0 16 16">
