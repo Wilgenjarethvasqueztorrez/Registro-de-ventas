@@ -9,8 +9,6 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff; /* Fondo blanco */
-    color: #000000; /* Texto negro */
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -311,6 +309,7 @@ button:hover {
     /* Aumenta el tamaño del botón */
 }
 
+/* ---- Diseño Responsivo ---- */
 @media only screen and (max-width: 600px) {
     body {
         background-color: lightblue;
@@ -318,6 +317,42 @@ button:hover {
 
     h1 {
         font-size: 20px;
+    }
+
+    .contenedor-productos {
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* Un cuadro por fila */
+    }
+
+    button {
+        font-size: 12px; /* Reducir tamaño de fuente en botones */
+        padding: 8px 16px; /* Ajustar dimensiones del botón */
+        background: linear-gradient(90deg, #268bd2, #073642); /* Colores de botones */
+        border-radius: 5px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    table {
+        font-size: 12px; /* Reducir tamaño de fuente en la tabla */
+        width: 100%; /* Ajustar tabla al ancho completo */
+    }
+
+    th {
+        font-size: 14px; /* Reducir tamaño de los encabezados */
+        background-color: #586e75; /* Azul claro para encabezados */
+        color: #268bd2;
+    }
+
+    .form-container {
+        width: 100%; /* Expandir el formulario para pantallas pequeñas */
+        padding: 15px;
+    }
+
+    .cuadro-producto {
+        height: 250px; /* Reducir tamaño del cuadro */
+    }
+
+    .imagen-producto {
+        height: 120px; /* Reducir tamaño de la imagen */
     }
 }
 
@@ -329,6 +364,37 @@ button:hover {
     h1 {
         font-size: 24px;
     }
+
+    .contenedor-productos {
+        grid-template-columns: repeat(3, 1fr); /* Tres cuadros por fila */
+    }
+
+    button {
+        font-size: 14px; /* Ajustar tamaño de los botones */
+        padding: 10px 18px; /* Dimensiones intermedias */
+        background: linear-gradient(90deg, #268bd2, #073642); /* Colores de botones */
+    }
+
+    table {
+        font-size: 14px; /* Ajustar tamaño de fuente en la tabla */
+    }
+
+    th {
+        font-size: 16px; /* Ajustar tamaño de los encabezados */
+    }
+
+    .form-container {
+        width: 85%; /* Ajustar el formulario */
+        padding: 20px;
+    }
+
+    .cuadro-producto {
+        height: 280px; /* Ajustar tamaño del cuadro */
+    }
+
+    .imagen-producto {
+        height: 130px; /* Ajustar tamaño de la imagen */
+    }
 }
 
 @media only screen and (min-width: 769px) {
@@ -339,8 +405,125 @@ button:hover {
     h1 {
         font-size: 28px;
     }
+
+    .contenedor-productos {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cuadros flexibles */
+    }
+
+    button {
+        font-size: 16px; /* Tamaño estándar */
+        padding: 12px 20px; /* Dimensiones cómodas */
+        background: linear-gradient(90deg, #268bd2, #073642); /* Colores de botones */
+    }
+
+    table {
+        font-size: 16px; /* Tamaño estándar de fuente en la tabla */
+        width: 100%; /* Ajustar tabla al ancho completo */
+    }
+
+    th {
+        font-size: 18px; /* Tamaño más grande para encabezados */
+        background-color: #586e75;
+        color: #268bd2;
+    }
+
+    .form-container {
+        width: 75%; /* Tamaño ajustado para pantallas grandes */
+        padding: 20px;
+    }
+
+    .cuadro-producto {
+        height: 300px; /* Altura ideal */
+    }
+
+    .imagen-producto {
+        height: 150px; /* Tamaño estándar de imagen */
+    }
 }
 
+/*Estilos para el index.html*/
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.cuadro-producto {
+    background: linear-gradient(135deg, #6B00C7, #2C3E50, #1B2631);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    /* Altura ajustada */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+}
+
+.imagen-producto {
+    width: 100%;
+    /* El ancho de la imagen ocupará todo el cuadro */
+    height: 240px;
+    /* Reducir la altura de la imagen para dejar espacio suficiente */
+    object-fit: cover;
+    /* Ajusta la imagen sin deformarla */
+    border-bottom: 3px solid #3B4CCA;
+    /* Borde para dividir visualmente la imagen y el contenido */
+}
+
+
+.contenedor-inferior {
+    display: grid;
+    /* Cambio a CSS Grid para mejor organización */
+    grid-template-columns: 1fr 1fr;
+    /* Dos columnas iguales */
+    gap: 10px;
+    /* Espaciado entre las columnas */
+    align-items: center;
+    /* Centrar verticalmente los elementos */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+    /* Asegura que se mantenga en la parte inferior */
+}
+
+.nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFD700;
+    /* Color dorado */
+    margin-bottom: 10px;
+}
+
+.precio-producto {
+    background-color: #FFD700;
+    color: #000;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stock-producto {
+    background-color: #E83845;
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+/*Menu*/
 #sidebar {
     width: 0;
     transition: width 0.3s;

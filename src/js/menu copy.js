@@ -10,14 +10,25 @@ const menuHTML = `
         </svg>
     </button>
 
+
+
     <div class="sidebar" id="sidebar">
-        <a href="index.html"><i class="fas fa-home">
+     <a href="index.html"><i class="fas fa-home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+                </svg>
+            </i>Inicio</a>
+
+        <a href="cliente.html"><i class="fas fa-home">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-house-door-fill" viewBox="0 0 16 16">
                     <path
                         d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
                 </svg>
             </i>Clientes</a>
+
         <a href="producto.html"><i class="fas fa-home">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-box-seam" viewBox="0 0 16 16">
@@ -168,49 +179,33 @@ function mostrarTemas() {
 }
 
 function activarTema(tema) {
-    document.body.style.opacity = 0; // Ocultar contenido mientras se cambia el tema
+    document.body.classList.add('hidden');
     setTimeout(() => {
-        const existingStylesheet = document.getElementById('theme-stylesheet');
-        if (existingStylesheet) {
-            existingStylesheet.href = `/Temas/${tema}.css`;
-        } else {
-            const newStylesheet = document.createElement('link');
-            newStylesheet.rel = 'stylesheet';
-            newStylesheet.id = 'theme-stylesheet';
-            newStylesheet.href = `/Temas/${tema}.css`;
-            document.head.appendChild(newStylesheet);
-        }
-
+        const newStylesheet = document.createElement('link');
+        newStylesheet.rel = 'stylesheet';
+        newStylesheet.href = `/Temas/${tema}.css`;
         newStylesheet.onload = () => {
             document.body.className = tema;
-            document.body.style.opacity = 1; // Mostrar contenido suavemente
+            document.body.classList.remove('hidden');
         };
-
-        localStorage.setItem('theme', tema); // Guardar el tema seleccionado
-    }, 300); // Tiempo para coincidir con la transición CSS
+        document.head.appendChild(newStylesheet);
+        localStorage.setItem('theme', tema); // Guarda el tema seleccionado
+    }, 300); // Ajusta el tiempo para que coincida con tu transición CSS
 }
 
-
+// Cargar el tema guardado al cargar la página
 document.addEventListener("DOMContentLoaded", function () {
-    // Cargar el tema guardado desde LocalStorage
     const savedTheme = localStorage.getItem('theme') || 'default';
     const newStylesheet = document.createElement('link');
     newStylesheet.rel = 'stylesheet';
     newStylesheet.id = 'theme-stylesheet';
     newStylesheet.href = `/Temas/${savedTheme}.css`;
-
-    // Una vez cargado el tema, muestra la página
     newStylesheet.onload = () => {
         document.body.className = savedTheme;
-        document.body.style.visibility = 'visible';
-        document.body.style.opacity = 1; // Mostrar con transición
+        document.body.style.opacity = 1;
     };
-
-    // Ocultar contenido mientras carga el tema
-    document.body.style.visibility = 'hidden'; // Asegurarse de que no haya parpadeos
     document.head.appendChild(newStylesheet);
 });
-
 
 (function () {
 const savedTheme = localStorage.getItem('theme') || 'default';
