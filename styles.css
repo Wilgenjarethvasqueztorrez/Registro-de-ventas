@@ -342,11 +342,6 @@ button:hover {
         color: #268bd2;
     }
 
-    .form-container {
-        width: 100%; /* Expandir el formulario para pantallas pequeñas */
-        padding: 15px;
-    }
-
     .cuadro-producto {
         height: 250px; /* Reducir tamaño del cuadro */
     }
@@ -381,11 +376,6 @@ button:hover {
 
     th {
         font-size: 16px; /* Ajustar tamaño de los encabezados */
-    }
-
-    .form-container {
-        width: 85%; /* Ajustar el formulario */
-        padding: 20px;
     }
 
     .cuadro-producto {
@@ -425,11 +415,6 @@ button:hover {
         font-size: 18px; /* Tamaño más grande para encabezados */
         background-color: #586e75;
         color: #268bd2;
-    }
-
-    .form-container {
-        width: 75%; /* Tamaño ajustado para pantallas grandes */
-        padding: 20px;
     }
 
     .cuadro-producto {
