@@ -1,0 +1,137 @@
+/* ---- Tema Excel Adaptado ---- */
+body.excel-theme {
+    background-color: #ffffff; /* Fondo blanco puro */
+    color: #333333; /* Texto gris oscuro */
+}
+
+body.excel-theme header {
+    background-color: #217346; /* Verde Excel */
+    color: #ffffff; /* Texto blanco */
+}
+
+body.excel-theme button {
+    background: linear-gradient(90deg, #217346, #28a745); /* Degradado verde Excel */
+    color: white;
+    border: 1px solid #196e3d; /* Borde verde oscuro */
+}
+
+body.excel-theme button:hover {
+    background: linear-gradient(90deg, #28a745, #217346);
+    box-shadow: 0px 0px 10px #28a745; /* Resaltado verde al hover */
+}
+
+body.excel-theme table {
+    background-color: #f9f9f9; /* Gris claro */
+    color: #333333; /* Texto gris oscuro */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+body.excel-theme table th {
+    background-color: #217346; /* Verde Excel */
+    color: #ffffff; /* Texto blanco */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #196e3d; /* Línea separadora verde */
+}
+
+body.excel-theme table td {
+    padding: 10px;
+    border-bottom: 1px solid #dddddd; /* Línea divisoria gris */
+    text-align: center;
+}
+
+body.excel-theme table tr:hover {
+    background-color: rgba(33, 115, 70, 0.2); /* Efecto hover en verde translúcido */
+}
+
+/* Alinear las celdas */
+body.excel-theme table td:first-child, 
+body.excel-theme table th:first-child {
+    text-align: center;
+}
+
+body.excel-theme .form-container {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(245, 245, 245, 0.8), rgba(255, 255, 255, 0.8));
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+body.excel-theme .form-container label {
+    color: #217346; /* Verde Excel */
+    font-weight: bold;
+}
+
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.cuadro-producto {
+    background: linear-gradient(135deg, #ffffff, #f9f9f9, #217346); /* Degradado inspirado en Excel */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(33, 115, 70, 0.3); /* Resaltado con sombra verde */
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #217346; /* Línea verde para dividir */
+}
+
+.contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+.nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #217346; /* Verde Excel */
+    margin-bottom: 10px;
+}
+
+.precio-producto {
+    background-color: #217346; /* Fondo verde Excel */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stock-producto {
+    background-color: #f9f9f9; /* Fondo gris claro */
+    color: #333333; /* Texto gris oscuro */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}

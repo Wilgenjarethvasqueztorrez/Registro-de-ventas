@@ -1,4 +1,4 @@
-/* ---- Tema D/D/D Armagedón Brillante (Yu-Gi-Oh) ---- */
+/* ---- Tema D/D/D Armagedón Brillante ---- */
 body.ddd-armagedon-brillante {
     background-color: #1a1a1a; /* Fondo oscuro */
     color: #ff6f61; /* Rojo anaranjado */
@@ -6,33 +6,129 @@ body.ddd-armagedon-brillante {
 
 body.ddd-armagedon-brillante header {
     background-color: #3e3e3e; /* Gris oscuro */
-    color: #ff6f61;
+    color: #ff6f61; /* Rojo anaranjado */
 }
 
 body.ddd-armagedon-brillante button {
-    background: linear-gradient(90deg, #ff6f61, #ffe0b2); /* Degradado rojo anaranjado a beige */
+    background: linear-gradient(90deg, #ff6f61, #ffe0b2); /* Degradado de rojo a beige */
     color: white;
 }
 
 body.ddd-armagedon-brillante button:hover {
-    background: linear-gradient(90deg, #ffe0b2, #ff6f61);
-    box-shadow: 0px 0px 10px #ff6f61;
+    background: linear-gradient(90deg, #ffe0b2, #ff6f61); /* Beige a rojo */
+    box-shadow: 0px 0px 10px #ff6f61; /* Sombra roja */
 }
 
 body.ddd-armagedon-brillante table {
     background-color: #3e3e3e; /* Fondo gris oscuro */
     color: #ff6f61;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden;
 }
 
 body.ddd-armagedon-brillante table th {
     background-color: #5e5e5e; /* Gris más claro */
-    color: #ff6f61;
+    color: #ff6f61; /* Rojo anaranjado */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ff6f61;
+}
+
+body.ddd-armagedon-brillante table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Líneas divisorias sutiles */
+    text-align: center;
+}
+
+body.ddd-armagedon-brillante table tr:hover {
+    background-color: rgba(255, 111, 97, 0.2); /* Hover translúcido rojo */
+}
+
+body.ddd-armagedon-brillante table tr:last-child td {
+    border-bottom: none;
 }
 
 body.ddd-armagedon-brillante .form-container {
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(62, 62, 62, 0.8), rgba(26, 26, 26, 0.8));
+    padding: 20px;
+    border-radius: 15px;
 }
 
 body.ddd-armagedon-brillante .form-container label {
-    color: #ff6f61; /* Color del texto de los labels en el tema D/D/D Armagedón Brillante */
+    color: #ff6f61; /* Rojo anaranjado */
+    font-weight: bold;
+}
+
+/* Componentes de productos */
+body.ddd-armagedon-brillante .contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+body.ddd-armagedon-brillante .cuadro-producto {
+    background: linear-gradient(135deg, #1a1a1a, #3e3e3e, #ff6f61); /* Degradado del tema */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra */
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s; /* Suaviza la transición */
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body.ddd-armagedon-brillante .cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(255, 111, 97, 0.6); /* Sombra más fuerte */
+}
+
+body.ddd-armagedon-brillante .imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #ff6f61; /* Línea inferior roja */
+}
+
+body.ddd-armagedon-brillante .contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+body.ddd-armagedon-brillante .nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff6f61; /* Rojo anaranjado */
+    margin-bottom: 10px;
+}
+
+body.ddd-armagedon-brillante .precio-producto {
+    background-color: #ff6f61; /* Fondo rojo */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+body.ddd-armagedon-brillante .stock-producto {
+    background-color: #3e3e3e; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
 }

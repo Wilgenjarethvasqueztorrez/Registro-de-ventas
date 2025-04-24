@@ -1,3 +1,4 @@
+/* ---- Tema Ahri ---- */
 body.ahri {
     background-color: #e6e6fa; /* Lavanda */
     color: #ff69b4; /* Rosa fuerte */
@@ -15,23 +16,120 @@ body.ahri button {
 
 body.ahri button:hover {
     background: linear-gradient(90deg, #ffa07a, #ff69b4);
-    box-shadow: 0px 0px 10px #ff69b4;
+    box-shadow: 0px 0px 10px #ff69b4; /* Sombra rosa */
 }
 
 body.ahri table {
     background-color: #dda0dd; /* Fondo ciruela */
     color: #ff69b4;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.ahri table th {
     background-color: #ba55d3; /* Orquídea media */
     color: #ff69b4;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ff69b4;
+}
+
+body.ahri table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 105, 180, 0.8);
+    text-align: center;
+}
+
+body.ahri table tr:hover {
+    background-color: rgba(255, 105, 180, 0.2); /* Hover rosa translúcido */
+}
+
+body.ahri table tr:last-child td {
+    border-bottom: none;
 }
 
 body.ahri .form-container {
     background: linear-gradient(135deg, rgba(230, 230, 250, 0.8), rgba(221, 160, 221, 0.8), rgba(230, 230, 250, 0.8));
+    padding: 20px;
+    border-radius: 15px;
 }
 
 body.ahri .form-container label {
-    color: #ff69b4; /* Color del texto de los labels en el tema Ahri */
+    color: #ff69b4; /* Rosa fuerte */
+    font-weight: bold;
 }
+
+/* Componentes de productos */
+body.ahri .contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+body.ahri .cuadro-producto {
+    background: linear-gradient(135deg, #e6e6fa, #dda0dd, #ff69b4); /* Degradado */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body.ahri .cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(255, 105, 180, 0.6);
+}
+
+body.ahri .imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #ff69b4;
+}
+
+body.ahri .contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+body.ahri .nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-bottom: 10px;
+}
+
+body.ahri .precio-producto {
+    background-color: #ff69b4;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+body.ahri .stock-producto {
+    background-color: #dda0dd;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+

@@ -1,3 +1,4 @@
+/* ---- Tema D/D/D Rey Leonidas ---- */
 body.ddd-rey-leonidas {
     background-color: #4b0000; /* Rojo oscuro */
     color: #f4a460; /* Marrón claro */
@@ -6,32 +7,127 @@ body.ddd-rey-leonidas {
 body.ddd-rey-leonidas header {
     background-color: #8b0000; /* Rojo más oscuro */
     color: #f4a460;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
 }
 
 body.ddd-rey-leonidas button {
     background: linear-gradient(90deg, #f4a460, #ffdead); /* Degradado marrón claro a beige */
     color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 body.ddd-rey-leonidas button:hover {
     background: linear-gradient(90deg, #ffdead, #f4a460);
     box-shadow: 0px 0px 10px #f4a460;
+    transform: scale(1.05); /* Efecto hover */
 }
 
 body.ddd-rey-leonidas table {
     background-color: #8b0000; /* Fondo rojo más oscuro */
     color: #f4a460;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.ddd-rey-leonidas table th {
     background-color: #a52a2a; /* Marrón más claro */
     color: #f4a460;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #f4a460; /* Línea separadora */
+}
+
+body.ddd-rey-leonidas table td {
+    padding: 10px;
+    border-bottom: 1px solid #5e0b0b; /* Línea divisoria */
+    text-align: center;
+}
+
+body.ddd-rey-leonidas table tr:hover {
+    background-color: rgba(244, 164, 96, 0.2); /* Hover translúcido marrón */
 }
 
 body.ddd-rey-leonidas .form-container {
     background: linear-gradient(135deg, rgba(75, 0, 0, 0.8), rgba(139, 0, 0, 0.8), rgba(75, 0, 0, 0.8));
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 body.ddd-rey-leonidas .form-container label {
-    color: #f4a460; /* Color del texto de los labels en el tema D/D/D Rey Leonidas */
+    color: #f4a460; /* Marrón claro */
+    font-weight: bold;
 }
+
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.cuadro-producto {
+    background: linear-gradient(135deg, #4b0000, #8b0000, #f4a460); /* Gradiente inspirado en Leonidas */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra pronunciada */
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(244, 164, 96, 0.6); /* Sombra de hover */
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #f4a460; /* Línea divisoria */
+}
+
+.nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f4a460; /* Marrón claro */
+    margin-bottom: 10px;
+}
+
+.precio-producto {
+    background-color: #f4a460; /* Fondo marrón claro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stock-producto {
+    background-color: #8b0000; /* Fondo rojo más oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+

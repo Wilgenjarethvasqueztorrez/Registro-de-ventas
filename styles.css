@@ -17,6 +17,47 @@ body {
     transition: opacity 0.3s;
 }
 
+/*EStilos pare el login.html*/
+.login-container {
+    background-color: white;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.login-container label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    align-self: flex-start;
+}
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
 /* Estilo del contenedor de temas */
 .temas {
     display: none;
@@ -333,7 +374,6 @@ button:hover {
 
     table {
         font-size: 12px; /* Reducir tamaño de fuente en la tabla */
-        width: 100%; /* Ajustar tabla al ancho completo */
     }
 
     th {
@@ -408,7 +448,6 @@ button:hover {
 
     table {
         font-size: 16px; /* Tamaño estándar de fuente en la tabla */
-        width: 100%; /* Ajustar tabla al ancho completo */
     }
 
     th {
@@ -508,6 +547,98 @@ button:hover {
     font-weight: bold;
     text-align: center;
 }
+
+/*Paginador*/
+
+#paginador {
+    display: grid; /* Utiliza Grid para estructura */
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */
+    gap: 10px; /* Espaciado ajustado entre columnas */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-items: center; /* Centra los elementos horizontalmente dentro de cada columna */
+    margin: 0 auto; /* Centra el paginador en la página */
+    position: absolute; /* Posiciona en el viewport */
+    margin-top: 20px; /* Espaciado con respecto a la tabla */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta para centrar completamente */
+}
+
+#paginador button {
+     width: 150px; /* Aumenta el ancho del botón */
+    height: 50px; /* Aumenta la altura del botón */
+    font-size: 18px; /* Texto más grande */
+    font-weight: bold;
+    border: none;
+    background-color: #007bff; /* Azul atractivo */
+    color: white; /* Texto blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#paginador button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#page-numbers span {
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #007bff;
+}
+
+#page-numbers span.active {
+    font-weight: bold;
+    color: #ff5733;
+}
+
+#indicador-pagina {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px; /* Espaciado superior */
+}
+
+
+/*Barra*/
+.icon-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon-bar .qr-icon {
+            cursor: pointer;
+            margin-left: auto;
+            padding: 10px;
+            border-radius: 50%;
+            background-color: white;
+            color: #007bff;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .qr-container {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .qr-container img {
+            width: 150px;
+            height: 150px;
+        }
+
 /*Menu*/
 #sidebar {
     width: 0;

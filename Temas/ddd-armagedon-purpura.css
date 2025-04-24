@@ -1,4 +1,4 @@
-/* ---- Tema D/D/D Armagedón Purpura (Yu-Gi-Oh) ---- */
+/* ---- Tema D/D/D Armagedón Púrpura (Yu-Gi-Oh) ---- */
 body.ddd-armagedon-purpura {
     background-color: #2e004f; /* Púrpura oscuro */
     color: #d8bfd8; /* Thistle */
@@ -7,32 +7,129 @@ body.ddd-armagedon-purpura {
 body.ddd-armagedon-purpura header {
     background-color: #4b0082; /* Índigo */
     color: #d8bfd8;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
 }
 
 body.ddd-armagedon-purpura button {
     background: linear-gradient(90deg, #d8bfd8, #dda0dd); /* Degradado thistle a ciruela */
     color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 body.ddd-armagedon-purpura button:hover {
     background: linear-gradient(90deg, #dda0dd, #d8bfd8);
     box-shadow: 0px 0px 10px #d8bfd8;
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
 }
 
 body.ddd-armagedon-purpura table {
     background-color: #4b0082; /* Fondo índigo */
-    color: #d8bfd8;
+    color: #d8bfd8; /* Texto thistle */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra para destacar */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.ddd-armagedon-purpura table th {
     background-color: #6a0dad; /* Púrpura más claro */
-    color: #d8bfd8;
+    color: #d8bfd8; /* Texto thistle */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #d8bfd8; /* Línea separadora */
+}
+
+body.ddd-armagedon-purpura table td {
+    padding: 10px;
+    border-bottom: 1px solid #52006a; /* Línea divisoria púrpura oscuro */
+    text-align: center;
+}
+
+body.ddd-armagedon-purpura table tr:hover {
+    background-color: rgba(216, 191, 216, 0.2); /* Efecto hover en púrpura translúcido */
 }
 
 body.ddd-armagedon-purpura .form-container {
-    background: linear-gradient(135deg, rgba(46, 0, 79, 0.8), rgba(75, 0, 130, 0.8), rgba(46, 0, 79, 0.8));
+    background: linear-gradient(135deg, rgba(46, 0, 79, 0.8), rgba(75, 0, 130, 0.8), rgba(46, 0, 79, 0.8)); /* Gradiente translúcido */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra para realzar el contenedor */
 }
 
 body.ddd-armagedon-purpura .form-container label {
-    color: #d8bfd8; /* Color del texto de los labels en el tema D/D/D Rey Armagedón Púrpura */
+    color: #d8bfd8; /* Texto thistle */
+    font-weight: bold;
 }
+
+.cuadro-producto {
+    background: linear-gradient(135deg, #2e004f, #4b0082, #6a0dad); /* Degradado inspirado en Armagedón */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra pronunciada */
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(216, 191, 216, 0.6); /* Resalta con sombra púrpura */
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #6a0dad; /* Línea púrpura claro para dividir */
+}
+
+.contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+.nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d8bfd8; /* Texto thistle */
+    margin-bottom: 10px;
+}
+
+.precio-producto {
+    background-color: #6a0dad; /* Fondo púrpura claro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stock-producto {
+    background-color: #4b0082; /* Fondo índigo */
+    color: #d8bfd8; /* Texto thistle */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+

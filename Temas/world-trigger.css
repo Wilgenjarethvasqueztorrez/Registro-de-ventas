@@ -6,33 +6,119 @@ body.world-trigger {
 
 body.world-trigger header {
     background-color: #333333; /* Gris medio */
-    color: #00e676;
+    color: #00e676; /* Verde brillante */
 }
 
 body.world-trigger button {
-    background: linear-gradient(90deg, #00e676, #1c1c1c); /* Degradado verde a gris oscuro */
+    background: linear-gradient(90deg, #00e676, #1c1c1c); /* Verde a gris oscuro */
     color: white;
 }
 
 body.world-trigger button:hover {
     background: linear-gradient(90deg, #1c1c1c, #00e676);
-    box-shadow: 0px 0px 10px #00e676;
+    box-shadow: 0px 0px 10px #00e676; /* Sombra verde brillante */
 }
 
 body.world-trigger table {
     background-color: #333333; /* Fondo gris oscuro */
-    color: #00e676;
+    color: #00e676; /* Verde brillante */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.world-trigger table th {
     background-color: #4f4f4f; /* Gris más claro */
     color: #00e676; /* Verde brillante */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #00e676; /* Línea verde */
+}
+
+body.world-trigger table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria */
+    text-align: center;
+}
+
+body.world-trigger table tr:hover {
+    background-color: rgba(0, 230, 118, 0.2); /* Hover verde translúcido */
+}
+
+body.world-trigger table tr:last-child td {
+    border-bottom: none;
 }
 
 body.world-trigger .form-container {
     background: linear-gradient(135deg, rgba(28, 28, 28, 0.8), rgba(51, 51, 51, 0.8), rgba(28, 28, 28, 0.8));
+    padding: 20px;
+    border-radius: 15px;
 }
 
 body.world-trigger .form-container label {
-    color: #00e676; /* Color del texto de los labels en el tema World Trigger */
+    color: #00e676; /* Verde brillante */
+    font-weight: bold;
+}
+
+/* Componentes de productos */
+body.world-trigger .contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+body.world-trigger .cuadro-producto {
+    background: linear-gradient(135deg, #1c1c1c, #333333, #00e676);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body.world-trigger .cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 230, 118, 0.6); /* Sombra verde brillante */
+}
+
+body.world-trigger .imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #00e676; /* Línea verde */
+}
+
+body.world-trigger .nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #00e676; /* Verde brillante */
+    margin-bottom: 10px;
+}
+
+body.world-trigger .precio-producto {
+    background-color: #00e676;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+body.world-trigger .stock-producto {
+    background-color: #333333;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
 }

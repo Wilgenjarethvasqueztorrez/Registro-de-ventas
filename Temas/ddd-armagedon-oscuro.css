@@ -1,7 +1,7 @@
-/* ---- Tema D/D/D Armagedón Oscuro (Yu-Gi-Oh) ---- */
+/* ---- Tema D/D/D Armagedón Oscuro ---- */
 body.ddd-armagedon-oscuro {
-    background-color: #1a1a1a; /* Negro */
-    color: #b22222; /* Fuego ladrillo */
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #b22222; /* Rojo ladrillo */
 }
 
 body.ddd-armagedon-oscuro header {
@@ -10,29 +10,126 @@ body.ddd-armagedon-oscuro header {
 }
 
 body.ddd-armagedon-oscuro button {
-    background: linear-gradient(90deg, #b22222, #cd5c5c); /* Degradado fuego ladrillo a IndianRed */
+    background: linear-gradient(90deg, #b22222, #cd5c5c); /* Degradado rojo ladrillo a IndianRed */
     color: white;
 }
 
 body.ddd-armagedon-oscuro button:hover {
     background: linear-gradient(90deg, #cd5c5c, #b22222);
-    box-shadow: 0px 0px 10px #b22222;
+    box-shadow: 0px 0px 10px #b22222; /* Sombra roja */
 }
 
 body.ddd-armagedon-oscuro table {
     background-color: #2f2f2f; /* Fondo gris oscuro */
-    color: #b22222;
+    color: #b22222; /* Texto rojo ladrillo */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra para destacar */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.ddd-armagedon-oscuro table th {
     background-color: #4f4f4f; /* Gris más claro */
-    color: #b22222;
+    color: #b22222; /* Rojo ladrillo */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #b22222;
+}
+
+body.ddd-armagedon-oscuro table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria */
+    text-align: center;
+}
+
+body.ddd-armagedon-oscuro table tr:hover {
+    background-color: rgba(178, 34, 34, 0.2); /* Hover rojo translúcido */
+}
+
+body.ddd-armagedon-oscuro table tr:last-child td {
+    border-bottom: none; /* Quita la línea del último registro */
 }
 
 body.ddd-armagedon-oscuro .form-container {
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(47, 47, 47, 0.8), rgba(26, 26, 26, 0.8));
+    padding: 20px; /* Espaciado */
+    border-radius: 15px; /* Bordes redondeados */
 }
 
 body.ddd-armagedon-oscuro .form-container label {
-    color: #b22222; /* Color del texto de los labels en el tema D/D/D Rey Armagedón Oscuro */
+    color: #b22222; /* Rojo ladrillo */
+    font-weight: bold;
 }
+
+/* Componentes de productos */
+body.ddd-armagedon-oscuro .contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+body.ddd-armagedon-oscuro .cuadro-producto {
+    background: linear-gradient(135deg, #1a1a1a, #2f2f2f, #b22222); /* Degradado rojo ladrillo */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra */
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s; /* Animaciones */
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body.ddd-armagedon-oscuro .cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(178, 34, 34, 0.6); /* Sombra roja intensa */
+}
+
+body.ddd-armagedon-oscuro .imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #b22222; /* Línea roja ladrillo */
+}
+
+body.ddd-armagedon-oscuro .contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+body.ddd-armagedon-oscuro .nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #b22222; /* Rojo ladrillo */
+    margin-bottom: 10px;
+}
+
+body.ddd-armagedon-oscuro .precio-producto {
+    background-color: #b22222; /* Fondo rojo ladrillo */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+body.ddd-armagedon-oscuro .stock-producto {
+    background-color: #2f2f2f; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+

@@ -1,4 +1,4 @@
-/* ---- Tema Boku no Hero ---- */
+/* ---- Tema Boku no Hero Adaptado ---- */
 body.boku-no-hero {
     background-color: #282c36; /* Fondo azul oscuro */
     color: #ffffff; /* Texto blanco */
@@ -16,23 +16,126 @@ body.boku-no-hero button {
 
 body.boku-no-hero button:hover {
     background: linear-gradient(90deg, #00acc1, #f44336);
-    box-shadow: 0px 0px 10px #f44336;
+    box-shadow: 0px 0px 10px #f44336; /* Sombra roja héroe */
 }
 
 body.boku-no-hero table {
     background-color: #3e4451; /* Fondo gris oscuro */
-    color: #ffffff;
+    color: #ffffff; /* Texto blanco */
+    border-collapse: collapse; /* Asegura que las líneas sean más limpias */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Para evitar que los bordes se desborden */
 }
 
 body.boku-no-hero table th {
     background-color: #282c36; /* Azul oscuro */
     color: #f44336; /* Rojo héroe */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #f44336; /* Línea roja héroe */
+}
+
+body.boku-no-hero table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria gris clara para más contraste */
+    text-align: center;
+}
+
+body.boku-no-hero table tr:hover {
+    background-color: rgba(244, 67, 54, 0.2); /* Hover rojo translúcido */
+}
+
+/* Alinear las celdas */
+body.boku-no-hero table td:first-child, 
+body.boku-no-hero table th:first-child {
+    text-align: center;
+}
+
+/* Ajustes adicionales para mejorar la visibilidad de la tabla */
+body.boku-no-hero table tr:last-child td {
+    border-bottom: none; /* Quita la línea del último registro */
 }
 
 body.boku-no-hero .form-container {
     background: linear-gradient(135deg, rgba(40, 44, 54, 0.8), rgba(62, 68, 81, 0.8), rgba(40, 44, 54, 0.8));
+    padding: 20px; /* Asegura que haya un buen relleno */
+    border-radius: 15px; /* Bordes redondeados */
 }
 
 body.boku-no-hero .form-container label {
-    color: #f44336; /* Color del texto de los labels en el tema Boku no Hero */
+    color: #f44336; /* Rojo héroe */
+    font-weight: bold; /* Letras más destacadas */
+}
+
+/* Componentes de productos */
+body.boku-no-hero .contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+body.boku-no-hero .cuadro-producto {
+    background: linear-gradient(135deg, #282c36, #3e4451, #f44336); /* Degradado azul oscuro a rojo héroe */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra pronunciada */
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s; /* Transición suave */
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body.boku-no-hero .cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(244, 67, 54, 0.6); /* Resalta con sombra roja */
+}
+
+body.boku-no-hero .imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #f44336; /* Línea roja */
+}
+
+body.boku-no-hero .contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+body.boku-no-hero .nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f44336; /* Rojo héroe */
+    margin-bottom: 10px;
+}
+
+body.boku-no-hero .precio-producto {
+    background-color: #f44336; /* Fondo rojo héroe */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+body.boku-no-hero .stock-producto {
+    background-color: #3e4451; /* Gris oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
 }

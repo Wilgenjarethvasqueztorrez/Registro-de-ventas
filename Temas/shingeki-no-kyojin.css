@@ -6,33 +6,135 @@ body.shingeki-no-kyojin {
 
 body.shingeki-no-kyojin header {
     background-color: #333333; /* Gris medio */
-    color: #5e76e7;
+    color: #5e76e7; /* Azul brillante */
 }
 
 body.shingeki-no-kyojin button {
-    background: linear-gradient(90deg, #5e76e7, #1c1c1c); /* Degradado azul a gris oscuro */
+    background: linear-gradient(90deg, #5e76e7, #1c1c1c); /* Azul a gris oscuro */
     color: white;
 }
 
 body.shingeki-no-kyojin button:hover {
     background: linear-gradient(90deg, #1c1c1c, #5e76e7);
-    box-shadow: 0px 0px 10px #5e76e7;
+    box-shadow: 0px 0px 10px #5e76e7; /* Sombra azul brillante */
 }
 
 body.shingeki-no-kyojin table {
     background-color: #333333; /* Fondo gris oscuro */
-    color: #5e76e7;
+    color: #5e76e7; /* Azul brillante */
+    border-collapse: collapse; /* Asegura líneas limpias */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra para destacar */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Evita desbordamientos */
 }
 
 body.shingeki-no-kyojin table th {
     background-color: #4f4f4f; /* Gris más claro */
     color: #5e76e7; /* Azul brillante */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #5e76e7; /* Línea inferior azul brillante */
+}
+
+body.shingeki-no-kyojin table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria gris clara */
+    text-align: center;
+}
+
+body.shingeki-no-kyojin table tr:hover {
+    background-color: rgba(94, 118, 231, 0.2); /* Hover azul translúcido */
+}
+
+body.shingeki-no-kyojin table tr:last-child td {
+    border-bottom: none; /* Quita la línea inferior del último registro */
+}
+
+/* Ajustes adicionales para alinear las celdas */
+body.shingeki-no-kyojin table td:first-child, 
+body.shingeki-no-kyojin table th:first-child {
+    text-align: center;
 }
 
 body.shingeki-no-kyojin .form-container {
     background: linear-gradient(135deg, rgba(28, 28, 28, 0.8), rgba(51, 51, 51, 0.8), rgba(28, 28, 28, 0.8));
+    padding: 20px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
 }
 
 body.shingeki-no-kyojin .form-container label {
-    color: #5e76e7; /* Color del texto de los labels en el tema Shingeki no Kyojin */
+    color: #5e76e7; /* Azul brillante */
+    font-weight: bold; /* Texto destacado */
+}
+
+/* Componentes de productos */
+body.shingeki-no-kyojin .contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+body.shingeki-no-kyojin .cuadro-producto {
+    background: linear-gradient(135deg, #1c1c1c, #333333, #5e76e7); /* Degradado azul brillante */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra */
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s; /* Animaciones suaves */
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body.shingeki-no-kyojin .cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(94, 118, 231, 0.6); /* Resalta con sombra azul brillante */
+}
+
+body.shingeki-no-kyojin .imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #5e76e7; /* Línea azul brillante */
+}
+
+body.shingeki-no-kyojin .contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+body.shingeki-no-kyojin .nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5e76e7; /* Azul brillante */
+    margin-bottom: 10px;
+}
+
+body.shingeki-no-kyojin .precio-producto {
+    background-color: #5e76e7; /* Fondo azul brillante */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+body.shingeki-no-kyojin .stock-producto {
+    background-color: #333333; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
 }

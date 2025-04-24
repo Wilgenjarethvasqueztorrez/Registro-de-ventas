@@ -1,41 +1,136 @@
 /* ---- Tema Tokyo Ghoul ---- */
 body.tokyo-ghoul {
-    background-color: #1a1a1a;
-    /* Fondo oscuro */
-    color: #f5f5f5;
+    background-color: #1c1c1c; /* Negro profundo */
+    color: #f5f5f5; /* Blanco grisáceo */
 }
 
 body.tokyo-ghoul header {
-    background-color: #2b2b2b;
-    color: #e63946;
+    background-color: #2e2e2e; /* Gris oscuro */
+    color: #c0392b; /* Rojo carmesí */
 }
 
 body.tokyo-ghoul button {
-    background-color: #e63946;
+    background: linear-gradient(90deg, #c0392b, #34495e); /* Degradado rojo a azul grisáceo */
     color: white;
 }
 
 body.tokyo-ghoul button:hover {
-    background-color: #a62836;
+    background: linear-gradient(90deg, #34495e, #c0392b);
+    box-shadow: 0px 0px 10px #c0392b;
 }
 
 body.tokyo-ghoul table {
-    background-color: #333;
-    /* Fondo oscuro para la tabla */
-    color: white;
-    /* Texto claro */
+    background-color: #2e2e2e; /* Gris oscuro */
+    color: #f5f5f5; /* Blanco grisáceo */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra para destacar */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.tokyo-ghoul table th {
-    background-color: #444;
-    color: #e63946;
-    /* Rojo */
+    background-color: #1c1c1c; /* Negro profundo */
+    color: #c0392b; /* Rojo carmesí */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #c0392b; /* Línea separadora */
+}
+
+
+body.tokyo-ghoul table td {
+    padding: 10px;
+    border-bottom: 1px solid #444444; /* Línea divisoria gris */
+    text-align: center;
+}
+
+body.tokyo-ghoul table tr:hover {
+    background-color: rgba(192, 57, 43, 0.2); /* Efecto hover en rojo translúcido */
+}
+
+/* Alinear las celdas */
+body.tokyo-ghoul table td:first-child, 
+body.tokyo-ghoul table th:first-child {
+    text-align: center;
 }
 
 body.tokyo-ghoul .form-container {
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(43, 43, 43, 0.8), rgba(26, 26, 26, 0.8));
+    background: linear-gradient(135deg, rgba(28, 28, 28, 0.8), rgba(46, 46, 46, 0.8), rgba(28, 28, 28, 0.8));
 }
 
 body.tokyo-ghoul .form-container label {
-    color: #e63946; /* Color del texto de los labels en el tema Tokyo Ghoul */
+    color: #c0392b; /* Rojo carmesí */
 }
+
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.cuadro-producto {
+    background: linear-gradient(135deg, #1c1c1c, #2e2e2e, #c0392b); /* Degradado inspirado en Tokyo Ghoul */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra más pronunciada */
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(192, 57, 43, 0.6); /* Resalta con sombra roja */
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #c0392b; /* Línea roja para dividir */
+}
+
+.contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+.nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #c0392b; /* Rojo carmesí */
+    margin-bottom: 10px;
+}
+
+.precio-producto {
+    background-color: #c0392b; /* Fondo rojo carmesí */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stock-producto {
+    background-color: #2e2e2e; /* Fondo gris oscuro */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+

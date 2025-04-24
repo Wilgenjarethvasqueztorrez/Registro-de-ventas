@@ -1,3 +1,4 @@
+/* ---- Tema D/D/D Rey del Abismo Ragnarok ---- */
 body.ddd-rey-abismo-ragnarok {
     background-color: #00004d; /* Azul marino */
     color: #daa520; /* Oro oscuro */
@@ -6,32 +7,126 @@ body.ddd-rey-abismo-ragnarok {
 body.ddd-rey-abismo-ragnarok header {
     background-color: #000075; /* Azul intermedio */
     color: #daa520;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra para resaltar */
 }
 
 body.ddd-rey-abismo-ragnarok button {
     background: linear-gradient(90deg, #daa520, #ffd700); /* Degradado oro oscuro a dorado */
     color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 body.ddd-rey-abismo-ragnarok button:hover {
     background: linear-gradient(90deg, #ffd700, #daa520);
     box-shadow: 0px 0px 10px #daa520;
+    transform: scale(1.05); /* Efecto de zoom */
 }
 
 body.ddd-rey-abismo-ragnarok table {
     background-color: #000075; /* Fondo azul intermedio */
-    color: #daa520;
+    color: #daa520; /* Texto oro oscuro */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra para destacar */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.ddd-rey-abismo-ragnarok table th {
     background-color: #00008b; /* Azul más claro */
     color: #daa520;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #daa520;
+}
+
+body.ddd-rey-abismo-ragnarok table td {
+    padding: 10px;
+    border-bottom: 1px solid #333366; /* Línea divisoria azul oscuro */
+    text-align: center;
+}
+
+body.ddd-rey-abismo-ragnarok table tr:hover {
+    background-color: rgba(218, 165, 32, 0.2); /* Hover translúcido oro */
 }
 
 body.ddd-rey-abismo-ragnarok .form-container {
     background: linear-gradient(135deg, rgba(0, 0, 77, 0.8), rgba(0, 0, 117, 0.8), rgba(0, 0, 77, 0.8));
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
 }
 
 body.ddd-rey-abismo-ragnarok .form-container label {
-    color: #daa520; /* Color del texto de los labels en el tema D/D/D Rey del Abismo Ragnarok */
+    color: #daa520; /* Texto oro oscuro */
 }
+
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.cuadro-producto {
+    background: linear-gradient(135deg, #00004d, #000075, #daa520);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Sombra */
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(218, 165, 32, 0.6); /* Sombra translúcida */
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #daa520; /* Línea divisoria */
+}
+
+.nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #daa520; /* Oro oscuro */
+    margin-bottom: 10px;
+}
+
+.precio-producto {
+    background-color: #daa520;
+    color: #ffffff; /* Blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stock-producto {
+    background-color: #000075; /* Azul intermedio */
+    color: #ffffff; /* Blanco */
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+

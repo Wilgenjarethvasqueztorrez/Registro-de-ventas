@@ -82,7 +82,7 @@ const menuHTML = `
         <div class="tema-container">
             <button class="tema-toggle" onclick="mostrarTemas()">Temas</button>
             <div class="temas" id="temas">
-                <button onclick="activarTema('ninguno')">Ninguno</button>
+                <button onclick="activarTema('facebook')">Ninguno</button>
                  <button onclick="activarTema('tokyo-ghoul')">Tokyo Ghoul 
                     <svg width="16" height="16" viewBox="0 0 24 24">
                         <path d="M12 2C7.03 2 3 5.98 3 11c0 3.7 2.56 7.18 6 7.94v3.56C9 22.24 9.76 23 10.68 23c.55 0 1.07-.26 1.39-.73.45-.68.33-1.59-.26-2.14-.16-.15-.2-.39-.1-.57l.01-.01c.1-.2.35-.29.56-.19 2.78 1.44 4.61 1.44 7.38-.01.25-.13.57-.11.79.08.54.51.55 1.39-.03 1.89-.27.23-.62.36-.98.36-.6 0-1.17-.29-1.5-.78-.18-.27-.55-.35-.84-.19-.08.04-.14.1-.19.17-.62.79-1.64 1.34-3.04 1.53v-3.55c3.44-.77 6-4.24 6-7.94C21 5.98 16.97 2 12 2z"></path>
