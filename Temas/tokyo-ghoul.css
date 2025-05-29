@@ -7,6 +7,7 @@ body.tokyo-ghoul {
 body.tokyo-ghoul header {
     background-color: #2e2e2e; /* Gris oscuro */
     color: #c0392b; /* Rojo carmesí */
+    box-shadow: 0 2px 8px rgba(192, 57, 43, 0.4); /* Sombra roja */
 }
 
 body.tokyo-ghoul button {
@@ -56,10 +57,13 @@ body.tokyo-ghoul table th:first-child {
 
 body.tokyo-ghoul .form-container {
     background: linear-gradient(135deg, rgba(28, 28, 28, 0.8), rgba(46, 46, 46, 0.8), rgba(28, 28, 28, 0.8));
+    padding: 20px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
 }
 
 body.tokyo-ghoul .form-container label {
     color: #c0392b; /* Rojo carmesí */
+    font-weight: bold; /* Texto destacado */
 }
 
 .contenedor-productos {

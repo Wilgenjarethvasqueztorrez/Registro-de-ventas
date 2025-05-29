@@ -41,7 +41,7 @@ const menuHTML = `
                         d="M15.998 5a1 1 0 0 0-.286-.707l-1.2-1.2a1 1 0 0 0-.708-.287H2.188a1 1 0 0 0-.707.287l-1.2 1.2A1 1 0 0 0 0 5v6a1 1 0 0 0 .286.707l1.2 1.2a1 1 0 0 0 .707.287h11.616a1 1 0 0 0 .707-.287l1.2-1.2A1 1 0 0 0 16 11V5zm-1 6H1v-6h14v6zM2 6v2h2V6H2zm0 4v2h2v-2H2zm4-4v2h4V6H6zm0 4v2h4v-2H6zm4-4v2h2V6h-2zm0 4v2h2v-2h-2zM8 8v2h2V8H8zm-1.328.9l.342.342a.5.5 0 0 1-.708.708l-.342-.342a.5.5 0 0 1 .708-.708z" />
                 </svg>
             </i>Ventas</a>
-        <a href="venta-detalles.html"><i class="fas fa-car">
+         <a href="venta-detalles.html"><i class="fas fa-car">
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wings"
                     viewBox="0 0 16 16">
@@ -56,15 +56,15 @@ const menuHTML = `
                         </g>
                     </g>
                 </svg>
-            </i> Caracteristicas</a>
-        <a href="utp_categoria.html"><i class="fas fa-car">
+            </i>Detalles de ventas</a>
+        <a href="pago.html"><i class="fas fa-car">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-inboxes-fill" viewBox="0 0 16 16">
                     <path
                         d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393z" />
                 </svg>
-            </i>Categorias</a>
-        <a href="prueba.html"><i class="fas fa-car">
+            </i>Pagos</a>
+        <a href="venta-credito.html"><i class="fas fa-car">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-database-fill" viewBox="0 0 16 16">
                     <path
@@ -76,7 +76,7 @@ const menuHTML = `
                     <path
                         d="M2 12.161V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972" />
                 </svg>
-            </i>Guardar</a>
+            </i>Ventas al credito</a>
         <div class="tema-container">
             <button class="tema-toggle" onclick="mostrarTemas()">Temas</button>
             <div class="temas" id="temas">

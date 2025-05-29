@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de ventas</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link id="theme-stylesheet" rel="stylesheet" type="text/css" href="">
     <style>
@@ -93,6 +93,12 @@
         </div>
     </div>
 
+    <div id="confirmacion-eliminar" class="confirmacion-cuadro">
+        <p>¿Desea eliminar este producto?</p>
+        <button id="btn-si">Sí</button>
+        <button id="btn-no">No</button>
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script>
@@ -112,99 +118,6 @@
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
 
-        const registrosPorPagina = 10; // Número máximo de registros por página
-        const maxPaginas = 1000; // Máximo límite de páginas
-        let paginaActual = 1; // Página actual
-        let totalPaginas = 1;
-
-        // Función para obtener el total de registros desde Firebase
-        async function calcularTotalPaginas() {
-            const registros = await db.collection('producto-registro').get();
-            const totalRegistros = registros.size; // Número total de registros
-            totalPaginas = Math.min(Math.ceil(totalRegistros / registrosPorPagina), maxPaginas); // Calcula las páginas válidas
-        }
-
-        // Función para cargar los registros de la página actual
-        async function cargarPagina(pagina) {
-            const registrosTabla = document.getElementById('registrosTabla').getElementsByTagName('tbody')[0];
-            registrosTabla.innerHTML = ''; // Limpia la tabla
-
-            const inicio = (pagina - 1) * registrosPorPagina; // Índice inicial
-            const fin = inicio + registrosPorPagina; // Índice final
-
-            const query = await db.collection('producto-registro')
-                .orderBy('NombreProducto') // Ordena según sea necesario
-                .startAt(inicio) // Paginación inicial
-                .limit(registrosPorPagina) // Limita los registros por página
-                .get();
-
-            query.forEach(doc => {
-                const registro = doc.data();
-                const row = registrosTabla.insertRow();
-                row.insertCell(0).innerText = registro.NombreProducto;
-                row.insertCell(1).innerText = registro.Descripción;
-                row.insertCell(2).innerText = registro.Precio;
-                row.insertCell(3).innerText = registro.Stock;
-
-                const accionesCell = row.insertCell(4);
-                accionesCell.innerHTML = `
-            <button onclick="mostrarEditarFormulario('${doc.id}', '${registro.NombreProducto}', '${registro.Descripción}', '${registro.Precio}', '${registro.Stock}')">Editar</button>
-            <button onclick="eliminarRegistro('${doc.id}')">Eliminar</button>
-        `;
-            });
-
-            actualizarPaginador(pagina);
-        }
-
-        // Función para actualizar el paginador visual
-        function actualizarPaginador(pagina) {
-            const contenedorPaginas = document.getElementById('page-numbers');
-            contenedorPaginas.innerHTML = ''; // Limpia las páginas actuales
-
-            for (let i = 1; i <= totalPaginas; i++) {
-                const spanPagina = document.createElement("span");
-                spanPagina.textContent = i;
-
-                // Marca la página actual como activa
-                if (i === pagina) {
-                    spanPagina.classList.add("active");
-                }
-
-                // Cambia de página al hacer clic
-                spanPagina.addEventListener("click", () => {
-                    cargarPagina(i);
-                });
-
-                contenedorPaginas.appendChild(spanPagina);
-            }
-
-            // Habilita o deshabilita los botones Anterior y Siguiente
-            document.getElementById("prev").disabled = pagina === 1;
-            document.getElementById("next").disabled = pagina === totalPaginas;
-        }
-
-        // Manejo de botones Anterior y Siguiente
-        document.getElementById("prev").addEventListener("click", () => {
-            if (paginaActual > 1) {
-                paginaActual--;
-                cargarPagina(paginaActual);
-            }
-        });
-
-        document.getElementById("next").addEventListener("click", () => {
-            if (paginaActual < totalPaginas) {
-                paginaActual++;
-                cargarPagina(paginaActual);
-            }
-        });
-
-        // Inicialización del paginador
-        async function inicializarPaginador() {
-            await calcularTotalPaginas(); // Calcula el total de páginas
-            cargarPagina(paginaActual); // Carga la primera página
-        }
-
-        inicializarPaginador();
 
 
         async function obtenerRegistros() {
@@ -221,7 +134,7 @@
                 const accionesCell = row.insertCell(4);
                 accionesCell.innerHTML = `
             <button onclick="mostrarEditarFormulario('${doc.id}', '${registro.NombreProducto}', '${registro.Descripción}', '${registro.Precio}', '${registro.Stock}')">Editar</button>
-            <button onclick="eliminarRegistro('${doc.id}')">Eliminar</button>
+            <button onclick="mostrarConfirmacion('${doc.id}')">Eliminar</button>
         `;
             });
         }
@@ -294,7 +207,30 @@
             mostrarFormulario('registroForm');
         });
 
+        //cuadro de confirmacion de eliminar registro
+
+        function mostrarConfirmacion(id) {
+            const cuadro = document.getElementById('confirmacion-eliminar');
+            cuadro.style.display = 'block';
+
+            document.getElementById('btn-si').onclick = function () {
+                eliminarRegistro(id);
+                cuadro.style.display = 'none';
+            };
+
+            document.getElementById('btn-no').onclick = function () {
+                cuadro.style.display = 'none';
+            };
+        }
+
+        async function eliminarRegistro(id) {
+            await db.collection('producto-registro').doc(id).delete();
+            obtenerRegistros();
+        }
+
         obtenerRegistros();
+
+
 
         /*Codigo del paginador*/
 

@@ -1,49 +1,122 @@
 /* ---- Tema Pantheon ---- */
 body.pantheon {
-    background-color: #121212;
-    /* Fondo negro intenso */
-    color: #f4d03f;
-    /* Amarillo dorado */
+    background-color: #121212; /* Fondo negro intenso */
+    color: #f4d03f; /* Amarillo dorado */
 }
 
 body.pantheon header {
-    background-color: #d35400;
-    /* Naranja intenso */
-    color: #fdf3e7;
-    /* Blanco cálido */
+    background-color: #d35400; /* Naranja intenso */
+    color: #fdf3e7; /* Blanco cálido */
+    box-shadow: 0 2px 8px rgba(255, 195, 30, 0.61); /* Sombra naranja suave */
 }
 
 body.pantheon button {
-    background: linear-gradient(90deg, #d35400, #f39c12);
-    /* Naranja a dorado */
+    background: linear-gradient(90deg, #d35400, #f39c12); /* Naranja a dorado */
     color: white;
 }
 
 body.pantheon button:hover {
-    background: linear-gradient(90deg, #f39c12, #d35400);
-    /* Dorado a naranja */
-    box-shadow: 0px 0px 10px #f4d03f;
-    /* Resplandor amarillo */
+    background: linear-gradient(90deg, #f39c12, #d35400); /* Dorado a naranja */
+    box-shadow: 0px 0px 10px #f4d03f; /* Resplandor amarillo */
 }
 
 body.pantheon table {
-    background-color: #1f1f1f;
-    /* Fondo negro suave */
-    color: #f4d03f;
-    /* Texto dorado */
+    background-color: #1f1f1f; /* Fondo negro suave */
+    color: #f4d03f; /* Texto dorado */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.pantheon table th {
-    background-color: #d35400;
-    /* Encabezado naranja */
-    color: white;
-    /* Texto claro */
+    background-color: #d35400; /* Encabezado naranja */
+    color: white; /* Texto claro */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #f4d03f; /* Línea separadora */
+}
+
+body.pantheon table td {
+    padding: 10px;
+    border-bottom: 1px solid #b49b36; /* Aumento del grosor para mayor visibilidad */
+    text-align: center;
+}
+
+body.pantheon table tr:hover {
+    background-color: rgba(244, 208, 63, 0.2); /* Hover translúcido dorado */
 }
 
 body.pantheon .form-container {
     background: linear-gradient(135deg, rgba(18, 18, 18, 0.8), rgba(211, 84, 0, 0.8), rgba(18, 18, 18, 0.8));
+    padding: 20px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
+
 }
 
 body.pantheon .form-container label {
     color: #f4d03f; /* Color del texto de los labels en el tema Pantheon */
+    font-weight: bold; /* Texto destacado */
+}
+
+/* Componentes adicionales */
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.cuadro-producto {
+    background: linear-gradient(135deg, #121212, #d35400, #f39c12);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(244, 208, 63, 0.6);
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #f4d03f;
+}
+
+.nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f4d03f;
+    margin-bottom: 10px;
+}
+
+.precio-producto {
+    background-color: #f4d03f;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stock-producto {
+    background-color: #d35400;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
 }

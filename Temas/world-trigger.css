@@ -7,6 +7,7 @@ body.world-trigger {
 body.world-trigger header {
     background-color: #333333; /* Gris medio */
     color: #00e676; /* Verde brillante */
+    box-shadow: 0px 0px 10px rgba(0, 230, 118, 0.5); /* Sombra verde brillante */
 }
 
 body.world-trigger button {

@@ -7,6 +7,7 @@ body.alexander-rey-vendavales {
 body.alexander-rey-vendavales header {
     background-color: #073642; /* Azul muy oscuro */
     color: #268bd2; /* Azul cielo */
+    box-shadow: 0px 0px 10px rgba(38, 139, 210, 0.5); /* Sombra azul cielo */
 }
 
 body.alexander-rey-vendavales button {

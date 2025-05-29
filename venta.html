@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de ventas</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link id="theme-stylesheet" rel="stylesheet" type="text/css" href="">
     <style>
@@ -102,13 +102,19 @@
                 <input type="text" id="placeholderTextEditar"
                     style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); border: none; background: transparent; pointer-events: none; font-size: 16px; color: grey;">
                 <div id="resultadosBusquedaEditar"
-                    style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"
-                    onmousemove="cambiarCursor(event)"></div>
+                    style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;">
+                </div>
             </div>
             <button onclick="guardarEdicionRegistro(); limpiarFormulario('registroForm');">Guardar</button>
             <button onclick="cerrarFormulario('editarForm'); limpiarFormulario('registroForm');">Cancelar</button>
 
         </div>
+    </div>
+
+    <div id="confirmacion-eliminar" class="confirmacion-cuadro">
+        <p>¿Desea eliminar esta venta?</p>
+        <button id="btn-si">Sí</button>
+        <button id="btn-no">No</button>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -141,7 +147,7 @@
                 const accionesCell = row.insertCell(4);
                 accionesCell.innerHTML = `
             <button onclick="mostrarEditarFormulario('${doc.id}', '${registro.FechaVenta}', '${registro.MontoTotal}', '${registro.TipoVenta}', '${registro.IDCliente}')">Editar</button>
-            <button onclick="eliminarRegistro('${doc.id}')">Eliminar</button>
+            <button onclick="mostrarConfirmacion('${doc.id}')">Eliminar</button>
         `;
             });
         }
@@ -154,10 +160,6 @@
             } else {
                 resultadosBusqueda.style.display = 'none';
             }
-        }
-
-        function cambiarCursor(event) {
-            event.target.style.cursor = 'pointer';
         }
 
         function selectCliente(selectId, nombreCliente) {
@@ -283,6 +285,22 @@
             });
             cerrarFormulario('editarForm');
             obtenerRegistros();
+        }
+
+        /*Cuadro de confirmación para eliminar registro*/
+
+        function mostrarConfirmacion(id) {
+            const cuadro = document.getElementById('confirmacion-eliminar');
+            cuadro.style.display = 'block';
+
+            document.getElementById('btn-si').onclick = function () {
+                eliminarRegistro(id);
+                cuadro.style.display = 'none';
+            };
+
+            document.getElementById('btn-no').onclick = function () {
+                cuadro.style.display = 'none';
+            };
         }
 
         async function eliminarRegistro(id) {

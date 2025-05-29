@@ -1,3 +1,4 @@
+/* ---- Tema Yasuo Adaptado ---- */
 body.yasuo {
     background-color: #2f4f4f; /* Verde grisáceo oscuro */
     color: #ff4500; /* Rojo anaranjado oscuro */
@@ -6,6 +7,7 @@ body.yasuo {
 body.yasuo header {
     background-color: #4f4f4f; /* Verde grisáceo */
     color: #ff4500;
+    box-shadow: 0px 0px 10px rgba(255, 69, 0, 0.5); /* Sombra roja anaranjada */
 }
 
 body.yasuo button {
@@ -21,17 +23,115 @@ body.yasuo button:hover {
 body.yasuo table {
     background-color: #4f4f4f; /* Fondo verde grisáceo */
     color: #ff4500;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.yasuo table th {
     background-color: #6b8e23; /* Verde oliva oscuro */
     color: #ff4500;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ff4500;
 }
 
+body.yasuo table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 69, 0, 0.7); /* Línea más gruesa y con mayor opacidad */
+    text-align: center;
+}
+
+body.yasuo table tr:hover {
+    background-color: rgba(255, 69, 0, 0.2);
+}
+
+body.yasuo table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ---- Contenedor de Formularios ---- */
 body.yasuo .form-container {
     background: linear-gradient(135deg, rgba(47, 79, 79, 0.8), rgba(79, 79, 79, 0.8), rgba(47, 79, 79, 0.8));
+    padding: 20px;
+    border-radius: 15px;
 }
 
 body.yasuo .form-container label {
-    color: #ff4500; /* Color del texto de los labels en el tema Yasuo */
+    color: #ff4500; /* Texto rojo anaranjado */
+    font-weight: bold;
 }
+
+/* ---- Componentes de Productos ---- */
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.cuadro-producto {
+    background: linear-gradient(135deg, #2f4f4f, #6b8e23, #ff4500);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(255, 69, 0, 0.6);
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #ff4500;
+}
+
+.contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+.nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff4500;
+    margin-bottom: 10px;
+}
+
+.precio-producto {
+    background-color: #ff4500;
+    color: #4f4f4f;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stock-producto {
+    background-color: #6b8e23;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+

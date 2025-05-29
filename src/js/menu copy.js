@@ -58,15 +58,15 @@ const menuHTML = `
                         </g>
                     </g>
                 </svg>
-            </i> Caracteristicas</a>
-        <a href="utp_categoria.html"><i class="fas fa-car">
+            </i>Detalles de ventas</a>
+        <a href="pago.html"><i class="fas fa-car">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-inboxes-fill" viewBox="0 0 16 16">
                     <path
                         d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393z" />
                 </svg>
-            </i>Categorias</a>
-        <a href="prueba.html"><i class="fas fa-car">
+            </i>Pagos</a>
+        <a href="venta-credito.html"><i class="fas fa-car">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-database-fill" viewBox="0 0 16 16">
                     <path
@@ -78,11 +78,11 @@ const menuHTML = `
                     <path
                         d="M2 12.161V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972" />
                 </svg>
-            </i>Guardar</a>
+            </i>Ventas al credito</a>
         <div class="tema-container">
             <button class="tema-toggle" onclick="mostrarTemas()">Temas</button>
             <div class="temas" id="temas">
-                <button onclick="activarTema('facebook')">Ninguno</button>
+                <button onclick="activarTema('excel')">Ninguno</button>
                  <button onclick="activarTema('tokyo-ghoul')">Tokyo Ghoul 
                     <svg width="16" height="16" viewBox="0 0 24 24">
                         <path d="M12 2C7.03 2 3 5.98 3 11c0 3.7 2.56 7.18 6 7.94v3.56C9 22.24 9.76 23 10.68 23c.55 0 1.07-.26 1.39-.73.45-.68.33-1.59-.26-2.14-.16-.15-.2-.39-.1-.57l.01-.01c.1-.2.35-.29.56-.19 2.78 1.44 4.61 1.44 7.38-.01.25-.13.57-.11.79.08.54.51.55 1.39-.03 1.89-.27.23-.62.36-.98.36-.6 0-1.17-.29-1.5-.78-.18-.27-.55-.35-.84-.19-.08.04-.14.1-.19.17-.62.79-1.64 1.34-3.04 1.53v-3.55c3.44-.77 6-4.24 6-7.94C21 5.98 16.97 2 12 2z"></path>
@@ -124,9 +124,9 @@ const menuHTML = `
                 <button onclick="activarTema('zoe')">Zoe</button>
                 <button onclick="activarTema('power')">Power</button>
                 <button onclick="activarTema('ahri')">Ahri</button>
-<button onclick="activarTema('thresh')">Thresh</button>
-<button onclick="activarTema('yasuo')">Yasuo</button>
-<button onclick="activarTema('jinx')">Jinx
+                <button onclick="activarTema('thresh')">Thresh</button>
+                <button onclick="activarTema('yasuo')">Yasuo</button>
+                <button onclick="activarTema('jinx')">Jinx</button>
                 <button onclick="activarTema('sousei-no-onmyouji')">Sousei no Onmyouji</button>
                 <button onclick="activarTema('armagedon-brillante')">Armagedón Brillante</button>
                 <button onclick="activarTema('shurai-augurio-siniestro')">Shurai, el Augurio Siniestro</button>
@@ -136,7 +136,7 @@ const menuHTML = `
                 <button onclick="activarTema('ddd-armagedon-oscuro')">DDD Armagedon Oscuro</button>
                 <button onclick="activarTema('ddd-armagedon-purpura')">DDD Armagedon Purpureo</button>
                 <button onclick="activarTema('ddd-rey-abismo-ragnarok')">D/D/D Rey del Abismo Ragnarok</button>
-<button onclick="activarTema('ddd-rey-leonidas')">D/D/D Rey Leonidas</button>
+                <button onclick="activarTema('ddd-rey-leonidas')">D/D/D Rey Leonidas</button>
                 <button onclick="activarTema('saber-artoria')">Saber Artoria</button>
                 <button onclick="activarTema('shiro-archer')">Shiro Archer</button>
                 <button onclick="activarTema('zinogre')">Zinogre</button>

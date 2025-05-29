@@ -7,6 +7,7 @@ body.ahri {
 body.ahri header {
     background-color: #dda0dd; /* Ciruela */
     color: #ff69b4;
+    box-shadow: 0px 0px 10px rgba(255, 35, 255, 0.808); /* Sombra ciruela */
 }
 
 body.ahri button {

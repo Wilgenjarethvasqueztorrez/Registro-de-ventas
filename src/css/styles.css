@@ -1,5 +1,6 @@
 header {
-    background-color: #217346; /* Verde Excel */
+    background-color: #217346;
+    /* Verde Excel */
     color: white;
     padding: 20px;
     text-align: center;
@@ -28,15 +29,18 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 .login-container h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
+
 .login-container label {
     font-size: 14px;
     margin-bottom: 5px;
     align-self: flex-start;
 }
+
 .login-container input {
     width: 100%;
     padding: 10px;
@@ -44,6 +48,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 .login-container button {
     width: 100%;
     padding: 10px;
@@ -54,6 +59,7 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
+
 .login-container button:hover {
     background-color: #0056b3;
 }
@@ -83,9 +89,12 @@ body {
     /* Tres columnas */
     gap: 6px;
     /* Espacio entre los botones */
-    padding: 10px; /* Añade relleno alrededor del contenedor */
-    max-height: 200px; /* Altura máxima del contenedor */
-    overflow-y: auto; /* Desplazamiento vertical */
+    padding: 10px;
+    /* Añade relleno alrededor del contenedor */
+    max-height: 200px;
+    /* Altura máxima del contenedor */
+    overflow-y: auto;
+    /* Desplazamiento vertical */
 }
 
 
@@ -107,7 +116,8 @@ body {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     /* Suavidad en animaciones */
-    width: calc(100% - 10px); /* Ajusta el ancho del botón, considerando el margen */
+    width: calc(100% - 10px);
+    /* Ajusta el ancho del botón, considerando el margen */
 }
 
 /* Animación al pasar el cursor sobre los botones */
@@ -162,9 +172,12 @@ table {
     width: 90%;
     margin: 20px auto;
     border-collapse: collapse;
-    background-color: #ffffff; /* Fondo blanco */
-    color: #000000; /* Texto negro */
-    border: 1px solid #217346; /* Borde verde Excel */
+    background-color: #ffffff;
+    /* Fondo blanco */
+    color: #000000;
+    /* Texto negro */
+    border: 1px solid #217346;
+    /* Borde verde Excel */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.5s ease;
 }
@@ -175,14 +188,17 @@ table td {
     text-align: center;
     transition: background-color 0.5s ease, color 0.5s ease;
     font-size: 1rem;
-    border: 1px solid #217346; /* Borde verde Excel */
+    border: 1px solid #217346;
+    /* Borde verde Excel */
 }
 
 table th {
     font-size: 1.1rem;
     /* Tamaño de fuente más grande para encabezados */
-    background-color: #d9ead3; /* Verde claro para encabezados */
-    color: #000000; /* Texto negro */
+    background-color: #d9ead3;
+    /* Verde claro para encabezados */
+    color: #000000;
+    /* Texto negro */
 }
 
 .form-container {
@@ -190,7 +206,8 @@ table th {
 }
 
 .form-container label {
-    color: #217346; /* Color del texto de los labels en el tema Excel */
+    color: #217346;
+    /* Color del texto de los labels en el tema Excel */
 }
 
 /* Botones - Estilo por defecto (verde) */
@@ -210,20 +227,6 @@ button {
 button:hover {
     background-color: #218838;
     /* Verde más oscuro en hover */
-}
-
-@keyframes jump {
-
-    0%,
-    100% {
-        transform: translateY(0);
-        /* Posición inicial */
-    }
-
-    50% {
-        transform: translateY(-10px);
-        /* Salto hacia arriba */
-    }
 }
 
 /* Estilo para la tabla */
@@ -298,9 +301,11 @@ label {
     justify-content: center;
     align-items: center;
 }
+
 .overlay.active {
     display: flex;
 }
+
 .form-container {
     margin-top: 80px;
     padding: 20px;
@@ -309,14 +314,17 @@ label {
     width: 250px;
     height: auto;
     text-align: left;
-    position: relative; /* Actualiza esta línea */
-    left: 500px; /* Ajusta esta línea para mover el formulario a la derecha */
+    position: relative;
+    /* Actualiza esta línea */
+    left: 500px;
+    /* Ajusta esta línea para mover el formulario a la derecha */
 }
 
 .form-container label {
     display: block;
     margin-bottom: 5px;
 }
+
 .form-container input {
     display: block;
     margin-bottom: 10px;
@@ -351,6 +359,20 @@ button:hover {
 }
 
 /* ---- Diseño Responsivo ---- */
+@keyframes jump {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        /* Posición inicial */
+    }
+
+    50% {
+        transform: translateY(-10px);
+        /* Salto hacia arriba */
+    }
+}
+
 @media only screen and (max-width: 600px) {
     body {
         background-color: lightblue;
@@ -361,33 +383,42 @@ button:hover {
     }
 
     .contenedor-productos {
-        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr)); /* Un cuadro por fila */
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        /* Un cuadro por fila */
     }
 
     button {
-        font-size: 12px; /* Reducir tamaño de fuente en botones */
-        padding: 8px 16px; /* Ajustar dimensiones del botón */
-        background: linear-gradient(90deg, #268bd2, #073642); /* Colores de botones */
+        font-size: 12px;
+        /* Reducir tamaño de fuente en botones */
+        padding: 8px 16px;
+        /* Ajustar dimensiones del botón */
+        background: linear-gradient(90deg, #268bd2, #073642);
+        /* Colores de botones */
         border-radius: 5px;
         transition: all 0.2s ease-in-out;
     }
 
     table {
-        font-size: 12px; /* Reducir tamaño de fuente en la tabla */
+        font-size: 12px;
+        /* Reducir tamaño de fuente en la tabla */
     }
 
     th {
-        font-size: 14px; /* Reducir tamaño de los encabezados */
-        background-color: #586e75; /* Azul claro para encabezados */
+        font-size: 14px;
+        /* Reducir tamaño de los encabezados */
+        background-color: #586e75;
+        /* Azul claro para encabezados */
         color: #268bd2;
     }
 
     .cuadro-producto {
-        height: 250px; /* Reducir tamaño del cuadro */
+        height: 250px;
+        /* Reducir tamaño del cuadro */
     }
 
     .imagen-producto {
-        height: 120px; /* Reducir tamaño de la imagen */
+        height: 120px;
+        /* Reducir tamaño de la imagen */
     }
 }
 
@@ -401,29 +432,37 @@ button:hover {
     }
 
     .contenedor-productos {
-        grid-template-columns: repeat(3, 1fr); /* Tres cuadros por fila */
+        grid-template-columns: repeat(3, 1fr);
+        /* Tres cuadros por fila */
     }
 
     button {
-        font-size: 14px; /* Ajustar tamaño de los botones */
-        padding: 10px 18px; /* Dimensiones intermedias */
-        background: linear-gradient(90deg, #268bd2, #073642); /* Colores de botones */
+        font-size: 14px;
+        /* Ajustar tamaño de los botones */
+        padding: 10px 18px;
+        /* Dimensiones intermedias */
+        background: linear-gradient(90deg, #268bd2, #073642);
+        /* Colores de botones */
     }
 
     table {
-        font-size: 14px; /* Ajustar tamaño de fuente en la tabla */
+        font-size: 14px;
+        /* Ajustar tamaño de fuente en la tabla */
     }
 
     th {
-        font-size: 16px; /* Ajustar tamaño de los encabezados */
+        font-size: 16px;
+        /* Ajustar tamaño de los encabezados */
     }
 
     .cuadro-producto {
-        height: 280px; /* Ajustar tamaño del cuadro */
+        height: 280px;
+        /* Ajustar tamaño del cuadro */
     }
 
     .imagen-producto {
-        height: 130px; /* Ajustar tamaño de la imagen */
+        height: 130px;
+        /* Ajustar tamaño de la imagen */
     }
 }
 
@@ -437,31 +476,39 @@ button:hover {
     }
 
     .contenedor-productos {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cuadros flexibles */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        /* Cuadros flexibles */
     }
 
     button {
-        font-size: 16px; /* Tamaño estándar */
-        padding: 12px 20px; /* Dimensiones cómodas */
-        background: linear-gradient(90deg, #268bd2, #073642); /* Colores de botones */
+        font-size: 16px;
+        /* Tamaño estándar */
+        padding: 12px 20px;
+        /* Dimensiones cómodas */
+        background: linear-gradient(90deg, #268bd2, #073642);
+        /* Colores de botones */
     }
 
     table {
-        font-size: 16px; /* Tamaño estándar de fuente en la tabla */
+        font-size: 16px;
+        /* Tamaño estándar de fuente en la tabla */
     }
 
     th {
-        font-size: 18px; /* Tamaño más grande para encabezados */
+        font-size: 18px;
+        /* Tamaño más grande para encabezados */
         background-color: #586e75;
         color: #268bd2;
     }
 
     .cuadro-producto {
-        height: 300px; /* Altura ideal */
+        height: 300px;
+        /* Altura ideal */
     }
 
     .imagen-producto {
-        height: 150px; /* Tamaño estándar de imagen */
+        height: 150px;
+        /* Tamaño estándar de imagen */
     }
 }
 
@@ -551,27 +598,43 @@ button:hover {
 /*Paginador*/
 
 #paginador {
-    display: grid; /* Utiliza Grid para estructura */
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */
-    gap: 10px; /* Espaciado ajustado entre columnas */
-    align-items: center; /* Centra los elementos verticalmente */
-    justify-items: center; /* Centra los elementos horizontalmente dentro de cada columna */
-    margin: 0 auto; /* Centra el paginador en la página */
-    position: absolute; /* Posiciona en el viewport */
-    margin-top: 20px; /* Espaciado con respecto a la tabla */
-    left: 50%; /* Centra horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta para centrar completamente */
+    display: grid;
+    /* Utiliza Grid para estructura */
+    grid-template-columns: repeat(3, 1fr);
+    /* Tres columnas iguales */
+    gap: 10px;
+    /* Espaciado ajustado entre columnas */
+    align-items: center;
+    /* Centra los elementos verticalmente */
+    justify-items: center;
+    /* Centra los elementos horizontalmente dentro de cada columna */
+    margin: 0 auto;
+    /* Centra el paginador en la página */
+    position: absolute;
+    /* Posiciona en el viewport */
+    margin-top: 20px;
+    /* Espaciado con respecto a la tabla */
+    left: 50%;
+    /* Centra horizontalmente */
+    transform: translate(-50%, -50%);
+    /* Ajusta para centrar completamente */
 }
 
 #paginador button {
-     width: 150px; /* Aumenta el ancho del botón */
-    height: 50px; /* Aumenta la altura del botón */
-    font-size: 18px; /* Texto más grande */
+    width: 150px;
+    /* Aumenta el ancho del botón */
+    height: 50px;
+    /* Aumenta la altura del botón */
+    font-size: 18px;
+    /* Texto más grande */
     font-weight: bold;
     border: none;
-    background-color: #007bff; /* Azul atractivo */
-    color: white; /* Texto blanco */
-    border-radius: 8px; /* Bordes redondeados */
+    background-color: #007bff;
+    /* Azul atractivo */
+    color: white;
+    /* Texto blanco */
+    border-radius: 8px;
+    /* Bordes redondeados */
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -597,47 +660,48 @@ button:hover {
     font-size: 18px;
     font-weight: bold;
     color: #333;
-    margin-top: 10px; /* Espaciado superior */
+    margin-top: 10px;
+    /* Espaciado superior */
 }
 
 
 /*Barra*/
 .icon-bar {
-            display: flex;
-            align-items: center;
-        }
+    display: flex;
+    align-items: center;
+}
 
-        .icon-bar .qr-icon {
-            cursor: pointer;
-            margin-left: auto;
-            padding: 10px;
-            border-radius: 50%;
-            background-color: white;
-            color: #007bff;
-            font-size: 18px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-        }
+.icon-bar .qr-icon {
+    cursor: pointer;
+    margin-left: auto;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: white;
+    color: #007bff;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
 
-        .qr-container {
-            position: absolute;
-            top: 60px;
-            right: 20px;
-            background-color: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 8px;
-            display: none;
-        }
+.qr-container {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+}
 
-        .qr-container img {
-            width: 150px;
-            height: 150px;
-        }
+.qr-container img {
+    width: 150px;
+    height: 150px;
+}
 
 /*Menu*/
 #sidebar {
@@ -652,7 +716,7 @@ button:hover {
 .menu-btn {
     background: #4CAF50;
     position: fixed;
-    top: 2px;
+    top: 0px;
     left: 10px;
     color: #fff;
     padding: 10px;
@@ -705,4 +769,41 @@ main {
 main {
     padding: 20px;
     text-align: center;
+}
+
+/* Estilo para el cuadro de confirmación */
+
+.confirmacion-cuadro {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #4e31ee, #8a2be2);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    z-index: 1000;
+}
+
+.confirmacion-cuadro p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.confirmacion-cuadro button {
+    background-color: #551a8b;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.confirmacion-cuadro button:hover {
+    background-color: #3d2be2;
 }

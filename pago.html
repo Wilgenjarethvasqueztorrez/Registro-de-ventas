@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de ventas</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #133ae4;
+            /* Fondo púrpura por defecto */
+            color: #000;
+            /* Texto oscuro */
+            opacity: 0;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+        }
+
+        .hidden {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="menu-container"></div> <!-- Contenedor donde se inyectará el menú -->
+
+    <script src="src/js/menu.js"></script> <!-- Incluye el archivo JavaScript -->
+
+    <header>
+        <h1>Listado de Pagos</h1>
+    </header>
+    <button id="agregarRegistro">Agregar pago</button>
+    <table id="pagosTabla">
+        <thead>
+            <tr>
+                <th>Fecha de Pago</th>
+                <th>Monto de Pago</th>
+                <th>Venta Asociada</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div id="pagoForm" class="overlay" style="display:none;">
+        <div class="form-container">
+            <h2>Agregar Pago</h2>
+            <label for="nuevaFechaPago">Fecha de Pago</label>
+            <input type="date" id="nuevaFechaPago">
+            <label for="nuevoMontoPago">Monto de Pago</label>
+            <input type="number" id="nuevoMontoPago" placeholder="Monto de Pago">
+            <label for="nuevoIDVenta">Venta Asociada</label>
+            <select id="nuevoIDVenta" style="width:100%;">
+                <option value="" disabled selected>Selecciona una venta</option>
+            </select>
+            <button id="guardarNuevoPago" onclick="guardarNuevoPago(); limpiarFormulario('pagoForm');">Guardar</button>
+            <button onclick="cerrarFormulario('pagoForm'); limpiarFormulario('pagoForm');">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="editarPagoForm" class="overlay" style="display:none;">
+        <div class="form-container">
+            <h2>Editar Pago</h2>
+            <input type="hidden" id="editarIDPago">
+            <label for="editarFechaPago">Fecha de Pago</label>
+            <input type="date" id="editarFechaPago">
+            <label for="editarMontoPago">Monto de Pago</label>
+            <input type="number" id="editarMontoPago" placeholder="Monto de Pago">
+            <label for="editarIDVenta">Venta Asociada</label>
+            <select id="editarIDVenta" style="width:100%;">
+                <option value="" disabled selected>Selecciona una venta</option>
+            </select>
+            <button onclick="guardarEdicionPago(); limpiarFormulario('editarPagoForm');">Guardar</button>
+            <button onclick="cerrarFormulario('editarPagoForm'); limpiarFormulario('editarPagoForm');">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="confirmacion-eliminar" class="confirmacion-cuadro" style="display:none;">
+        <p>¿Desea eliminar este pago?</p>
+        <button id="btn-si">Sí</button>
+        <button id="btn-no">No</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB68iY9_j2nNSajScy8TU3mzQEMMa7R3Jo",
+            authDomain: "bd-registro-de-ventas.firebaseapp.com",
+            databaseURL: "https://bd-registro-de-ventas-default-rtdb.firebaseio.com",
+            projectId: "bd-registro-de-ventas",
+            storageBucket: "bd-registro-de-ventas.firebasestorage.app",
+            messagingSenderId: "52957839366",
+            appId: "1:52957839366:web:b03bc3b5493a520534c387"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        // Cargar pagos
+        async function obtenerPagos() {
+            const pagos = await db.collection('pagos-registro').get();
+            const pagosTabla = document.getElementById('pagosTabla').getElementsByTagName('tbody')[0];
+            pagosTabla.innerHTML = '';
+            for (const doc of pagos.docs) {
+                const pago = doc.data();
+                // Traer info de la venta asociada
+                let ventaInfo = pago.IDVenta;
+                if (pago.IDVenta) {
+                    const ventaDoc = await db.collection('ventas-registro').doc(pago.IDVenta).get();
+                    if (ventaDoc.exists) {
+                        const v = ventaDoc.data();
+                        ventaInfo = `${v.FechaVenta || ''} - ${v.MontoTotal || ''} - ${v.IDCliente || ''}`;
+                    }
+                }
+                const row = pagosTabla.insertRow();
+                row.insertCell(0).innerText = pago.FechaPago;
+                row.insertCell(1).innerText = pago.MontoPago;
+                row.insertCell(2).innerText = ventaInfo;
+                const accionesCell = row.insertCell(3);
+                accionesCell.innerHTML = `
+                    <button onclick="mostrarEditarPagoFormulario('${doc.id}', '${pago.FechaPago}', '${pago.MontoPago}', '${pago.IDVenta}')">Editar</button>
+                    <button onclick="mostrarConfirmacion('${doc.id}')">Eliminar</button>
+                `;
+            }
+        }
+
+        // Cargar ventas en select
+        async function cargarVentasEnSelect(selectId, selectedValue = '') {
+            const select = document.getElementById(selectId);
+            select.innerHTML = '<option value="" disabled>Selecciona una venta</option>';
+            const ventas = await db.collection('ventas-registro').get();
+            ventas.forEach(doc => {
+                const v = doc.data();
+                const option = document.createElement('option');
+                option.value = doc.id;
+                option.textContent = `${v.FechaVenta || ''} - ${v.MontoTotal || ''} - ${v.IDCliente || ''}`;
+                if (doc.id === selectedValue) option.selected = true;
+                select.appendChild(option);
+            });
+            // Si no hay selección, selecciona el placeholder
+            if (!selectedValue) select.selectedIndex = 0;
+        }
+
+        function mostrarFormulario(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+        function cerrarFormulario(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        // Agregar pago
+        document.getElementById('agregarRegistro').addEventListener('click', async function () {
+            await cargarVentasEnSelect('nuevoIDVenta');
+            mostrarFormulario('pagoForm');
+        });
+
+        async function guardarNuevoPago() {
+            const fecha = document.getElementById('nuevaFechaPago').value;
+            const monto = document.getElementById('nuevoMontoPago').value;
+            const idVenta = document.getElementById('nuevoIDVenta').value;
+            if (!fecha || !monto || !idVenta) return;
+            await db.collection('pagos-registro').add({
+                IDPago: Math.random().toString(36).substr(2, 9),
+                IDVenta: idVenta,
+                FechaPago: fecha,
+                MontoPago: monto
+            });
+            cerrarFormulario('pagoForm');
+            obtenerPagos();
+        }
+
+        function limpiarFormulario(formId) {
+            document.getElementById(formId).querySelectorAll('input, select').forEach(input => {
+                if (input.type === 'date' || input.type === 'number' || input.type === 'text') {
+                    input.value = '';
+                } else if (input.tagName.toLowerCase() === 'select') {
+                    input.selectedIndex = 0;
+                }
+            });
+        }
+
+        // Editar pago
+        async function mostrarEditarPagoFormulario(id, fecha, monto, idVenta) {
+            await cargarVentasEnSelect('editarIDVenta', idVenta);
+            document.getElementById('editarIDPago').value = id;
+            document.getElementById('editarFechaPago').value = fecha;
+            document.getElementById('editarMontoPago').value = monto;
+            mostrarFormulario('editarPagoForm');
+        }
+
+        async function guardarEdicionPago() {
+            const id = document.getElementById('editarIDPago').value;
+            const fecha = document.getElementById('editarFechaPago').value;
+            const monto = document.getElementById('editarMontoPago').value;
+            const idVenta = document.getElementById('editarIDVenta').value;
+            if (!fecha || !monto || !idVenta) return;
+            await db.collection('pagos-registro').doc(id).update({
+                FechaPago: fecha,
+                MontoPago: monto,
+                IDVenta: idVenta
+            });
+            cerrarFormulario('editarPagoForm');
+            obtenerPagos();
+        }
+
+        // Eliminar pago
+        function mostrarConfirmacion(id) {
+            const cuadro = document.getElementById('confirmacion-eliminar');
+            cuadro.style.display = 'block';
+            document.getElementById('btn-si').onclick = function () {
+                eliminarPago(id);
+                cuadro.style.display = 'none';
+            };
+            document.getElementById('btn-no').onclick = function () {
+                cuadro.style.display = 'none';
+            };
+        }
+        async function eliminarPago(id) {
+            await db.collection('pagos-registro').doc(id).delete();
+            obtenerPagos();
+        }
+
+        obtenerPagos();
+    </script>
+</body>
+</html>

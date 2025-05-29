@@ -7,6 +7,7 @@ body.kaiju-no-8 {
 body.kaiju-no-8 header {
     background-color: #4d4d4d; /* Gris medio */
     color: #ff4444; /* Rojo brillante */
+    box-shadow: 0px 0px 10px rgba(255, 68, 68, 0.5); /* Sombra roja */
 }
 
 body.kaiju-no-8 button {

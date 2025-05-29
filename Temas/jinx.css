@@ -1,11 +1,13 @@
+/* ---- Tema Jinx ---- */
 body.jinx {
-    background-color: #1a1a1a; /* Negro */
+    background-color: #1a1a1a; /* Negro profundo */
     color: #ff69b4; /* Rosa fuerte */
 }
 
 body.jinx header {
     background-color: #2e2e2e; /* Gris oscuro */
     color: #ff69b4;
+    box-shadow: 0px 0px 10px rgba(255, 105, 180, 0.5); /* Sombra rosa */
 }
 
 body.jinx button {
@@ -18,20 +20,119 @@ body.jinx button:hover {
     box-shadow: 0px 0px 10px #ff69b4;
 }
 
+/* ---- Tablas ---- */
 body.jinx table {
     background-color: #2e2e2e; /* Fondo gris oscuro */
     color: #ff69b4;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.jinx table th {
     background-color: #696969; /* Gris más claro */
     color: #ff69b4;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ff69b4;
 }
 
+body.jinx table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 105, 180, 0.7); /* Línea más visible */
+    text-align: center;
+}
+
+body.jinx table tr:hover {
+    background-color: rgba(255, 105, 180, 0.2); /* Efecto hover rosa */
+}
+
+body.jinx table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ---- Contenedor de Formularios ---- */
 body.jinx .form-container {
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(46, 46, 46, 0.8), rgba(26, 26, 26, 0.8));
+    padding: 20px;
+    border-radius: 15px;
 }
 
 body.jinx .form-container label {
-    color: #ff69b4; /* Color del texto de los labels en el tema Jinx */
+    color: #ff69b4; /* Texto rosa fuerte */
+    font-weight: bold;
 }
+
+/* ---- Componentes de Productos ---- */
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.cuadro-producto {
+    background: linear-gradient(135deg, #1a1a1a, #2e2e2e, #ff69b4); /* Degradado oscuro con rosa */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.6);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(255, 105, 180, 0.8);
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #ff69b4;
+}
+
+.contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+.nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff69b4;
+    margin-bottom: 10px;
+}
+
+.precio-producto {
+    background-color: #ff69b4;
+    color: #2e2e2e;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stock-producto {
+    background-color: #2e2e2e;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+

@@ -1,61 +1,142 @@
 /* ---- Tema Zoe ---- */
 body.zoe {
-    background-color: #1f0036;
-    /* Púrpura oscuro como el cosmos */
-    color: #fdd835;
-    /* Dorado brillante */
+    background-color: #1f0036; /* Púrpura oscuro como el cosmos */
+    color: #fdd835; /* Dorado brillante */
 }
 
 body.zoe header {
-    background-color: #6200ea;
-    /* Púrpura vibrante */
-    color: #ffd600;
-    /* Dorado */
-    text-shadow: 0px 0px 8px #ff6ec7;
-    /* Resplandor rosa */
+    background-color: #6200ea; /* Púrpura vibrante */
+    color: #ffd600; /* Dorado */
+    text-shadow: 0px 0px 8px #ff6ec7; /* Resplandor rosa */
+    box-shadow: 0px 0px 10px rgba(255, 57, 179, 0.829); /* Sombra rosa */
 }
 
 body.zoe label {
-    color: #ff6ec7;
-    /* Rosa brillante */
+    color: #ff6ec7; /* Rosa brillante */
 }
 
 body.zoe table {
-    background-color: #311b92;
-    /* Azul púrpura */
-    color: #ffd600;
-    /* Texto dorado */
+    background-color: #311b92; /* Azul púrpura */
+    color: #ffd600; /* Texto dorado */
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Sombra para destacar */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 body.zoe table th {
-    background-color: #4527a0;
-    /* Púrpura más oscuro */
-    color: #ff6ec7;
-    /* Rosa brillante */
+    background-color: #4527a0; /* Púrpura más oscuro */
+    color: #ff6ec7; /* Rosa brillante */
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ff6ec7; /* Línea separadora */
 }
 
 body.zoe table td {
-    color: #ffd600;
-    /* Texto dorado */
+    color: #ffd600; /* Texto dorado */
+    padding: 10px;
+    border-bottom: 1px solid #444444; /* Línea divisoria gris */
+    text-align: center;
+}
+
+body.zoe table tr:hover {
+    background-color: rgba(255, 110, 199, 0.2); /* Efecto hover en rosa translúcido */
+}
+
+/* Alinear las celdas */
+body.zoe table td:first-child, 
+body.zoe table th:first-child {
+    text-align: center;
 }
 
 body.zoe button {
-    background: linear-gradient(90deg, #ff6ec7, #6200ea);
-    /* Degradado rosa a púrpura */
+    background: linear-gradient(90deg, #ff6ec7, #6200ea); /* Degradado rosa a púrpura */
     color: white;
 }
 
 body.zoe button:hover {
-    background: linear-gradient(90deg, #ffd600, #ff6ec7);
-    /* Degradado dorado a rosa */
-    transform: scale(1.1);
-    /* Animación de crecimiento */
+    background: linear-gradient(90deg, #ffd600, #ff6ec7); /* Degradado dorado a rosa */
+    transform: scale(1.1); /* Animación de crecimiento */
 }
 
 body.zoe .form-container {
     background: linear-gradient(135deg, rgba(31, 0, 54, 0.8), rgba(98, 0, 234, 0.8), rgba(31, 0, 54, 0.8));
+    padding: 20px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
 }
 
 body.zoe .form-container label {
     color: #ff6ec7; /* Color del texto de los labels en el tema Zoe */
+    font-weight: bold; /* Texto destacado */
+}
+
+body.zoe .contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+body.zoe .cuadro-producto {
+    background: linear-gradient(135deg, #1f0036, #6200ea, #ff6ec7); /* Degradado vibrante */
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+body.zoe .cuadro-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(255, 110, 199, 0.6);
+}
+
+body.zoe .imagen-producto {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-bottom: 3px solid #ff6ec7;
+}
+
+body.zoe .contenedor-inferior {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: auto;
+}
+
+body.zoe .nombre-producto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff6ec7; /* Rosa brillante */
+    margin-bottom: 10px;
+}
+
+body.zoe .precio-producto {
+    background-color: #ffd600; /* Fondo dorado */
+    color: #1f0036;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+body.zoe .stock-producto {
+    background-color: #6200ea; /* Fondo púrpura vibrante */
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
 }
