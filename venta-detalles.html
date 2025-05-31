@@ -8,30 +8,15 @@
     <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link id="theme-stylesheet" rel="stylesheet" type="text/css" href="">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #133ae4;
-            /* Fondo púrpura por defecto */
-            color: #000;
-            /* Texto oscuro */
-            opacity: 0;
-            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
-        }
-
-        .hidden {
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-    </style>
 </head>
 
 <body>
     <div id="menu-container"></div> <!-- Contenedor donde se inyectará el menú -->
 
-    <script src="src/js/menu.js"></script> <!-- Incluye el archivo JavaScript -->
+    <!-- Incluye el archivo JavaScript del menú para Githup pages -->
+      <script src="src/js/menu.js"></script>
+    <!-- Incluye el archivo JavaScript del menú para Live server -->
+    <!-- <script src="src/js/menu copy.js"></script> -->
 
     <header>
         <h1>Listado de Ventas</h1>
@@ -78,8 +63,8 @@
                 <input type="text" id="placeholderTextProducto"
                     style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); border: none; background: transparent; pointer-events: none; font-size: 16px; color: grey;">
                 <div id="resultadosBusquedaProducto"
-                    style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"
-                    ></div>
+                    style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;">
+                </div>
             </div>
 
             <label for="nuevaCantidad">Cantidad</label>
@@ -126,8 +111,8 @@
                 <input type="text" id="placeholderTextProductoEditar"
                     style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); border: none; background: transparent; pointer-events: none; font-size: 16px; color: grey;">
                 <div id="resultadosBusquedaProductoEditar"
-                    style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;"
-                    ></div>
+                    style="position: absolute; z-index: 1000; background: white; color: black; border: 1px solid #ccc; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); display: none; max-height: 150px; overflow-y: auto; width: 100%;">
+                </div>
             </div>
 
             <label for="editarCantidad">Cantidad</label>
@@ -204,58 +189,62 @@
             }
         }
 
-        // Función para alternar la visibilidad de los resultados de búsqueda en los select dinámicos
-        function toggleResultadosBusqueda(selectId) {
-            const resultadosBusqueda = document.getElementById(
-                selectId.includes('IDVenta') ? 'resultadosBusquedaVenta' : 'resultadosBusquedaProducto'
-            );
-
-            if (resultadosBusqueda.style.display === 'none' || resultadosBusqueda.style.display === '') {
-                buscarOpciones(selectId);
-                resultadosBusqueda.style.display = 'block';
-            } else {
-                resultadosBusqueda.style.display = 'none';
-            }
+        // Función genérica para cargar opciones en un select desde una colección
+        async function cargarOpcionesEnSelect({ selectId, coleccion, placeholder, textoOpcion, selectedValue = '' }) {
+            const select = document.getElementById(selectId);
+            select.innerHTML = `<option value="" disabled>${placeholder}</option>`;
+            const docs = await db.collection(coleccion).get();
+            docs.forEach(doc => {
+            const data = doc.data();
+            const option = document.createElement('option');
+            option.value = doc.id;
+            option.textContent = textoOpcion(data, doc);
+            if (doc.id === selectedValue) option.selected = true;
+            select.appendChild(option);
+            });
+            if (!selectedValue) select.selectedIndex = 0;
         }
 
-        // Seleccionar una opción desde los resultados de búsqueda dinámicos
-        function selectOpcion(selectId, nombre) {
-            const selectElement = document.getElementById(selectId);
-            selectElement.innerHTML = `<option value="${nombre}">${nombre}</option>`;
-            const resultadosBusqueda = document.getElementById(
-                selectId.includes('IDVenta') ? 'resultadosBusquedaVenta' : 'resultadosBusquedaProducto'
-            );
-            resultadosBusqueda.style.display = 'none';
-            document.getElementById(
-                selectId.includes('IDVenta') ? 'placeholderTextVenta' : 'placeholderTextProducto'
-            ).style.display = 'none';
-        }
-
-        // Función para buscar opciones en las colecciones relacionadas
-        async function buscarOpciones(selectId) {
-            const coleccion = selectId.includes('IDVenta') ? 'ventas-registro' : 'producto-registro';
-            const resultados = await db.collection(coleccion).get();
-
-            const selectElement = document.getElementById(selectId);
-            selectElement.innerHTML = ''; // Limpiar opciones previas
-
-            const opcionPlaceholder = document.createElement('option');
-            opcionPlaceholder.disabled = true;
-            opcionPlaceholder.textContent = 'Selecciona una opción';
-            opcionPlaceholder.selected = true;
-            selectElement.appendChild(opcionPlaceholder);
-
-            resultados.forEach(doc => {
-                const data = doc.data();
-                const option = document.createElement('option');
-                option.value = doc.id; // Usar el ID del documento como valor
-                option.textContent = selectId.includes('IDVenta')
-                    ? `${data.FechaVenta} - ${data.TipoVenta}` // Mostrar Fecha y TipoVenta para ventas
-                    : data.NombreProducto; // Mostrar NombreProducto para productos
-                selectElement.appendChild(option);
+        // Cargar ventas en select (para nuevo y editar)
+        function cargarVentasEnSelect(selectId, selectedValue = '') {
+            return cargarOpcionesEnSelect({
+            selectId,
+            coleccion: 'ventas-registro',
+            placeholder: 'Selecciona una venta',
+            textoOpcion: (v, doc) => `${v.FechaVenta || ''} - ${v.TipoVenta || ''} - ${v.MontoTotal || ''} - ${v.IDCliente || ''}`,
+            selectedValue
             });
         }
 
+        // Cargar productos en select (para nuevo y editar)
+        function cargarProductosEnSelect(selectId, selectedValue = '') {
+            return cargarOpcionesEnSelect({
+            selectId,
+            coleccion: 'producto-registro',
+            placeholder: 'Selecciona un producto',
+            textoOpcion: (p) => p.NombreProducto || '',
+            selectedValue
+            });
+        }
+
+        // Llama a estas funciones al mostrar formularios
+        document.getElementById('agregarRegistro').addEventListener('click', function () {
+            cargarVentasEnSelect('nuevoIDVenta');
+            cargarProductosEnSelect('nuevoIDProducto');
+            mostrarFormulario('registroForm');
+        });
+
+        async function mostrarEditarFormulario(id, idVenta, idProducto, cantidad, precioUnitario, subtotal) {
+            mostrarFormulario('editarForm');
+            document.getElementById('editarId').value = id;
+            document.getElementById('editarCantidad').value = cantidad;
+            document.getElementById('editarPrecioUnitario').value = precioUnitario;
+            document.getElementById('editarSubtotal').value = subtotal;
+            await cargarVentasEnSelect('editarIDVenta', idVenta);
+            await cargarProductosEnSelect('editarIDProducto', idProducto);
+        }
+
+      
         // Mostrar el formulario correspondiente
         function mostrarFormulario(id) {
             document.getElementById(id).style.display = 'block';
@@ -267,42 +256,7 @@
         }
 
         // Función para mostrar el formulario de edición y cargar datos correspondientes
-        function mostrarEditarFormulario(id, idVenta, idProducto, cantidad, precioUnitario, subtotal) {
-            mostrarFormulario('editarForm');
-
-            // Asignar los valores al formulario
-            document.getElementById('editarId').value = id;
-            document.getElementById('editarCantidad').value = cantidad;
-            document.getElementById('editarPrecioUnitario').value = precioUnitario;
-            document.getElementById('editarSubtotal').value = subtotal;
-
-            // Manejar los selects dinámicos para IDVenta e IDProducto
-            const selects = [
-                { selectId: 'editarIDVenta', value: idVenta },
-                { selectId: 'editarIDProducto', value: idProducto }
-            ];
-
-            selects.forEach(({ selectId, value }) => {
-                const selectElement = document.getElementById(selectId);
-
-                // Cargar las opciones del select y establecer la opción seleccionada
-                buscarOpciones(selectId).then(() => {
-                    const opciones = Array.from(selectElement.options);
-                    const encontrado = opciones.find(option => option.value === value);
-
-                    if (encontrado) {
-                        encontrado.selected = true; // Seleccionar la opción correspondiente
-                    } else {
-                        // Si no está en las opciones, añadirla manualmente
-                        const nuevaOpcion = document.createElement('option');
-                        nuevaOpcion.value = value;
-                        nuevaOpcion.textContent = value; // Usar el valor directamente como texto
-                        nuevaOpcion.selected = true;
-                        selectElement.appendChild(nuevaOpcion);
-                    }
-                });
-            });
-        }
+        // (Esta función ya no es necesaria porque la funcionalidad está en la función mostrarEditarFormulario anterior)
 
 
         // Función para guardar un nuevo registro en "ventas-detalles"
@@ -365,6 +319,45 @@
         // Inicialización al cargar la página
         document.getElementById('agregarRegistro').addEventListener('click', function () {
             mostrarFormulario('registroForm');
+        });
+
+        // Función para filtrar ventas por IDCliente o TipoVenta usando una sola caja de texto, normalizando acentos
+        function filtrarRegistros() {
+            const normalizar = texto => texto
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+            const filtro = normalizar(document.getElementById('filtroBusqueda').value);
+            const filas = document.querySelectorAll('#registrosTabla tbody tr');
+            filas.forEach(fila => {
+                const cliente = normalizar(fila.cells[1].innerText); // Columna Cliente
+                const tipoVenta = normalizar(fila.cells[2].innerText); // Columna Tipo de venta
+                if (
+                    filtro === '' ||
+                    cliente.includes(filtro) ||
+                    tipoVenta.includes(filtro)
+                ) {
+                    fila.style.display = '';
+                } else {
+                    fila.style.display = 'none';
+                }
+            });
+        }
+
+        // Crear input de filtro único y agregarlo al DOM en el contenedor de la tabla
+        window.addEventListener('DOMContentLoaded', () => {
+            const tabla = document.getElementById('registrosTabla');
+            const filtroContainer = document.createElement('div');
+            filtroContainer.className = 'filtro-container';
+
+            const inputBusqueda = document.createElement('input');
+            inputBusqueda.type = 'text';
+            inputBusqueda.id = 'filtroBusqueda';
+            inputBusqueda.placeholder = 'Filtrar por cliente o tipo de venta';
+            inputBusqueda.addEventListener('input', filtrarRegistros);
+
+            filtroContainer.appendChild(inputBusqueda);
+            tabla.parentNode.insertBefore(filtroContainer, tabla);
         });
 
         // Mostrar cuadro de confirmación antes de eliminar

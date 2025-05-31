@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de ventas</title>
     <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <style>
+    <!-- <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -23,13 +24,17 @@
             opacity: 0;
             transition: opacity 0.3s;
         }
-    </style>
+    </style>-->
 </head>
-<body>
 
+<body>
+<!-- Usa Ctrl + K, luego Ctrl + C para comentar y Ctrl + K, luego Ctrl + U para descomentar en VS Code. -->
     <div id="menu-container"></div>
 
-    <script src="src/js/menu.js"></script>
+    <!-- Incluye el archivo JavaScript del menú para Githup pages -->
+      <script src="src/js/menu.js"></script>
+    <!-- Incluye el archivo JavaScript del menú para Live server -->
+    <!-- <script src="src/js/menu copy.js"></script> -->
 
     <header>
         <h1>Listado de Ventas al Crédito</h1>
@@ -65,7 +70,8 @@
             <label for="nuevoMontoPendiente">Monto Pendiente</label>
             <input type="number" id="nuevoMontoPendiente" placeholder="Monto Pendiente">
             <button id="guardarNuevoCredito" type="button">Guardar</button>
-            <button type="button" onclick="cerrarFormulario('creditoForm'); limpiarFormulario('creditoForm');">Cancelar</button>
+            <button type="button"
+                onclick="cerrarFormulario('creditoForm'); limpiarFormulario('creditoForm');">Cancelar</button>
         </div>
     </div>
 
@@ -86,7 +92,8 @@
             <label for="editarMontoPendiente">Monto Pendiente</label>
             <input type="number" id="editarMontoPendiente" placeholder="Monto Pendiente">
             <button type="button" id="guardarEdicionCredito">Guardar</button>
-            <button type="button" onclick="cerrarFormulario('editarCreditoForm'); limpiarFormulario('editarCreditoForm');">Cancelar</button>
+            <button type="button"
+                onclick="cerrarFormulario('editarCreditoForm'); limpiarFormulario('editarCreditoForm');">Cancelar</button>
         </div>
     </div>
 
@@ -113,7 +120,7 @@
         var db = firebase.firestore();
 
         // Cargar ventas a crédito
-        async function obtenerCreditos() {
+        async function obtenerRegistros() {
             try {
                 const creditos = await db.collection('ventas-credito').get();
                 const creditoTabla = document.getElementById('creditoTabla').getElementsByTagName('tbody')[0];
@@ -204,7 +211,7 @@
                 });
                 cerrarFormulario('creditoForm');
                 limpiarFormulario('creditoForm');
-                obtenerCreditos();
+                obtenerRegistros();
             } catch (error) {
                 alert('Error al guardar: ' + error.message);
             }
@@ -221,7 +228,7 @@
         }
 
         // Editar venta a crédito
-        window.mostrarEditarCreditoFormulario = async function(id, idVenta, montoTotal, fechaInicio, fechaFin, montoPendiente) {
+        window.mostrarEditarCreditoFormulario = async function (id, idVenta, montoTotal, fechaInicio, fechaFin, montoPendiente) {
             await cargarVentasEnSelect('editarIDVenta', idVenta);
             document.getElementById('editarIDVentaCredito').value = id;
             document.getElementById('editarMontoTotalCredito').value = montoTotal;
@@ -252,14 +259,43 @@
                 });
                 cerrarFormulario('editarCreditoForm');
                 limpiarFormulario('editarCreditoForm');
-                obtenerCreditos();
+                obtenerRegistros();
             } catch (error) {
                 alert('Error al editar: ' + error.message);
             }
         });
 
+        // Función para filtrar créditos por ventaInfo
+        function filtrarPorVentaInfo() {
+            const filtro = document.getElementById('filtroVentaInfo').value.toLowerCase();
+            const filas = document.querySelectorAll('#creditoTabla tbody tr');
+            filas.forEach(fila => {
+            const ventaInfo = fila.cells[0].innerText.toLowerCase();
+            if (ventaInfo.includes(filtro)) {
+                fila.style.display = '';
+            } else {
+                fila.style.display = 'none';
+            }
+            });
+        }
+
+        // Crear input de filtro y agregarlo al DOM en el contenedor de la tabla
+        window.addEventListener('DOMContentLoaded', () => {
+            const tabla = document.getElementById('creditoTabla');
+            const filtroContainer = document.createElement('div');
+            filtroContainer.className = 'filtro-container';
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.id = 'filtroVentaInfo';
+            input.placeholder = 'Filtrar por venta asociada';
+            input.addEventListener('input', filtrarPorVentaInfo);
+            filtroContainer.appendChild(input);
+            tabla.parentNode.insertBefore(filtroContainer, tabla);
+        });
+
+
         // Eliminar venta a crédito
-        window.mostrarConfirmacion = function(id) {
+        window.mostrarConfirmacion = function (id) {
             const cuadro = document.getElementById('confirmacion-eliminar');
             cuadro.style.display = 'block';
             document.getElementById('btn-si').onclick = async function () {
@@ -274,14 +310,16 @@
         async function eliminarCredito(id) {
             try {
                 await db.collection('ventas-credito').doc(id).delete();
-                obtenerCreditos();
+                obtenerRegistros();
             } catch (error) {
                 alert('Error al eliminar: ' + error.message);
             }
         }
 
-        obtenerCreditos();
-       
+        obtenerRegistros();
+
     </script>
 </body>
+
 </html>
+

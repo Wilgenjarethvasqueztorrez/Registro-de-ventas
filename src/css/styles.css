@@ -1,3 +1,4 @@
+/* -------------------- HEADER -------------------- */
 header {
     background-color: #217346;
     /* Verde Excel */
@@ -6,11 +7,17 @@ header {
     text-align: center;
 }
 
+/* -------------------- BODY -------------------- */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    transition: background-color 0.3s, color 0.3s;
+    background-color: #133ae4;
+    /* Fondo púrpura por defecto */
+    color: #000;
+    /* Texto oscuro */
+    opacity: 0;
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s;
 }
 
 .hidden {
@@ -18,7 +25,7 @@ body {
     transition: opacity 0.3s;
 }
 
-/*EStilos pare el login.html*/
+/* -------------------- LOGIN -------------------- */
 .login-container {
     background-color: white;
     width: 300px;
@@ -64,6 +71,7 @@ body {
     background-color: #0056b3;
 }
 
+/* -------------------- TEMAS -------------------- */
 /* Estilo del contenedor de temas */
 .temas {
     display: none;
@@ -96,7 +104,6 @@ body {
     overflow-y: auto;
     /* Desplazamiento vertical */
 }
-
 
 /* Botones de los temas */
 .temas button {
@@ -134,6 +141,7 @@ body {
     margin-top: 10px;
 }
 
+/* -------------------- TEXTO GENERAL -------------------- */
 h1 {
     font-size: 2rem;
     margin: 0;
@@ -148,6 +156,7 @@ table td {
     /* Transición suave para el color del texto */
 }
 
+/* -------------------- BOTONES GENERALES -------------------- */
 /* Botones con animación de tamaño */
 button {
     font-size: 1rem;
@@ -166,7 +175,59 @@ button:hover {
     transform: scale(1.1);
 }
 
+/* Animación suave para los botones */
+button {
+    font-size: 1rem;
+    /* Tamaño del texto */
+    padding: 12px 20px;
+    /* Espaciado interno */
+    margin-top: 10px;
+    background-color: #28a745;
+    /* Verde predeterminado */
+    color: white;
+    /* Texto blanco */
+    border: none;
+    /* Sin borde */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    /* Suaviza el crecimiento y el cambio de color */
+}
 
+button:hover {
+    background-color: #218838;
+    /* Verde más oscuro al pasar el cursor */
+    transform: scale(1.1);
+    /* Aumenta el tamaño del botón */
+}
+
+/* -------------------- FILTRO -------------------- */
+.filtro-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 70px 10px 0; /* Aumenta el margen derecho para moverlo a la izquierda */
+}
+
+.filtro-container input{
+    padding: 8px 14px;
+    border: 1px solid #bdbdbd;
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    width: 260px;
+    background: #fafbfc;
+}
+
+.filtro-container input{
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px #1976d233;
+    background: #fff;
+}
+
+/* -------------------- TABLA -------------------- */
 /* Estilo de la tabla */
 table {
     width: 90%;
@@ -201,34 +262,6 @@ table th {
     /* Texto negro */
 }
 
-.form-container {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(217, 234, 211, 0.8), rgba(255, 255, 255, 0.8));
-}
-
-.form-container label {
-    color: #217346;
-    /* Color del texto de los labels en el tema Excel */
-}
-
-/* Botones - Estilo por defecto (verde) */
-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    margin: 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-    background-color: #28a745;
-    /* Verde por defecto */
-    color: white;
-}
-
-button:hover {
-    background-color: #218838;
-    /* Verde más oscuro en hover */
-}
-
 /* Estilo para la tabla */
 table {
     background-color: whitesmoke;
@@ -248,17 +281,39 @@ table td {
     transition: all 0.5s ease;
 }
 
-/* Centrando el botón */
-#agregarRegistro {
-    display: block;
-    margin: 20px auto;
-    /* Margen para separación y auto para centrar horizontalmente */
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
+/* -------------------- FORMULARIO -------------------- */
+.form-container {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(217, 234, 211, 0.8), rgba(255, 255, 255, 0.8));
+}
+
+.form-container label {
+    color: #217346;
+    /* Color del texto de los labels en el tema Excel */
+}
+
+.form-container {
+    margin-top: 80px;
+    padding: 20px;
     border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    height: auto;
+    text-align: left;
+    position: relative;
+    /* Actualiza esta línea */
+    left: 500px;
+    /* Ajusta esta línea para mover el formulario a la derecha */
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 /* Diseño general del formulario */
@@ -290,6 +345,20 @@ label {
     margin-bottom: 5px;
 }
 
+/* Centrando el botón */
+#agregarRegistro {
+    display: block;
+    margin: 20px auto;
+    /* Margen para separación y auto para centrar horizontalmente */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* -------------------- OVERLAY -------------------- */
 .overlay {
     position: fixed;
     top: 0;
@@ -306,59 +375,7 @@ label {
     display: flex;
 }
 
-.form-container {
-    margin-top: 80px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    height: auto;
-    text-align: left;
-    position: relative;
-    /* Actualiza esta línea */
-    left: 500px;
-    /* Ajusta esta línea para mover el formulario a la derecha */
-}
-
-.form-container label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-container input {
-    display: block;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-/* Animación suave para los botones */
-button {
-    font-size: 1rem;
-    /* Tamaño del texto */
-    padding: 12px 20px;
-    /* Espaciado interno */
-    margin-top: 10px;
-    background-color: #28a745;
-    /* Verde predeterminado */
-    color: white;
-    /* Texto blanco */
-    border: none;
-    /* Sin borde */
-    border-radius: 5px;
-    /* Bordes redondeados */
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-    /* Suaviza el crecimiento y el cambio de color */
-}
-
-button:hover {
-    background-color: #218838;
-    /* Verde más oscuro al pasar el cursor */
-    transform: scale(1.1);
-    /* Aumenta el tamaño del botón */
-}
-
-/* ---- Diseño Responsivo ---- */
+/* -------------------- RESPONSIVE -------------------- */
 @keyframes jump {
 
     0%,
@@ -512,7 +529,7 @@ button:hover {
     }
 }
 
-/*Estilos para el index.html*/
+/* -------------------- INDEX (PRODUCTOS) -------------------- */
 .contenedor-productos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -550,7 +567,6 @@ button:hover {
     border-bottom: 3px solid #3B4CCA;
     /* Borde para dividir visualmente la imagen y el contenido */
 }
-
 
 .contenedor-inferior {
     display: grid;
@@ -595,8 +611,7 @@ button:hover {
     text-align: center;
 }
 
-/*Paginador*/
-
+/* -------------------- PAGINADOR -------------------- */
 #paginador {
     display: grid;
     /* Utiliza Grid para estructura */
@@ -664,7 +679,7 @@ button:hover {
     /* Espaciado superior */
 }
 
-
+/* -------------------- BARRA SUPERIOR -------------------- */
 /*Barra*/
 .icon-bar {
     display: flex;
@@ -703,6 +718,7 @@ button:hover {
     height: 150px;
 }
 
+/* -------------------- MENU LATERAL -------------------- */
 /*Menu*/
 #sidebar {
     width: 0;
@@ -752,27 +768,25 @@ button:hover {
     margin-right: 1px;
 }
 
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* -------------------- MAIN -------------------- */
 main {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    text-align: center;
 }
 
 #texto {
     color: white;
 }
 
-.sidebar a:hover {
-    background-color: #575757;
-}
-
-main {
-    padding: 20px;
-    text-align: center;
-}
-
+/* -------------------- CONFIRMACION -------------------- */
 /* Estilo para el cuadro de confirmación */
-
 .confirmacion-cuadro {
     display: none;
     position: fixed;
