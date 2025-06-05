@@ -199,6 +199,16 @@
             }
         });
 
+        // Redirigir a login.html si el usuario no está autenticado y está en la página de inicio
+        if (window.location.pathname === "/" || window.location.pathname.endsWith("/index.html")) {
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (!user) {
+                    window.location.href = "login.html";
+                }
+            });
+        }
+
+        
       
     </script>
 

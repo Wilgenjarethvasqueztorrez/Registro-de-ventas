@@ -121,6 +121,13 @@
         }
         // Ejecutar la función
         obtenerRegistros();
+
+        // Redirigir a login.html si el usuario no está autenticado
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (!user) {
+                window.location.href = "login.html";
+            }
+        });
     </script>
 </body>
 
